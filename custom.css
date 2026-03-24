@@ -1,0 +1,170 @@
+.w-webflow-badge {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+body.modal-open {
+  overflow: hidden !important;
+}
+
+html.modal-open {
+  overflow: hidden !important;
+}
+
+.media-grid .item {
+  outline: none;
+}
+
+.media-grid .item:focus-visible .item-wrapper {
+  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.15), 0 1px 6px 1px #0000001a;
+}
+
+.item-wrapper {
+  transition: transform 180ms ease, box-shadow 180ms ease;
+}
+
+.item-front {
+  transition: transform 180ms ease;
+}
+
+.item-title,
+.item-client,
+.item-year {
+  mix-blend-mode: difference;
+  transition: transform 180ms ease, opacity 180ms ease;
+}
+
+.media-grid .item:hover .item-wrapper,
+.media-grid .item:focus-visible .item-wrapper {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.1);
+}
+
+.media-grid .item:hover .item-front,
+.media-grid .item:focus-visible .item-front {
+  transform: scale(1.02);
+}
+
+.media-grid .item:hover .item-title,
+.media-grid .item:focus-visible .item-title {
+  transform: translateY(-6px);
+}
+
+.media-grid .item:hover .item-client,
+.media-grid .item:hover .item-year,
+.media-grid .item:focus-visible .item-client,
+.media-grid .item:focus-visible .item-year {
+  transform: translateY(6px);
+}
+
+.local-time {
+  font-family: "IBM Plex Mono", "SFMono-Regular", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum" 1;
+  letter-spacing: -0.01em;
+}
+
+.dot {
+  position: relative;
+  background-color: #2f9262;
+  border-radius: 999px;
+  outline: none !important;
+  width: 6px;
+  height: 6px;
+  flex: 0 0 auto;
+}
+
+.dot::after {
+  content: "";
+  position: absolute;
+  inset: 50%;
+  width: 6px;
+  height: 6px;
+  margin-left: -3px;
+  margin-top: -3px;
+  border-radius: 999px;
+  background-color: rgba(47, 146, 98, 0.4);
+  transform: scale(1);
+  transform-origin: center;
+  animation: status-pulse 4s ease-in-out infinite;
+}
+
+@keyframes status-pulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.45;
+  }
+
+  50% {
+    transform: scale(2.6);
+    opacity: 0.16;
+  }
+
+  100% {
+    transform: scale(1);
+    opacity: 0.45;
+  }
+}
+
+.modal {
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 110ms ease, transform 110ms ease;
+  will-change: opacity, transform;
+}
+
+.modal[hidden] {
+  display: none !important;
+}
+
+.modal:not([hidden]) {
+  display: flex !important;
+}
+
+.modal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.modal.is-closing {
+  opacity: 0;
+  transform: translateY(6px);
+}
+
+.modal-container {
+  visibility: hidden;
+  pointer-events: none;
+  background: transparent !important;
+  opacity: 0;
+  transition: opacity 100ms ease, visibility 0s linear 100ms;
+}
+
+.modal-container.is-active {
+  visibility: visible;
+  pointer-events: auto;
+  opacity: 1;
+  transition: opacity 100ms ease;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 100ms ease;
+}
+
+.modal-container.is-active .overlay {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.overlay.is-visible {
+  opacity: 1;
+}
+
+.iconbutton:focus-visible {
+  outline: 3px solid rgba(0, 0, 0, 0.18);
+  outline-offset: 3px;
+}
