@@ -10,21 +10,74 @@
     hour12: true,
     hour: "numeric",
     minute: "2-digit",
-    second: "2-digit",
   });
 
   var timerId = null;
 
+  function extractTimeParts(date) {
+    var parts = formatter.formatToParts(date);
+    var result = {
+      hour: "",
+      minute: "",
+      dayPeriod: "",
+    };
+
+    parts.forEach(function (part) {
+      if (part.type === "hour") {
+        result.hour = part.value;
+      } else if (part.type === "minute") {
+        result.minute = part.value;
+      } else if (part.type === "dayPeriod") {
+        result.dayPeriod = part.value;
+      }
+    });
+
+    return result;
+  }
+
+  function buildMarkup(timeParts) {
+    return (
+      '<span class="local-time-hour">' +
+      timeParts.hour +
+      '</span><span class="local-time-separator">:</span><span class="local-time-minute">' +
+      timeParts.minute +
+      '</span><span class="local-time-period"> ' +
+      timeParts.dayPeriod +
+      "</span>"
+    );
+  }
+
   function renderTime() {
-    var currentTime = formatter.format(new Date());
+    var timeParts = extractTimeParts(new Date());
+    var currentMinute = timeParts.minute;
+
     elements.forEach(function (element) {
-      element.textContent = currentTime;
+      if (!element.dataset.clockInitialized) {
+        element.innerHTML = buildMarkup(timeParts);
+        element.dataset.clockInitialized = "true";
+      } else {
+        var hourNode = element.querySelector(".local-time-hour");
+        var minuteNode = element.querySelector(".local-time-minute");
+        var periodNode = element.querySelector(".local-time-period");
+
+        if (hourNode) {
+          hourNode.textContent = timeParts.hour;
+        }
+
+        if (periodNode) {
+          periodNode.textContent = " " + timeParts.dayPeriod;
+        }
+
+        if (minuteNode && minuteNode.textContent !== currentMinute) {
+          minuteNode.textContent = currentMinute;
+        }
+      }
     });
   }
 
   function scheduleNextTick() {
     var now = Date.now();
-    var delay = 1000 - (now % 1000);
+    var delay = 60000 - (now % 60000);
 
     timerId = window.setTimeout(function () {
       renderTime();
