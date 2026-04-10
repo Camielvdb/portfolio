@@ -11,6 +11,19 @@
 <meta property="og:type" content="website"/>
 <meta content="summary_large_image" name="twitter:card"/>
 <meta content="width=device-width, initial-scale=1" name="viewport"/>
+<script>
+(() => {
+  const storageKey = "camiel-theme";
+  let theme = null;
+  try {
+    theme = window.localStorage.getItem(storageKey);
+  } catch (error) {}
+  if (theme !== "light" && theme !== "dark") {
+    theme = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+  }
+  document.documentElement.dataset.theme = theme;
+})();
+</script>
 <link href="styles.css" rel="stylesheet" type="text/css"/>
 <link href="custom.css" rel="stylesheet" type="text/css"/>
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
@@ -45,11 +58,17 @@
 <div class="local-time">[local time]</div>
 </div>
 <a href="mailto:camielbeek@gmail.com" class="button">Contact</a>
+<button type="button" class="theme-toggle" data-theme-toggle aria-label="Theme: auto">
+<span class="theme-toggle-icon" aria-hidden="true"></span>
+<span class="theme-tooltip" role="tooltip" aria-hidden="true">
+<span class="theme-tooltip-title"></span>
+</span>
+</button>
 </div>
 </section>
 <section class="titlesection">
 <h1 class="title">
-<span class="title-bold">Camiel</span> <span class="title-subtle">/kɑːˈmiːl/</span> <em>n., <span class="dutch-cursor">Dutch</span></em> — Product Designer. Builds design systems that give creative teams structure, and the freedom to use it.
+<span class="title-bold">Camiel</span> <span class="title-subtle">/kɑːˈmiːl/</span> <em>n., <span class="dutch-cursor">Dutch</span></em> — <span class="title-typed scramble-text scramble-text-inline" data-scramble-text="Product Designer. Builds design systems that give creative teams structure, and the freedom to use it." data-scramble-interval="8" data-scramble-complete-event="heroTypingComplete" aria-label="Product Designer. Builds design systems that give creative teams structure, and the freedom to use it.">Product Designer. Builds design systems that give creative teams structure, and the freedom to use it.</span>
 </h1>
 </section>
 <div class="divider-container">
@@ -134,6 +153,40 @@
 </div>
 </section>
 <figure class="modal-container">
+<div style="display:none;-webkit-transform:translate3d(0, 40px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 40px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 40px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 40px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);opacity:0" class="modal modal-p">
+<div class="modal-scrolling-container">
+<h1 class="modal-header">Resolving component ambiguity</h1>
+<h2 class="modal-subheader">Challenge</h2>
+<p class="modal-paragraph">Similar interface elements were used interchangeably across the product. Components like tags, chips, badges, and statuses shared visual traits but lacked clear meaning, leading to inconsistent usage and unpredictable behavior.</p>
+<h2 class="modal-subheader">Approach</h2>
+<p class="modal-paragraph">The system was restructured by mapping these elements based on their purpose, usage patterns, and level of interaction. Distinct components were defined from this analysis, each with a clear role and set of expectations. Visual differences were then aligned to reflect these roles, reinforcing their meaning in the interface.</p>
+<p class="modal-paragraph">The resulting component set is more explicit: each element still feels related within the system, but now carries a clearer purpose and interaction model.</p>
+<img src="./images/honeybook-component-examples.png" loading="lazy" alt="Examples of badge, status, tag, button, and chip components" class="modal-image"/>
+<h2 class="modal-subheader">Outcome</h2>
+<p class="modal-paragraph">This shift removed ambiguity from the system. Components became easier to choose, easier to implement, and more consistent in how they behave. The result is a more predictable and cohesive user experience, with stronger alignment across design and engineering.</p>
+</div>
+<div class="iconbutton">
+<img src="https://cdn.prod.website-files.com/63e667dd6e5ece274bb667ff/66b1747ec20bdd2f2a5e2118_X.svg" loading="lazy" alt="Close icon" class="icon-in-button"/>
+</div>
+</div>
+<div style="display:none;-webkit-transform:translate3d(0, 40px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 40px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 40px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 40px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);opacity:0" class="modal modal-q">
+<div class="modal-scrolling-container">
+<h1 class="modal-header">Tokenization and system foundations</h1>
+<p class="modal-paragraph">This work looks at the underlying foundations that make a design system easier to scale and maintain. Tokenization helps move visual decisions into a consistent system so teams can update, extend, and govern the product with more confidence.</p>
+<h2 class="modal-subheader">Challenge</h2>
+<p class="modal-paragraph">How can foundations and tokens be set up in a way that improves scalability without making the system harder to understand or adopt?</p>
+<h2 class="modal-subheader">Process</h2>
+<p class="modal-paragraph">The starting point was to map the layers beneath the UI: foundations, semantic decisions, and the structure needed to connect them. This included looking at where consistency matters most, where future change is likely, and how to build a clearer system underneath the interface.</p>
+<h2 class="modal-subheader">Results</h2>
+<p class="modal-paragraph">The result is an early framework for tokenization that supports better scalability, cleaner maintenance, and more reliable reuse across the system. It sets up the groundwork for a design system that can evolve with less friction.</p>
+<div class="modal-image tokenization-modal-visual" data-tokenization-visual="modal" role="img" aria-label="Diagram showing tokenization and design system foundations"></div>
+<h2 class="modal-subheader">Learnings</h2>
+<p class="modal-paragraph">Foundations work is often invisible, but it shapes everything that comes after it. Strong token structure makes design decisions easier to scale, easier to change, and easier to keep aligned across teams.</p>
+</div>
+<div class="iconbutton">
+<img src="https://cdn.prod.website-files.com/63e667dd6e5ece274bb667ff/66b1747ec20bdd2f2a5e2118_X.svg" loading="lazy" alt="Close icon" class="icon-in-button"/>
+</div>
+</div>
 <div style="display:none;-webkit-transform:translate3d(0, 40px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 40px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 40px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 40px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);opacity:0" class="modal modal-a">
 <div class="modal-scrolling-container">
 <h1 class="modal-header">Navigation for an ever-evolving structure</h1>
@@ -368,8 +421,13 @@
 </figure>
 <script src="./scripts/work-data.js" defer></script>
 <script src="./scripts/render-work.js" defer></script>
+<script src="./scripts/card-reveal.js" defer></script>
+<script src="./scripts/card-hover.js" defer></script>
+<script src="./scripts/hero-typing.js" defer></script>
 <script src="./scripts/nyc-time.js" defer></script>
 <script src="./scripts/current-year.js" defer></script>
 <script src="./scripts/modal.js" defer></script>
+<script src="./scripts/theme-toggle.js" defer></script>
+<script src="./scripts/tokenization-visual.js" defer></script>
 </body>
 </html>

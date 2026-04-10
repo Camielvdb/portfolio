@@ -5661,8 +5661,8 @@ body {
 }
 
 .contact {
-  grid-column-gap: 16px;
-  grid-row-gap: 16px;
+  grid-column-gap: 8px;
+  grid-row-gap: 8px;
   justify-content: flex-end;
   align-items: center;
   display: flex;
@@ -6133,6 +6133,14 @@ body {
 
 .item-front.checkreflect {
   background-image: url("https://cdn.prod.website-files.com/63e667dd6e5ece274bb667ff/66a310bdeb550d4dfa42e2fc_Check%20%26%20Reflect.png");
+}
+
+.item-front.llm-prep {
+  background-image: url("./images/honeybook-llm-prep.png");
+}
+
+.item-front.tokenization-prep {
+  background-image: url("./images/honeybook-tokenization-prep.png");
 }
 
 .item-back {

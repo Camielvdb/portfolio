@@ -1,10 +1,24 @@
 window.PORTFOLIO_ITEMS = [
   {
     wrapperClass: "a",
+    frontClass: "llm-prep",
+    title: "Resolving component ambiguity",
+    client: "HoneyBook",
+    year: "2025",
+  },
+  {
+    wrapperClass: "a",
+    frontClass: "tokenization-prep",
+    title: "Tokenization and system foundations",
+    client: "HoneyBook",
+    year: "2026",
+  },
+  {
+    wrapperClass: "a",
     frontClass: "navigation",
     title: "Navigation for continuous evolvement",
     client: "NEXT",
-    year: "2024",
+    year: "2025",
   },
   {
     wrapperClass: "b",

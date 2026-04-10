@@ -21,6 +21,14 @@
     var front = document.createElement("div");
     front.className = "item-front " + item.frontClass;
 
+    if (item.frontClass === "tokenization-prep") {
+      var tokenizationVisual = document.createElement("div");
+      tokenizationVisual.className = "tokenization-card-visual";
+      tokenizationVisual.setAttribute("data-tokenization-visual", "card");
+      tokenizationVisual.setAttribute("aria-hidden", "true");
+      front.appendChild(tokenizationVisual);
+    }
+
     var titleContainer = document.createElement("div");
     titleContainer.className = "item-title-container";
 
