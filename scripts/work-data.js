@@ -16,7 +16,7 @@ window.PORTFOLIO_ITEMS = [
   {
     wrapperClass: "a",
     frontClass: "navigation",
-    title: "Navigation for continuous evolvement",
+    title: "Navigation for an ever-evolving structure",
     client: "NEXT",
     year: "2025",
   },
@@ -58,7 +58,7 @@ window.PORTFOLIO_ITEMS = [
   {
     wrapperClass: "",
     frontClass: "meditation",
-    title: "Beneficial communical meditation",
+    title: "Beneficial communal meditation",
     client: "Human Phones",
     year: "2019",
   },
@@ -107,14 +107,14 @@ window.PORTFOLIO_ITEMS = [
   {
     wrapperClass: "",
     frontClass: "carouselui",
-    title: "Intuitive carousel exploration",
+    title: "Intuitive option exploration",
     client: "Spinn",
     year: "2022",
   },
   {
     wrapperClass: "",
     frontClass: "checkreflect",
-    title: "Grocery management system",
+    title: "Reducing food waste",
     client: "Albert Heijn",
     year: "2019",
   },
