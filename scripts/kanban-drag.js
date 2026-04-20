@@ -63,6 +63,14 @@
     computeSlope();
     applyDivider(DEFAULT_POS);
 
+    if (typeof ResizeObserver === "function") {
+      var ro = new ResizeObserver(function () {
+        computeSlope();
+        applyDivider(currentPos);
+      });
+      ro.observe(front);
+    }
+
     front.addEventListener("pointerdown", function (e) {
       var rect = front.getBoundingClientRect();
       var xPct = ((e.clientX - rect.left) / rect.width) * 100;
