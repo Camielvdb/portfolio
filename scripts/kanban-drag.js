@@ -99,8 +99,8 @@
       }
 
       hasDragged = true;
-      var min = 2;
-      var max = 98;
+      var min = 10 - slope / 2;
+      var max = 90 + slope / 2;
       var layers = front.querySelectorAll(".kanban-card-layer");
       layers.forEach(function (l) { l.style.transition = "none"; });
       applyDivider(Math.max(min, Math.min(max, projectedPos)));
