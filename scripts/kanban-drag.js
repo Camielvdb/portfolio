@@ -12,11 +12,15 @@
     }
   }, true);
 
-  var DEFAULT_POS = 67; // center of diagonal as % of card width
+  var DEFAULT_POS = 25; // center of diagonal as % of card width
 
   function initKanbanDrag(card) {
     var front = card.querySelector(".item-front.kanban");
     if (!front) return;
+
+    // Skip drag on touch devices — mobile shows abstract layer only via CSS
+    if (typeof window.matchMedia === "function" &&
+        window.matchMedia("(pointer: coarse)").matches) return;
 
     var svg = front.querySelector(".kanban-divider-svg");
     var line = svg && svg.querySelector(".kanban-divider-line");
