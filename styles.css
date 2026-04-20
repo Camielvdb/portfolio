@@ -3774,7 +3774,7 @@ body {
   margin-top: 5px;
   margin-bottom: 5px;
   margin-right: 20px;
-  font-family: PT Sans, sans-serif;
+  font-family: IBM Plex Sans, sans-serif;
   font-weight: 400;
   transition: all .3s;
 }
@@ -3819,7 +3819,7 @@ body {
 .button-2.accept {
   float: left;
   text-align: center;
-  font-family: PT Sans, sans-serif;
+  font-family: IBM Plex Sans, sans-serif;
   font-weight: 700;
 }
 
@@ -3830,7 +3830,7 @@ body {
   background-color: #faf7f2;
   padding-left: 15px;
   padding-right: 15px;
-  font-family: PT Sans, sans-serif;
+  font-family: IBM Plex Sans, sans-serif;
 }
 
 .button-2.deny:hover {
@@ -3841,14 +3841,14 @@ body {
 .privacy-title {
   color: #27313d;
   margin-bottom: 20px;
-  font-family: PT Sans, sans-serif;
+  font-family: IBM Plex Sans, sans-serif;
   font-size: 22px;
   font-weight: 700;
 }
 
 .paragraph-4 {
   margin-bottom: 5px;
-  font-family: PT Sans, sans-serif;
+  font-family: IBM Plex Sans, sans-serif;
   font-size: 12px;
   font-weight: 400;
   line-height: 15px;
@@ -3877,7 +3877,7 @@ body {
   text-align: center;
   flex: 1;
   margin-right: 0;
-  font-family: PT Sans, sans-serif;
+  font-family: IBM Plex Sans, sans-serif;
   display: block;
 }
 
@@ -4323,7 +4323,7 @@ body {
   color: #27313d;
   margin-top: 0;
   margin-bottom: 10px;
-  font-family: PT Sans, sans-serif;
+  font-family: IBM Plex Sans, sans-serif;
   font-size: 20px;
   font-weight: 700;
 }
@@ -4334,7 +4334,7 @@ body {
   max-width: 400px;
   margin-bottom: 0;
   margin-right: 20px;
-  font-family: PT Sans, sans-serif;
+  font-family: IBM Plex Sans, sans-serif;
   position: static;
 }
 
@@ -4352,7 +4352,7 @@ body {
 .preferences-link-2 {
   color: #27313d;
   margin-right: 20px;
-  font-family: PT Sans, sans-serif;
+  font-family: IBM Plex Sans, sans-serif;
   display: block;
 }
 
@@ -5556,7 +5556,7 @@ body {
 
 .core {
   padding-top: 100px;
-  font-family: Inter, sans-serif;
+  font-family: IBM Plex Sans, sans-serif;
   font-size: 16px;
   line-height: 175%;
   overflow: visible;
