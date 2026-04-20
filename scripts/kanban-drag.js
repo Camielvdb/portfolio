@@ -12,15 +12,16 @@
     }
   }, true);
 
-  var DEFAULT_POS = 20; // center of diagonal as % of card width
+  var DEFAULT_POS = 10; // center of diagonal as % of card width
 
   function initKanbanDrag(card) {
     var front = card.querySelector(".item-front.kanban");
     if (!front) return;
 
-    // Skip drag on touch devices — mobile shows abstract layer only via CSS
-    if (typeof window.matchMedia === "function" &&
-        window.matchMedia("(pointer: coarse)").matches) return;
+    // Skip drag on touch/small-screen devices — mobile shows abstract layer only via CSS
+    if (typeof window.matchMedia === "function" && (
+        window.matchMedia("(pointer: coarse)").matches ||
+        window.matchMedia("(max-width: 991px)").matches)) return;
 
     var svg = front.querySelector(".kanban-divider-svg");
     var line = svg && svg.querySelector(".kanban-divider-line");
@@ -98,8 +99,8 @@
       }
 
       hasDragged = true;
-      var min = -(slope / 2);
-      var max = 100 + (slope / 2);
+      var min = 2;
+      var max = 98;
       var layers = front.querySelectorAll(".kanban-card-layer");
       layers.forEach(function (l) { l.style.transition = "none"; });
       applyDivider(Math.max(min, Math.min(max, projectedPos)));
