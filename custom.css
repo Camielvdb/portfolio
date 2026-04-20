@@ -641,6 +641,10 @@ html.modal-open {
   }
 }
 
+.local-time {
+  white-space: nowrap;
+}
+
 @media screen and (min-width: 1440px) {
   .media-grid {
     justify-content: flex-start;
