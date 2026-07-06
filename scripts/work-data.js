@@ -11,7 +11,7 @@ window.PORTFOLIO_ITEMS = [
     frontClass: "navigation",
     title: "Navigation for an ever-evolving structure",
     client: "NEXT",
-    year: "2025",
+    year: "2024",
   },
   {
     wrapperClass: "b",
