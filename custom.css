@@ -1,3 +1,33 @@
+/* Inter, self-hosted (variable, OFL — see fonts/Inter-OFL.txt) and preloaded in
+   index.html. font-display: block prevents the fallback-font flash on load;
+   the page fades in with the appear-blur anyway. */
+@font-face {
+  font-family: Inter;
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: block;
+  src: url("fonts/inter-latin-wght-normal.woff2") format("woff2-variations"), url("fonts/inter-latin-wght-normal.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: Inter;
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: block;
+  src: url("fonts/inter-latin-ext-wght-normal.woff2") format("woff2-variations"), url("fonts/inter-latin-ext-wght-normal.woff2") format("woff2");
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+@font-face {
+  font-family: Inter;
+  font-style: italic;
+  font-weight: 100 900;
+  font-display: block;
+  src: url("fonts/inter-latin-wght-italic.woff2") format("woff2-variations"), url("fonts/inter-latin-wght-italic.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
 :root {
   --theme-transition-duration: 360ms;
   --theme-transition-ease: ease;
@@ -58,16 +88,18 @@ body {
     color var(--theme-transition-duration) var(--theme-transition-ease);
 }
 
-html.is-theme-switching .topmenu,
-html.is-theme-switching .titlesection,
-html.is-theme-switching .divider-container,
-html.is-theme-switching .work,
-html.is-theme-switching .testimonials,
-html.is-theme-switching .skills,
-html.is-theme-switching .illustrations,
-html.is-theme-switching .footer {
-  animation: theme-section-blur var(--theme-transition-duration) var(--theme-transition-ease);
-  will-change: filter, opacity;
+/* Theme switch: everything changes at once (see theme-toggle.js). Element
+   transitions are off during the swap; the page cross-fades as one snapshot. */
+html.is-theme-switching *,
+html.is-theme-switching *::before,
+html.is-theme-switching *::after {
+  transition: none !important;
+}
+
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 360ms;
+  animation-timing-function: ease;
 }
 
 .core,
@@ -110,9 +142,7 @@ html.is-theme-switching .footer {
 .footer-main-link,
 .local-time,
 .title,
-.title-subtle,
-.title-typed-scramble,
-.scramble-text-live {
+.title-subtle {
   transition-duration: var(--theme-transition-duration);
   transition-timing-function: var(--theme-transition-ease);
 }
@@ -128,8 +158,6 @@ html.is-theme-switching .footer {
 .local-time,
 .title,
 .title-subtle,
-.title-typed-scramble,
-.scramble-text-live,
 .menulink,
 .modal-header,
 .modal-subheader,
@@ -169,23 +197,6 @@ html[data-theme="dark"] .time {
     background-color var(--theme-transition-duration) var(--theme-transition-ease),
     border-color var(--theme-transition-duration) var(--theme-transition-ease),
     color var(--theme-transition-duration) var(--theme-transition-ease);
-}
-
-@keyframes theme-section-blur {
-  0% {
-    filter: blur(0);
-    opacity: 1;
-  }
-
-  50% {
-    filter: blur(10px);
-    opacity: 0.72;
-  }
-
-  100% {
-    filter: blur(0);
-    opacity: 1;
-  }
 }
 
 .avatar-container {
@@ -258,48 +269,6 @@ html[data-theme="dark"] .time {
   background-color: color-mix(in srgb, var(--content-primary) 8%, transparent);
 }
 
-.theme-tooltip {
-  background-color: #24292f;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 6px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.22);
-  color: #f6f8fa;
-  display: block;
-  min-width: max-content;
-  opacity: 0;
-  padding: 6px 10px;
-  pointer-events: none;
-  position: absolute;
-  right: 50%;
-  top: calc(100% + 12px);
-  transform: translate(50%, -4px);
-  transition: opacity 120ms ease, transform 120ms ease;
-  white-space: nowrap;
-  z-index: 20;
-}
-
-.theme-tooltip::before,
-.theme-tooltip::after {
-  content: none !important;
-  display: none !important;
-}
-
-.theme-toggle[data-tooltip-visible="true"] .theme-tooltip {
-  opacity: 1;
-  transform: translate(50%, 0);
-}
-
-.theme-toggle:not([data-tooltip-enabled]) .theme-tooltip {
-  display: none;
-}
-
-.theme-tooltip-title {
-  font-size: 11px;
-  font-weight: 600;
-  line-height: 1.15;
-  display: block;
-}
-
 .divider {
   background-color: var(--content-primary);
   transition-property: background-color, opacity;
@@ -351,8 +320,7 @@ html[data-theme="dark"] .icon-in-button {
 }
 
 .media-grid .item:hover .item-wrapper,
-.media-grid .item:focus-visible .item-wrapper,
-.media-grid .item[data-hover-active="true"] .item-wrapper {
+.media-grid .item:focus-visible .item-wrapper {
   box-shadow: 0 22px 44px var(--site-shadow-strong);
 }
 
@@ -381,8 +349,7 @@ html[data-theme="dark"] .menulink {
 
 html[data-theme="dark"] .skills-text,
 html[data-theme="dark"] .role,
-html[data-theme="dark"] .title-subtle,
-html[data-theme="dark"] .title-typed-scramble {
+html[data-theme="dark"] .title-subtle {
   color: var(--content-tertiary);
 }
 
@@ -427,12 +394,10 @@ html[data-theme="dark"] .item-title,
 html[data-theme="dark"] .item-client,
 html[data-theme="dark"] .item-year {
   color: #fff;
-  mix-blend-mode: difference;
 }
 
 html[data-theme="dark"] .media-grid .item:hover .item-wrapper,
-html[data-theme="dark"] .media-grid .item:focus-visible .item-wrapper,
-html[data-theme="dark"] .media-grid .item[data-hover-active="true"] .item-wrapper {
+html[data-theme="dark"] .media-grid .item:focus-visible .item-wrapper {
   box-shadow: 0 24px 52px rgba(0, 0, 0, 0.58), 0 0 0 1px rgba(255, 255, 255, 0.04);
 }
 
@@ -456,14 +421,14 @@ html[data-theme="dark"] .iconbutton:hover {
 }
 
 .item-front.llm-prep {
-  background-image: url("./images/honeybook-llm-prep-case.png");
+  background-image: url("./images/honeybook-llm-prep-case.webp");
   background-position: center;
   background-repeat: no-repeat;
   background-size: contain;
 }
 
 .item-front.component-roles {
-  background-image: url("./images/honeybook-llm-prep.png");
+  background-image: url("./images/honeybook-llm-prep.webp");
   background-position: center;
   background-repeat: no-repeat;
   background-size: contain;
@@ -512,7 +477,6 @@ html[data-theme="dark"] .iconbutton:hover {
   transition:
     clip-path 500ms cubic-bezier(0.22, 1, 0.36, 1),
     transform 500ms cubic-bezier(0.22, 1, 0.36, 1);
-  will-change: clip-path, transform;
 }
 
 .kanban-card-layer--ui {
@@ -555,21 +519,9 @@ html[data-theme="dark"] .iconbutton:hover {
   content: none;
 }
 
-html[data-theme="dark"] .item-front.kanban {
-  background-color: #050507;
-}
-
-/* Skeleton layer visibility per theme */
+/* The Kanban card always uses its light artwork (both layers), in both themes. */
 .kanban-card-layer--abstract-dark {
   display: none;
-}
-
-html[data-theme="dark"] .kanban-card-layer--abstract-light {
-  display: none;
-}
-
-html[data-theme="dark"] .kanban-card-layer--abstract-dark {
-  display: block;
 }
 
 .tokenization-card-visual,
@@ -619,25 +571,31 @@ html.modal-open {
   overflow: hidden !important;
 }
 
-.media-grid .item {
-  outline: none;
-  opacity: 0;
-  transform: translateY(18px);
-  transition: opacity 920ms cubic-bezier(0.16, 1, 0.3, 1), transform 920ms cubic-bezier(0.16, 1, 0.3, 1);
-  transition-delay: var(--card-reveal-delay, 0ms);
-  will-change: opacity, transform;
+/* Appear-blur: the hero line and every card resolve from a soft blur on page load
+   (Apple-style "materialize"). Cards follow the hero in a quick stagger.
+   Nothing depends on scrolling. */
+@keyframes appear-blur {
+  from {
+    opacity: 0;
+    filter: blur(16px);
+    transform: translateY(8px) scale(0.97);
+  }
 }
 
-.media-grid .item.is-visible {
-  opacity: 1;
-  transform: translateY(0);
+.title {
+  animation: appear-blur 700ms cubic-bezier(0.2, 0.8, 0.2, 1) backwards;
+}
+
+.media-grid .item {
+  outline: none;
+  animation: appear-blur 700ms cubic-bezier(0.2, 0.8, 0.2, 1) backwards;
+  animation-delay: min(calc(80ms + var(--i, 0) * 35ms), 400ms);
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .title,
   .media-grid .item {
-    opacity: 1;
-    transform: none;
-    transition: none;
+    animation: none;
   }
 }
 
@@ -661,25 +619,37 @@ html.modal-open {
   box-shadow: 0 1px 6px 1px #0000001a;
 }
 
+.media-grid .item {
+  perspective: none;
+}
+
+/* Hover: slight scale plus a subtle pointer-following tilt (card-hover.js).
+   Only the wrapper is transformed, with perspective() inside its own transform.
+   Children stay flat with no translateZ / will-change layers, because Safari
+   drops rounded clipping and blend modes for children rendered in 3D. */
 .item-wrapper {
-  transform-style: preserve-3d;
-  will-change: transform, box-shadow;
+  perspective: none;
+  transform: perspective(900px) rotateX(var(--card-rotate-x, 0deg)) rotateY(var(--card-rotate-y, 0deg)) scale(var(--card-scale, 1));
   transition: transform 320ms cubic-bezier(0.16, 0.84, 0.24, 1), box-shadow 320ms cubic-bezier(0.16, 0.84, 0.24, 1);
-  transform: translate3d(0, 0, var(--card-z, 0px)) rotateX(var(--card-rotate-x, 0deg)) rotateY(var(--card-rotate-y, 0deg));
 }
 
 .item-front {
-  transform: translateZ(0);
-  will-change: transform;
-  transition: transform 320ms cubic-bezier(0.16, 0.84, 0.24, 1);
+  border-radius: 10px;
+  overflow: hidden;
+  clip-path: inset(0 round 10px);
+}
+
+/* Contrast labels: blend the containers, not the text. Safari won't blend text that
+   has its own 3D/composited layer, which rendered every label the same color. */
+.item-title-container,
+.item-bottom-container {
+  mix-blend-mode: difference;
 }
 
 .item-title,
 .item-client,
 .item-year {
-  mix-blend-mode: difference;
   opacity: 0;
-  will-change: transform, opacity;
   transition: transform 340ms cubic-bezier(0.19, 1, 0.22, 1), opacity 240ms cubic-bezier(0.19, 1, 0.22, 1);
 }
 
@@ -694,19 +664,14 @@ html.modal-open {
 
 .media-grid .item:hover .item-wrapper,
 .media-grid .item:focus-visible .item-wrapper {
-  --card-z: 18px;
+  --card-scale: 1.02;
   box-shadow: 0 22px 44px rgba(0, 0, 0, 0.14);
-}
-
-.media-grid .item:hover .item-front,
-.media-grid .item:focus-visible .item-front {
-  transform: translateZ(10px) scale(1.015);
 }
 
 .media-grid .item:hover .item-title,
 .media-grid .item:focus-visible .item-title {
   opacity: 1;
-  transform: translateY(0) translateZ(18px);
+  transform: translateY(0);
 }
 
 .media-grid .item:hover .item-client,
@@ -714,31 +679,7 @@ html.modal-open {
 .media-grid .item:focus-visible .item-client,
 .media-grid .item:focus-visible .item-year {
   opacity: 1;
-  transform: translateY(0) translateZ(18px);
-}
-
-.media-grid .item[data-hover-active="true"] .item-wrapper {
-  --card-z: 18px;
-  box-shadow: 0 22px 44px rgba(0, 0, 0, 0.14);
-}
-
-.media-grid .item[data-hover-active="true"] .item-front {
-  transform: translateZ(10px) scale(1.015);
-}
-
-.media-grid .item[data-hover-active="true"] .item-title,
-.media-grid .item[data-hover-active="true"] .item-client,
-.media-grid .item[data-hover-active="true"] .item-year {
-  opacity: 1;
-}
-
-.media-grid .item[data-hover-active="true"] .item-title {
-  transform: translateY(0) translateZ(18px);
-}
-
-.media-grid .item[data-hover-active="true"] .item-client,
-.media-grid .item[data-hover-active="true"] .item-year {
-  transform: translateY(0) translateZ(18px);
+  transform: translateY(0);
 }
 
 .dot {
@@ -791,11 +732,16 @@ html.modal-open {
   }
 }
 
+/* Project panel opens on its own (not from the card): a soft blur-in from
+   slightly smaller, matching the page's appear-blur. Closing is quick. */
 .modal {
   opacity: 0;
-  transform: translateY(6px);
-  transition: opacity 110ms ease, transform 110ms ease;
-  will-change: opacity, transform;
+  transform: translateY(10px) scale(0.97);
+  filter: blur(8px);
+  transition:
+    opacity 260ms ease,
+    transform 420ms cubic-bezier(0.2, 0.8, 0.2, 1),
+    filter 320ms ease;
 }
 
 .modal[hidden] {
@@ -808,12 +754,23 @@ html.modal-open {
 
 .modal.is-visible {
   opacity: 1;
-  transform: translateY(0);
+  transform: none;
+  filter: none;
 }
 
 .modal.is-closing {
   opacity: 0;
-  transform: translateY(6px);
+  transform: scale(0.98);
+  filter: blur(4px);
+  transition: opacity 110ms ease, transform 110ms ease, filter 110ms ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .modal,
+  .modal.is-closing {
+    transform: none;
+    filter: none;
+  }
 }
 
 .modal-container {
@@ -855,34 +812,6 @@ html.modal-open {
   cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Ctext x='16' y='22' font-size='20' text-anchor='middle'%3E%F0%9F%9A%B2%3C/text%3E%3C/svg%3E") 16 16, auto;
 }
 
-.scramble-text-inline {
-  color: transparent;
-  display: inline-block;
-  max-width: 100%;
-  position: relative;
-  vertical-align: baseline;
-}
-
-.scramble-text-reserve {
-  visibility: hidden;
-}
-
-.title-typed-scramble {
-  color: var(--content-tertiary);
-}
-
-.scramble-text-live {
-  color: var(--content-primary);
-  inset: 0;
-  position: absolute;
-  white-space: pre-wrap;
-}
-
-html[data-theme="dark"] .scramble-text-inline {
-  color: transparent;
-}
-
-html[data-theme="dark"] .scramble-text-live,
 html[data-theme="dark"] .name,
 html[data-theme="dark"] .name.in-menu,
 html[data-theme="dark"] .button,
@@ -900,4 +829,359 @@ html[data-theme="dark"] .footer-main-link {
 
 html[data-theme="dark"] .local-time {
   color: var(--site-time-green);
+}
+
+/* ------------------------------------------------------------------
+   Floating glass bar (replaces the full-width top menu)
+   Liquid-Glass-ish: translucent fill, strong backdrop blur + saturation,
+   a bright inner rim on top and a soft shadow underneath.
+   ------------------------------------------------------------------ */
+.glass-bar {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 4px 4px 16px;
+  border-radius: 999px;
+  /* At the top of the page the bar has no container: it sits on the page like
+     plain text. Once you scroll, it picks up the glass (see .is-scrolled). */
+  background-color: transparent;
+  border: 1px solid transparent;
+  box-shadow: none;
+  -webkit-backdrop-filter: blur(0px);
+  backdrop-filter: blur(0px);
+  animation: appear-blur 700ms cubic-bezier(0.2, 0.8, 0.2, 1) 80ms backwards;
+  transition:
+    background-color 360ms cubic-bezier(0.2, 0.8, 0.2, 1),
+    border-color 360ms cubic-bezier(0.2, 0.8, 0.2, 1),
+    box-shadow 360ms cubic-bezier(0.2, 0.8, 0.2, 1),
+    -webkit-backdrop-filter 360ms cubic-bezier(0.2, 0.8, 0.2, 1),
+    backdrop-filter 360ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+/* Scrolled: same surface as the project panel's close button (.iconbutton). */
+.glass-bar.is-scrolled {
+  background-color: color-mix(in srgb, var(--site-surface-strong) 82%, transparent);
+  -webkit-backdrop-filter: blur(3px);
+  backdrop-filter: blur(3px);
+  border-color: var(--site-border-soft);
+  box-shadow: none;
+}
+
+/* Dark: same tone as the close button over black, but nearly opaque so light
+   cards scrolling underneath don't bleed through the text. */
+html[data-theme="dark"] .glass-bar.is-scrolled {
+  background-color: rgba(24, 24, 27, 0.9);
+  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(16px);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.glass-bar .time {
+  display: flex;
+  margin-right: 6px;
+}
+
+.glass-bar .local-time {
+  font-size: 14px;
+}
+
+.glass-bar-link {
+  display: inline-flex;
+  align-items: center;
+  height: 36px;
+  padding: 0 14px;
+  border-radius: 999px;
+  color: var(--content-primary);
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: background-color 160ms ease;
+}
+
+.glass-bar-link,
+.glass-bar .theme-toggle {
+  position: relative;
+  z-index: 1;
+}
+
+.glass-bar-link:hover,
+.glass-bar-link:focus-visible,
+.glass-bar .theme-toggle:hover,
+.glass-bar .theme-toggle:focus-visible {
+  background-color: transparent;
+  outline: none;
+}
+
+/* Shared hover highlight: one pill that slides and resizes between the
+   Contact link and the theme toggle (glass-bar.js positions it). */
+.glass-bar-hover {
+  position: absolute;
+  top: 4px;
+  left: 0;
+  width: 0;
+  height: 36px;
+  border-radius: 999px;
+  background-color: color-mix(in srgb, var(--content-primary) 8%, transparent);
+  opacity: 0;
+  pointer-events: none;
+  /* left + width (not a transform via a CSS variable): Safari doesn't animate
+     transforms driven by a changed custom property, so the pill jumped and
+     overshot. Both edges now travel together in every browser. */
+  transition:
+    left 200ms ease-out,
+    width 200ms ease-out,
+    opacity 160ms ease-out;
+}
+
+.glass-bar-hover.is-active {
+  opacity: 1;
+}
+
+.glass-bar-hover.no-slide {
+  transition: opacity 180ms ease;
+}
+
+.glass-bar .theme-toggle {
+  width: 36px;
+  height: 36px;
+  border-radius: 999px;
+}
+
+/* The full-width fixed menu used to push everything down 100px. */
+body {
+  padding-top: 0 !important;
+}
+
+.titlesection {
+  padding-top: 120px;
+  padding-bottom: 24px;
+}
+
+@media screen and (max-width: 767px) {
+  .glass-bar {
+    top: 12px;
+    right: 12px;
+  }
+
+  .titlesection {
+    padding-top: 80px;
+    padding-bottom: 8px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .glass-bar {
+    animation: none;
+  }
+}
+
+/* Keep the pronunciation together when the H1 wraps. */
+.title .title-subtle {
+  white-space: nowrap;
+}
+
+/* ------------------------------------------------------------------
+   Type scale — one system for the whole site (Inter)
+     Display 24/34  ·  Title 18/26  ·  Body 17/28  ·  Small 14/20
+   Phone (<480px): Display 20/28 · Title 16/24 · Body 15/24 · Small 14/20
+   ------------------------------------------------------------------ */
+:root {
+  --type-display: 24px;
+  --type-display-lh: 34px;
+  --type-title: 18px;
+  --type-title-lh: 26px;
+  --type-body: 17px;
+  --type-body-lh: 28px;
+  --type-small: 14px;
+  --type-small-lh: 20px;
+}
+
+@media screen and (max-width: 479px) {
+  :root {
+    --type-display: 20px;
+    --type-display-lh: 28px;
+    --type-title: 16px;
+    --type-title-lh: 24px;
+    --type-body: 15px;
+    --type-body-lh: 24px;
+  }
+}
+
+/* Display */
+.title,
+.modal-header {
+  font-size: var(--type-display);
+  line-height: var(--type-display-lh);
+}
+
+/* Title */
+.skills .section-title,
+.modal-subheader {
+  font-size: var(--type-title);
+  line-height: var(--type-title-lh);
+  letter-spacing: -0.2px;
+}
+
+/* Body */
+.skills-text,
+.modal-paragraph,
+.modal-list .modal-paragraph {
+  font-size: var(--type-body);
+  line-height: var(--type-body-lh);
+}
+
+/* Small */
+.item-title,
+.item-client,
+.item-year,
+.glass-bar .local-time,
+.glass-bar-link,
+.footer,
+.footer .my-name,
+.footer-main-link {
+  font-size: var(--type-small);
+  line-height: var(--type-small-lh);
+}
+
+/* Spacing that goes with the scale */
+.skills {
+  grid-row-gap: 16px;
+}
+
+.modal {
+  max-width: 840px;
+}
+
+.modal-scrolling-container {
+  padding: 64px;
+}
+
+.modal-header {
+  margin-bottom: 16px;
+}
+
+.modal-subheader {
+  margin-top: 32px;
+  margin-bottom: 8px;
+}
+
+.modal-paragraph {
+  margin-bottom: 12px;
+}
+
+@media screen and (max-width: 767px) {
+  .modal-scrolling-container {
+    padding: 56px 32px 32px;
+  }
+
+  .modal-subheader {
+    margin-top: 24px;
+  }
+}
+
+@media screen and (max-width: 479px) {
+  .modal-scrolling-container {
+    padding: 56px 20px 24px;
+  }
+}
+
+/* ------------------------------------------------------------------
+   Kanban card: the UI and abstract layers blend through a soft diagonal
+   gradient at rest. On hover the blend tightens to a crisp split and the
+   draggable divider line appears.
+   ------------------------------------------------------------------ */
+@property --kanban-feather {
+  syntax: "<percentage>";
+  inherits: true;
+  initial-value: 9%;
+}
+
+.item-front.kanban {
+  --kanban-feather: 9%;
+  transition: --kanban-feather 420ms ease;
+}
+
+
+
+.media-grid .item:hover .item-front.kanban,
+.media-grid .item[data-kanban-dragging="true"] .item-front.kanban {
+  --kanban-feather: 0%;
+}
+
+.item-front.kanban .kanban-card-layer--ui {
+  clip-path: none;
+  -webkit-mask-image: linear-gradient(
+    135deg,
+    #000 calc(var(--kanban-mask, 80.5%) - var(--kanban-feather)),
+    transparent calc(var(--kanban-mask, 80.5%) + var(--kanban-feather))
+  );
+  mask-image: linear-gradient(
+    135deg,
+    #000 calc(var(--kanban-mask, 80.5%) - var(--kanban-feather)),
+    transparent calc(var(--kanban-mask, 80.5%) + var(--kanban-feather))
+  );
+}
+
+.kanban-divider-line {
+  opacity: 0;
+  transition: opacity 240ms ease, stroke 200ms ease, stroke-width 200ms ease;
+}
+
+.media-grid .item:hover .kanban-divider-line,
+.media-grid .item[data-kanban-dragging="true"] .kanban-divider-line {
+  opacity: 1;
+}
+
+/* Seam veil: sits between the x-ray (abstract) layer and the UI layer, so it
+   only softens the x-ray where the two meet; the UI on top stays sharp.
+   Its width follows --kanban-feather, so it disappears on hover with the
+   crisp split. */
+.kanban-card-blend {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0) calc(var(--kanban-mask, 80.5%) - var(--kanban-feather) * 1.4),
+    rgba(255, 255, 255, 0.85) var(--kanban-mask, 80.5%),
+    rgba(255, 255, 255, 0) calc(var(--kanban-mask, 80.5%) + var(--kanban-feather) * 1.4)
+  );
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
+  -webkit-mask-image: linear-gradient(
+    135deg,
+    transparent calc(var(--kanban-mask, 80.5%) - var(--kanban-feather) * 1.4),
+    #000 var(--kanban-mask, 80.5%),
+    transparent calc(var(--kanban-mask, 80.5%) + var(--kanban-feather) * 1.4)
+  );
+  mask-image: linear-gradient(
+    135deg,
+    transparent calc(var(--kanban-mask, 80.5%) - var(--kanban-feather) * 1.4),
+    #000 var(--kanban-mask, 80.5%),
+    transparent calc(var(--kanban-mask, 80.5%) + var(--kanban-feather) * 1.4)
+  );
+  opacity: 1;
+  transition: opacity 300ms ease;
+}
+
+.media-grid .item:hover .kanban-card-blend,
+.media-grid .item[data-kanban-dragging="true"] .kanban-card-blend {
+  opacity: 0;
+}
+
+@media (pointer: coarse), (max-width: 991px) {
+  .kanban-card-blend {
+    display: none;
+  }
+}
+
+
+/* Name in the H1: medium (500) instead of semibold. */
+.title .title-bold {
+  font-weight: 500;
 }

@@ -12,7 +12,7 @@
     }
   }, true);
 
-  var DEFAULT_POS = 10; // center of diagonal as % of card width
+  var DEFAULT_POS = 61; // center of diagonal as % of card width
 
   function initKanbanDrag(card) {
     var front = card.querySelector(".item-front.kanban");
@@ -45,6 +45,8 @@
 
       front.style.setProperty("--kanban-divider-top", topX.toFixed(2) + "%");
       front.style.setProperty("--kanban-divider-bottom", bottomX.toFixed(2) + "%");
+      // Same split expressed as a stop on a 135deg gradient (for the soft mask).
+      front.style.setProperty("--kanban-mask", (50 + (pos - 50) / 2).toFixed(2) + "%");
 
       var w = front.offsetWidth;
       var h = front.offsetHeight;
@@ -134,12 +136,6 @@
                       e.clientY < rect.top  || e.clientY > rect.bottom;
         if (outside) {
           card.removeAttribute("data-hover-active");
-          var wrapper = card.querySelector(".item-wrapper");
-          if (wrapper) {
-            wrapper.style.setProperty("--card-rotate-x", "0deg");
-            wrapper.style.setProperty("--card-rotate-y", "0deg");
-            wrapper.style.setProperty("--card-z", "0px");
-          }
         }
       }
     }

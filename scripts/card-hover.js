@@ -1,70 +1,61 @@
 (function () {
+  // Subtle 3D tilt that follows the pointer. Only the card wrapper rotates;
+  // its contents stay flat (no preserve-3d / translateZ), which keeps Safari's
+  // rounded clipping and the contrast labels working.
   var cards = Array.from(document.querySelectorAll(".media-grid .item"));
   var supportsFinePointer =
     typeof window.matchMedia === "function" &&
     window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+  var reduceMotion =
+    typeof window.matchMedia === "function" &&
+    window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-  if (!cards.length || !supportsFinePointer) {
+  if (!cards.length || !supportsFinePointer || reduceMotion) {
     return;
   }
+
+  var MAX_TILT = 4; // degrees
 
   function clamp(value, min, max) {
     return Math.max(min, Math.min(max, value));
   }
 
-  function setCardTransform(card, event) {
+  function tilt(card, event) {
     var wrapper = card.querySelector(".item-wrapper");
     if (!wrapper) {
       return;
     }
 
     var rect = card.getBoundingClientRect();
-    var relativeX = (event.clientX - rect.left) / rect.width;
-    var relativeY = (event.clientY - rect.top) / rect.height;
-    var rotateY = clamp((relativeX - 0.5) * 14, -7, 7);
-    var rotateX = clamp((0.5 - relativeY) * 14, -7, 7);
+    var x = (event.clientX - rect.left) / rect.width - 0.5;
+    var y = (event.clientY - rect.top) / rect.height - 0.5;
 
-    card.setAttribute("data-hover-active", "true");
-    wrapper.style.setProperty("--card-rotate-x", rotateX.toFixed(2) + "deg");
-    wrapper.style.setProperty("--card-rotate-y", rotateY.toFixed(2) + "deg");
-    wrapper.style.setProperty("--card-z", "18px");
+    wrapper.style.setProperty("--card-rotate-y", clamp(x * MAX_TILT * 2, -MAX_TILT, MAX_TILT).toFixed(2) + "deg");
+    wrapper.style.setProperty("--card-rotate-x", clamp(-y * MAX_TILT * 2, -MAX_TILT, MAX_TILT).toFixed(2) + "deg");
   }
 
-  function resetCard(card) {
+  function reset(card) {
     var wrapper = card.querySelector(".item-wrapper");
     if (!wrapper) {
       return;
     }
 
-    card.removeAttribute("data-hover-active");
-    wrapper.style.setProperty("--card-rotate-x", "0deg");
-    wrapper.style.setProperty("--card-rotate-y", "0deg");
-    wrapper.style.setProperty("--card-z", "0px");
-
-    window.setTimeout(function () {
-      if (!card.hasAttribute("data-hover-active")) {
-        wrapper.style.removeProperty("--card-rotate-x");
-        wrapper.style.removeProperty("--card-rotate-y");
-        wrapper.style.removeProperty("--card-z");
-      }
-    }, 360);
+    wrapper.style.removeProperty("--card-rotate-x");
+    wrapper.style.removeProperty("--card-rotate-y");
   }
 
   cards.forEach(function (card) {
     card.addEventListener("pointerenter", function (event) {
-      setCardTransform(card, event);
+      tilt(card, event);
     });
-
     card.addEventListener("pointermove", function (event) {
-      setCardTransform(card, event);
+      tilt(card, event);
     });
-
     card.addEventListener("pointerleave", function () {
-      resetCard(card);
+      reset(card);
     });
-
     card.addEventListener("blur", function () {
-      resetCard(card);
+      reset(card);
     });
   });
 })();

@@ -10,6 +10,7 @@
     var card = document.createElement("div");
     card.className = "item";
     card.setAttribute("data-dialog-index", String(index));
+    card.style.setProperty("--i", String(index));
     card.setAttribute("role", "button");
     card.setAttribute("tabindex", "0");
     card.setAttribute("aria-haspopup", "dialog");
@@ -38,26 +39,26 @@
       kanbanVisual.setAttribute("aria-hidden", "true");
 
       kanbanUiLayer.className = "kanban-card-layer kanban-card-layer--ui";
-      kanbanUiLayer.src = "./images/honeybook-kanban-ui.png";
+      kanbanUiLayer.src = "./images/honeybook-kanban-ui.webp";
       kanbanUiLayer.alt = "";
       kanbanUiLayer.decoding = "async";
 
       var kanbanAbstractLayerLight = document.createElement("img");
-      var kanbanAbstractLayerDark = document.createElement("img");
 
       kanbanAbstractLayer.className = "kanban-card-layer kanban-card-layer--abstract kanban-card-layer--abstract-light";
-      kanbanAbstractLayer.src = "./images/honeybook-kanban-abstract-light.png";
+      kanbanAbstractLayer.src = "./images/honeybook-kanban-abstract-light.webp";
       kanbanAbstractLayer.alt = "";
       kanbanAbstractLayer.decoding = "async";
 
-      kanbanAbstractLayerDark.className = "kanban-card-layer kanban-card-layer--abstract kanban-card-layer--abstract-dark";
-      kanbanAbstractLayerDark.src = "./images/honeybook-kanban-abstract-dark.png";
-      kanbanAbstractLayerDark.alt = "";
-      kanbanAbstractLayerDark.decoding = "async";
 
       kanbanVisual.appendChild(kanbanAbstractLayer);
-      kanbanVisual.appendChild(kanbanAbstractLayerDark);
       kanbanVisual.appendChild(kanbanUiLayer);
+
+      // Soft blur band along the diagonal where the two layers meet, so the
+      // slightly misaligned text and skeleton shapes melt together.
+      var kanbanBlend = document.createElement("div");
+      kanbanBlend.className = "kanban-card-blend";
+      kanbanVisual.appendChild(kanbanBlend);
 
       var kanbanSvg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
       var kanbanDividerLine = document.createElementNS("http://www.w3.org/2000/svg", "line");
