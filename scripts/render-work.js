@@ -60,6 +60,12 @@
       kanbanVisual.appendChild(kanbanAbstractLayerDark);
       kanbanVisual.appendChild(kanbanUiLayer);
 
+      // Soft blur band along the diagonal where the two layers meet, so the
+      // slightly misaligned text and skeleton shapes melt together.
+      var kanbanBlend = document.createElement("div");
+      kanbanBlend.className = "kanban-card-blend";
+      kanbanVisual.appendChild(kanbanBlend);
+
       var kanbanSvg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
       var kanbanDividerLine = document.createElementNS("http://www.w3.org/2000/svg", "line");
       kanbanSvg.setAttribute("class", "kanban-divider-svg");

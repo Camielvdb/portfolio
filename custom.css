@@ -534,21 +534,9 @@ html[data-theme="dark"] .iconbutton:hover {
   content: none;
 }
 
-html[data-theme="dark"] .item-front.kanban {
-  background-color: #050507;
-}
-
-/* Skeleton layer visibility per theme */
+/* The Kanban card always uses its light artwork (both layers), in both themes. */
 .kanban-card-layer--abstract-dark {
   display: none;
-}
-
-html[data-theme="dark"] .kanban-card-layer--abstract-light {
-  display: none;
-}
-
-html[data-theme="dark"] .kanban-card-layer--abstract-dark {
-  display: block;
 }
 
 .tokenization-card-visual,
@@ -1132,16 +1120,10 @@ body {
   transition: --kanban-feather 420ms ease;
 }
 
-/* The UI screenshot is light, so in dark mode a wide fade turns into a grey
-   smear; keep the blend narrow there. */
-html[data-theme="dark"] .item-front.kanban {
-  --kanban-feather: 5%;
-}
+
 
 .media-grid .item:hover .item-front.kanban,
-.media-grid .item[data-kanban-dragging="true"] .item-front.kanban,
-html[data-theme="dark"] .media-grid .item:hover .item-front.kanban,
-html[data-theme="dark"] .media-grid .item[data-kanban-dragging="true"] .item-front.kanban {
+.media-grid .item[data-kanban-dragging="true"] .item-front.kanban {
   --kanban-feather: 0%;
 }
 
@@ -1167,5 +1149,42 @@ html[data-theme="dark"] .media-grid .item[data-kanban-dragging="true"] .item-fro
 .media-grid .item:hover .kanban-divider-line,
 .media-grid .item[data-kanban-dragging="true"] .kanban-divider-line {
   opacity: 1;
+}
+
+/* Blur band centred on the split: strongest on the diagonal, fading out to
+   either side. Its width follows --kanban-feather, so it disappears on hover
+   when the split goes crisp. */
+.kanban-card-blend {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+  -webkit-backdrop-filter: blur(5px);
+  backdrop-filter: blur(5px);
+  -webkit-mask-image: linear-gradient(
+    135deg,
+    transparent calc(var(--kanban-mask, 30%) - var(--kanban-feather) * 1.2),
+    #000 var(--kanban-mask, 30%),
+    transparent calc(var(--kanban-mask, 30%) + var(--kanban-feather) * 1.2)
+  );
+  mask-image: linear-gradient(
+    135deg,
+    transparent calc(var(--kanban-mask, 30%) - var(--kanban-feather) * 1.2),
+    #000 var(--kanban-mask, 30%),
+    transparent calc(var(--kanban-mask, 30%) + var(--kanban-feather) * 1.2)
+  );
+  opacity: 1;
+  transition: opacity 300ms ease;
+}
+
+.media-grid .item:hover .kanban-card-blend,
+.media-grid .item[data-kanban-dragging="true"] .kanban-card-blend {
+  opacity: 0;
+}
+
+@media (pointer: coarse), (max-width: 991px) {
+  .kanban-card-blend {
+    display: none;
+  }
 }
 
