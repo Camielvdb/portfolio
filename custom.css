@@ -595,12 +595,13 @@ html.modal-open {
   white-space: nowrap;
 }
 
-/* Cap the work grid at two columns on every breakpoint (overrides Webflow's 3-column layout at 1440px+). */
 @media screen and (min-width: 1440px) {
   .media-grid {
-    display: grid;
-    width: 100%;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    justify-content: flex-start;
+  }
+
+  .media-grid .item {
+    max-width: calc(33.333% - 27px);
   }
 }
 
