@@ -10,6 +10,7 @@
     var card = document.createElement("div");
     card.className = "item";
     card.setAttribute("data-dialog-index", String(index));
+    card.style.setProperty("--i", String(index));
     card.setAttribute("role", "button");
     card.setAttribute("tabindex", "0");
     card.setAttribute("aria-haspopup", "dialog");

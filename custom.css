@@ -573,19 +573,29 @@ html.modal-open {
   overflow: hidden !important;
 }
 
-.media-grid .item {
-  outline: none;
-  /* All cards fade in together on page load; nothing depends on scrolling. */
-  animation: card-fade-in 900ms ease-out backwards;
-}
-
-@keyframes card-fade-in {
+/* Appear-blur: the hero line and every card resolve from a soft blur on page load
+   (Apple-style "materialize"). Cards follow the hero in a quick stagger.
+   Nothing depends on scrolling. */
+@keyframes appear-blur {
   from {
     opacity: 0;
+    filter: blur(16px);
+    transform: translateY(8px) scale(0.97);
   }
 }
 
+.title {
+  animation: appear-blur 1100ms cubic-bezier(0.2, 0.8, 0.2, 1) backwards;
+}
+
+.media-grid .item {
+  outline: none;
+  animation: appear-blur 1100ms cubic-bezier(0.2, 0.8, 0.2, 1) backwards;
+  animation-delay: min(calc(250ms + var(--i, 0) * 60ms), 1000ms);
+}
+
 @media (prefers-reduced-motion: reduce) {
+  .title,
   .media-grid .item {
     animation: none;
   }
