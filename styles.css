@@ -6136,11 +6136,11 @@ body {
 }
 
 .item-front.llm-prep {
-  background-image: url("./images/honeybook-llm-prep.png");
+  background-image: url("./images/honeybook-llm-prep.webp");
 }
 
 .item-front.tokenization-prep {
-  background-image: url("./images/honeybook-tokenization-prep.png");
+  background-image: url("./images/honeybook-tokenization-prep.webp");
 }
 
 .item-back {

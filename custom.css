@@ -436,14 +436,14 @@ html[data-theme="dark"] .iconbutton:hover {
 }
 
 .item-front.llm-prep {
-  background-image: url("./images/honeybook-llm-prep-case.png");
+  background-image: url("./images/honeybook-llm-prep-case.webp");
   background-position: center;
   background-repeat: no-repeat;
   background-size: contain;
 }
 
 .item-front.component-roles {
-  background-image: url("./images/honeybook-llm-prep.png");
+  background-image: url("./images/honeybook-llm-prep.webp");
   background-position: center;
   background-repeat: no-repeat;
   background-size: contain;
@@ -598,13 +598,13 @@ html.modal-open {
 }
 
 .title {
-  animation: appear-blur 1100ms cubic-bezier(0.2, 0.8, 0.2, 1) backwards;
+  animation: appear-blur 700ms cubic-bezier(0.2, 0.8, 0.2, 1) backwards;
 }
 
 .media-grid .item {
   outline: none;
-  animation: appear-blur 1100ms cubic-bezier(0.2, 0.8, 0.2, 1) backwards;
-  animation-delay: min(calc(250ms + var(--i, 0) * 60ms), 1000ms);
+  animation: appear-blur 700ms cubic-bezier(0.2, 0.8, 0.2, 1) backwards;
+  animation-delay: min(calc(80ms + var(--i, 0) * 35ms), 400ms);
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -868,7 +868,7 @@ html[data-theme="dark"] .local-time {
   box-shadow: none;
   -webkit-backdrop-filter: blur(0px);
   backdrop-filter: blur(0px);
-  animation: appear-blur 1100ms cubic-bezier(0.2, 0.8, 0.2, 1) 150ms backwards;
+  animation: appear-blur 700ms cubic-bezier(0.2, 0.8, 0.2, 1) 80ms backwards;
   transition:
     background-color 360ms cubic-bezier(0.2, 0.8, 0.2, 1),
     border-color 360ms cubic-bezier(0.2, 0.8, 0.2, 1),

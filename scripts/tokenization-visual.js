@@ -12,7 +12,7 @@
   }
 
   function getAsset(theme) {
-    return assetBase + "honeybook-tokenization-" + theme + ".png";
+    return assetBase + "honeybook-tokenization-" + theme + ".webp";
   }
 
   function preload(theme) {
