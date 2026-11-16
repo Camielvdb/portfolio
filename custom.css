@@ -110,9 +110,7 @@ html.is-theme-switching .footer {
 .footer-main-link,
 .local-time,
 .title,
-.title-subtle,
-.title-typed-scramble,
-.scramble-text-live {
+.title-subtle {
   transition-duration: var(--theme-transition-duration);
   transition-timing-function: var(--theme-transition-ease);
 }
@@ -128,8 +126,6 @@ html.is-theme-switching .footer {
 .local-time,
 .title,
 .title-subtle,
-.title-typed-scramble,
-.scramble-text-live,
 .menulink,
 .modal-header,
 .modal-subheader,
@@ -338,8 +334,7 @@ html[data-theme="dark"] .menulink {
 
 html[data-theme="dark"] .skills-text,
 html[data-theme="dark"] .role,
-html[data-theme="dark"] .title-subtle,
-html[data-theme="dark"] .title-typed-scramble {
+html[data-theme="dark"] .title-subtle {
   color: var(--content-tertiary);
 }
 
@@ -814,7 +809,6 @@ html.modal-open {
   cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Ctext x='16' y='22' font-size='20' text-anchor='middle'%3E%F0%9F%9A%B2%3C/text%3E%3C/svg%3E") 16 16, auto;
 }
 
-html[data-theme="dark"] .scramble-text-live,
 html[data-theme="dark"] .name,
 html[data-theme="dark"] .name.in-menu,
 html[data-theme="dark"] .button,
