@@ -1026,3 +1026,63 @@ body {
     line-height: 42px;
   }
 }
+
+/* Project panel type scale, matched to the 24px H1.
+   Title 24 / section 18 / body 16, with spacing and panel width scaled to suit. */
+.modal {
+  max-width: 840px;
+}
+
+.modal-scrolling-container {
+  padding: 64px;
+}
+
+.modal-header {
+  font-size: 24px;
+  line-height: 32px;
+  margin-bottom: 16px;
+}
+
+.modal-subheader {
+  font-size: 18px;
+  line-height: 26px;
+  margin-top: 32px;
+  margin-bottom: 8px;
+}
+
+.modal-paragraph {
+  font-size: 16px;
+  line-height: 26px;
+  margin-bottom: 12px;
+}
+
+@media screen and (max-width: 767px) {
+  .modal-scrolling-container {
+    padding: 56px 32px 32px;
+  }
+
+  .modal-subheader {
+    margin-top: 24px;
+  }
+}
+
+@media screen and (max-width: 479px) {
+  .modal-scrolling-container {
+    padding: 56px 20px 24px;
+  }
+
+  .modal-header {
+    font-size: 20px;
+    line-height: 28px;
+  }
+
+  .modal-subheader {
+    font-size: 16px;
+    line-height: 24px;
+  }
+
+  .modal-paragraph {
+    font-size: 15px;
+    line-height: 24px;
+  }
+}
