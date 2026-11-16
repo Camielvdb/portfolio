@@ -1151,14 +1151,14 @@ body {
   opacity: 1;
 }
 
-/* Seam veil centred on the split: a soft white haze with a light blur,
-   strongest on the diagonal and fading out to either side, so the slightly
-   misaligned text and skeleton shapes read as one calm fade. Its width
-   follows --kanban-feather, so it disappears on hover with the crisp split. */
+/* Seam veil: sits between the x-ray (abstract) layer and the UI layer, so it
+   only softens the x-ray where the two meet; the UI on top stays sharp.
+   Its width follows --kanban-feather, so it disappears on hover with the
+   crisp split. */
 .kanban-card-blend {
   position: absolute;
   inset: 0;
-  z-index: 3;
+  z-index: 1;
   pointer-events: none;
   background: linear-gradient(
     135deg,
@@ -1166,8 +1166,8 @@ body {
     rgba(255, 255, 255, 0.85) var(--kanban-mask, 30%),
     rgba(255, 255, 255, 0) calc(var(--kanban-mask, 30%) + var(--kanban-feather) * 1.4)
   );
-  -webkit-backdrop-filter: blur(2px);
-  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
   -webkit-mask-image: linear-gradient(
     135deg,
     transparent calc(var(--kanban-mask, 30%) - var(--kanban-feather) * 1.4),
