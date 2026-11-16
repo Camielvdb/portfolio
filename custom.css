@@ -798,31 +798,35 @@ html.modal-open {
   cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Ctext x='16' y='22' font-size='20' text-anchor='middle'%3E%F0%9F%9A%B2%3C/text%3E%3C/svg%3E") 16 16, auto;
 }
 
+/* Hero tagline typing: flows inline with the rest of the H1 (no forced break). */
 .scramble-text-inline {
   color: transparent;
-  display: inline-block;
-  max-width: 100%;
-  position: relative;
-  vertical-align: baseline;
+  display: inline;
 }
 
-.scramble-text-reserve {
-  visibility: hidden;
+.scramble-text-inline.is-typed,
+.scramble-settled {
+  color: var(--content-primary);
+}
+
+.scramble-rest,
+.scramble-slot-real {
+  color: transparent;
+}
+
+.scramble-slot {
+  position: relative;
+}
+
+.scramble-slot-glyphs {
+  position: absolute;
+  left: 0;
+  top: 0;
+  white-space: pre;
 }
 
 .title-typed-scramble {
   color: var(--content-tertiary);
-}
-
-.scramble-text-live {
-  color: var(--content-primary);
-  inset: 0;
-  position: absolute;
-  white-space: pre-wrap;
-}
-
-html[data-theme="dark"] .scramble-text-inline {
-  color: transparent;
 }
 
 html[data-theme="dark"] .scramble-text-live,
@@ -860,23 +864,35 @@ html[data-theme="dark"] .local-time {
   gap: 4px;
   padding: 4px 4px 4px 16px;
   border-radius: 999px;
+  /* At the top of the page the bar has no container: it sits on the page like
+     plain text. Once you scroll, it picks up the glass (see .is-scrolled). */
+  background-color: transparent;
+  border: 1px solid transparent;
+  box-shadow: none;
+  -webkit-backdrop-filter: blur(0px) saturate(100%);
+  backdrop-filter: blur(0px) saturate(100%);
+  animation: appear-blur 1100ms cubic-bezier(0.2, 0.8, 0.2, 1) 150ms backwards;
+  transition:
+    background-color 360ms cubic-bezier(0.2, 0.8, 0.2, 1),
+    border-color 360ms cubic-bezier(0.2, 0.8, 0.2, 1),
+    box-shadow 360ms cubic-bezier(0.2, 0.8, 0.2, 1),
+    -webkit-backdrop-filter 360ms cubic-bezier(0.2, 0.8, 0.2, 1),
+    backdrop-filter 360ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.glass-bar.is-scrolled {
   background-color: color-mix(in srgb, var(--site-surface-strong) 50%, transparent);
   -webkit-backdrop-filter: blur(18px) saturate(180%);
   backdrop-filter: blur(18px) saturate(180%);
-  border: 1px solid rgba(255, 255, 255, 0.55);
+  border-color: rgba(255, 255, 255, 0.55);
   box-shadow:
     inset 0 1px 0 rgba(255, 255, 255, 0.75),
     inset 0 -1px 0 rgba(0, 0, 0, 0.04),
     0 1px 2px rgba(0, 0, 0, 0.05),
     0 10px 30px rgba(0, 0, 0, 0.08);
-  animation: appear-blur 1100ms cubic-bezier(0.2, 0.8, 0.2, 1) 150ms backwards;
-  transition:
-    background-color var(--theme-transition-duration) var(--theme-transition-ease),
-    border-color var(--theme-transition-duration) var(--theme-transition-ease),
-    box-shadow var(--theme-transition-duration) var(--theme-transition-ease);
 }
 
-html[data-theme="dark"] .glass-bar {
+html[data-theme="dark"] .glass-bar.is-scrolled {
   background-color: rgba(28, 28, 32, 0.55);
   border-color: rgba(255, 255, 255, 0.1);
   box-shadow:
@@ -1001,4 +1017,9 @@ html.is-morphing .overlay {
 ::view-transition-old(root),
 ::view-transition-new(root) {
   animation-duration: 320ms;
+}
+
+/* Keep the pronunciation together when the H1 wraps. */
+.title .title-subtle {
+  white-space: nowrap;
 }

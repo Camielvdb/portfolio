@@ -54,8 +54,6 @@
 
   function runTypingEffect(element) {
     var finalText = element.getAttribute("data-scramble-text") || element.textContent || "";
-    var reserve = document.createElement("span");
-    var live = document.createElement("span");
     var interval = Number(element.getAttribute("data-scramble-interval")) || 8;
     var completionEvent = element.getAttribute("data-scramble-complete-event");
     var hasStarted = element.getAttribute("data-scramble-started") === "true";
@@ -68,34 +66,50 @@
 
     if (reduceMotion || !finalText) {
       element.textContent = finalText;
-      element.style.color = "";
+      element.classList.add("is-typed");
       if (completionEvent) {
         element.dispatchEvent(new CustomEvent(completionEvent, { bubbles: true }));
       }
       return;
     }
 
-    reserve.className = "scramble-text-reserve";
-    reserve.textContent = finalText;
-    reserve.setAttribute("aria-hidden", "true");
-
-    live.className = "scramble-text-live";
-
-    element.textContent = "";
-    element.appendChild(reserve);
-    element.appendChild(live);
-
+    // Inline rendering (no overlay box) so the line flows right after the
+    // preceding words and wraps naturally. The untyped remainder is present
+    // but transparent, so layout never shifts while typing.
     var settledLength = 0;
     var scrambleFrames = 0;
     var intervalId = null;
     var scrambleFrameLimit = 1;
 
+    function render(scrambling) {
+      var trailLength = Math.min(3, finalText.length - settledLength);
+      var html = '<span class="scramble-settled">' + escapeHtml(finalText.slice(0, settledLength)) + "</span>";
+      var restStart = settledLength;
+
+      if (scrambling && trailLength > 0) {
+        var targetSlice = finalText.slice(settledLength, settledLength + trailLength);
+        html +=
+          '<span class="scramble-slot"><span class="scramble-slot-real">' +
+          escapeHtml(targetSlice) +
+          '</span><span class="title-typed-scramble scramble-slot-glyphs" aria-hidden="true">' +
+          buildScrambleMarkup(targetSlice) +
+          "</span></span>";
+        restStart += trailLength;
+      }
+
+      html += '<span class="scramble-rest">' + escapeHtml(finalText.slice(restStart)) + "</span>";
+      element.innerHTML = html;
+    }
+
     function finishTyping() {
-      live.textContent = finalText;
+      element.textContent = finalText;
+      element.classList.add("is-typed");
       if (completionEvent) {
         element.dispatchEvent(new CustomEvent(completionEvent, { bubbles: true }));
       }
     }
+
+    render(false);
 
     intervalId = window.setInterval(function () {
       if (settledLength >= finalText.length) {
@@ -105,20 +119,14 @@
       }
 
       if (scrambleFrames < scrambleFrameLimit) {
-        var trailLength = Math.min(3, finalText.length - settledLength);
-        var targetSlice = finalText.slice(settledLength, settledLength + trailLength);
-        live.innerHTML =
-          escapeHtml(finalText.slice(0, settledLength)) +
-          '<span class="title-typed-scramble">' +
-          buildScrambleMarkup(targetSlice) +
-          "</span>";
+        render(true);
         scrambleFrames += 1;
         return;
       }
 
       settledLength += 1;
       scrambleFrames = 0;
-      live.textContent = finalText.slice(0, settledLength);
+      render(false);
     }, interval);
   }
 
