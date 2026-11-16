@@ -1180,3 +1180,8 @@ body {
   }
 }
 
+
+/* Name in the H1: medium (500) instead of semibold. */
+.title .title-bold {
+  font-weight: 500;
+}
