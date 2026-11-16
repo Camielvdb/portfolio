@@ -28,20 +28,6 @@ window.PORTFOLIO_ITEMS = [
     year: "2026",
   },
   {
-    wrapperClass: "",
-    frontClass: "chips",
-    title: "Flexible accessible design system foundations",
-    client: "NEXT",
-    year: "2023",
-  },
-  {
-    wrapperClass: "b",
-    frontClass: "card",
-    title: "Intuitive card selection",
-    client: "NEXT",
-    year: "2023",
-  },
-  {
     wrapperClass: "a",
     frontClass: "navigation",
     title: "Navigation for an ever-evolving structure",
