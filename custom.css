@@ -88,16 +88,18 @@ body {
     color var(--theme-transition-duration) var(--theme-transition-ease);
 }
 
-html.is-theme-switching .topmenu,
-html.is-theme-switching .titlesection,
-html.is-theme-switching .divider-container,
-html.is-theme-switching .work,
-html.is-theme-switching .testimonials,
-html.is-theme-switching .skills,
-html.is-theme-switching .illustrations,
-html.is-theme-switching .footer {
-  animation: theme-section-blur var(--theme-transition-duration) var(--theme-transition-ease);
-  will-change: filter, opacity;
+/* Theme switch: everything changes at once (see theme-toggle.js). Element
+   transitions are off during the swap; the page cross-fades as one snapshot. */
+html.is-theme-switching *,
+html.is-theme-switching *::before,
+html.is-theme-switching *::after {
+  transition: none !important;
+}
+
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 360ms;
+  animation-timing-function: ease;
 }
 
 .core,
@@ -195,23 +197,6 @@ html[data-theme="dark"] .time {
     background-color var(--theme-transition-duration) var(--theme-transition-ease),
     border-color var(--theme-transition-duration) var(--theme-transition-ease),
     color var(--theme-transition-duration) var(--theme-transition-ease);
-}
-
-@keyframes theme-section-blur {
-  0% {
-    filter: blur(0);
-    opacity: 1;
-  }
-
-  50% {
-    filter: blur(10px);
-    opacity: 0.72;
-  }
-
-  100% {
-    filter: blur(0);
-    opacity: 1;
-  }
 }
 
 .avatar-container {
