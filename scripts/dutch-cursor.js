@@ -5,7 +5,7 @@
     return;
   }
 
-  var ICONS = ["🚲", "🌷", "🧀", "🍊", "👑", "🌧️", "🌊", "🛶", "🐄", "🧇", "🇳🇱"];
+  var ICONS = ["🚲", "🌷", "🧇"];
   var last = -1;
 
   function cursorFor(emoji) {
