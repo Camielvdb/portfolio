@@ -12,7 +12,7 @@
     }
   }, true);
 
-  var DEFAULT_POS = 10; // center of diagonal as % of card width
+  var DEFAULT_POS = 61; // center of diagonal as % of card width
 
   function initKanbanDrag(card) {
     var front = card.querySelector(".item-front.kanban");
