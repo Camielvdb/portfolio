@@ -385,7 +385,6 @@ html[data-theme="dark"] .item-title,
 html[data-theme="dark"] .item-client,
 html[data-theme="dark"] .item-year {
   color: #fff;
-  mix-blend-mode: difference;
 }
 
 html[data-theme="dark"] .media-grid .item:hover .item-wrapper,
@@ -639,12 +638,17 @@ html.modal-open {
   transition: transform 320ms cubic-bezier(0.16, 0.84, 0.24, 1);
 }
 
+/* Contrast labels: blend the containers, not the text. Safari won't blend text that
+   has its own 3D/composited layer, which rendered every label the same color. */
+.item-title-container,
+.item-bottom-container {
+  mix-blend-mode: difference;
+}
+
 .item-title,
 .item-client,
 .item-year {
-  mix-blend-mode: difference;
   opacity: 0;
-  will-change: transform, opacity;
   transition: transform 340ms cubic-bezier(0.19, 1, 0.22, 1), opacity 240ms cubic-bezier(0.19, 1, 0.22, 1);
 }
 
@@ -671,7 +675,7 @@ html.modal-open {
 .media-grid .item:hover .item-title,
 .media-grid .item:focus-visible .item-title {
   opacity: 1;
-  transform: translateY(0) translateZ(18px);
+  transform: translateY(0);
 }
 
 .media-grid .item:hover .item-client,
@@ -679,7 +683,7 @@ html.modal-open {
 .media-grid .item:focus-visible .item-client,
 .media-grid .item:focus-visible .item-year {
   opacity: 1;
-  transform: translateY(0) translateZ(18px);
+  transform: translateY(0);
 }
 
 .media-grid .item[data-hover-active="true"] .item-wrapper {
@@ -698,12 +702,12 @@ html.modal-open {
 }
 
 .media-grid .item[data-hover-active="true"] .item-title {
-  transform: translateY(0) translateZ(18px);
+  transform: translateY(0);
 }
 
 .media-grid .item[data-hover-active="true"] .item-client,
 .media-grid .item[data-hover-active="true"] .item-year {
-  transform: translateY(0) translateZ(18px);
+  transform: translateY(0);
 }
 
 .dot {
