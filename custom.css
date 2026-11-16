@@ -1011,16 +1011,74 @@ body {
   white-space: nowrap;
 }
 
-/* H1 at 768px and up: 24px (was 32px), same 1.75 ratio as the 24px tablet size. */
-@media screen and (min-width: 768px) {
-  .title {
-    font-size: 24px;
-    line-height: 42px;
+/* ------------------------------------------------------------------
+   Type scale — one system for the whole site (Inter)
+     Display 24/34  ·  Title 18/26  ·  Body 17/28  ·  Small 14/20
+   Phone (<480px): Display 20/28 · Title 16/24 · Body 15/24 · Small 14/20
+   ------------------------------------------------------------------ */
+:root {
+  --type-display: 24px;
+  --type-display-lh: 34px;
+  --type-title: 18px;
+  --type-title-lh: 26px;
+  --type-body: 17px;
+  --type-body-lh: 28px;
+  --type-small: 14px;
+  --type-small-lh: 20px;
+}
+
+@media screen and (max-width: 479px) {
+  :root {
+    --type-display: 20px;
+    --type-display-lh: 28px;
+    --type-title: 16px;
+    --type-title-lh: 24px;
+    --type-body: 15px;
+    --type-body-lh: 24px;
   }
 }
 
-/* Project panel type scale, matched to the 24px H1.
-   Title 24 / section 18 / body 16, with spacing and panel width scaled to suit. */
+/* Display */
+.title,
+.modal-header {
+  font-size: var(--type-display);
+  line-height: var(--type-display-lh);
+}
+
+/* Title */
+.skills .section-title,
+.modal-subheader {
+  font-size: var(--type-title);
+  line-height: var(--type-title-lh);
+  letter-spacing: -0.2px;
+}
+
+/* Body */
+.skills-text,
+.modal-paragraph,
+.modal-list .modal-paragraph {
+  font-size: var(--type-body);
+  line-height: var(--type-body-lh);
+}
+
+/* Small */
+.item-title,
+.item-client,
+.item-year,
+.glass-bar .local-time,
+.glass-bar-link,
+.footer,
+.footer .my-name,
+.footer-main-link {
+  font-size: var(--type-small);
+  line-height: var(--type-small-lh);
+}
+
+/* Spacing that goes with the scale */
+.skills {
+  grid-row-gap: 16px;
+}
+
 .modal {
   max-width: 840px;
 }
@@ -1030,21 +1088,15 @@ body {
 }
 
 .modal-header {
-  font-size: 24px;
-  line-height: 32px;
   margin-bottom: 16px;
 }
 
 .modal-subheader {
-  font-size: 18px;
-  line-height: 26px;
   margin-top: 32px;
   margin-bottom: 8px;
 }
 
 .modal-paragraph {
-  font-size: 16px;
-  line-height: 26px;
   margin-bottom: 12px;
 }
 
@@ -1062,34 +1114,5 @@ body {
   .modal-scrolling-container {
     padding: 56px 20px 24px;
   }
-
-  .modal-header {
-    font-size: 20px;
-    line-height: 28px;
-  }
-
-  .modal-subheader {
-    font-size: 16px;
-    line-height: 24px;
-  }
-
-  .modal-paragraph {
-    font-size: 15px;
-    line-height: 24px;
-  }
 }
 
-/* "In short" section: scaled to sit below the 24px H1 (matches project panel sections). */
-.skills {
-  grid-row-gap: 16px;
-}
-
-.skills .section-title {
-  font-size: 18px;
-  line-height: 26px;
-}
-
-.skills-text {
-  font-size: 17px;
-  line-height: 28px;
-}
