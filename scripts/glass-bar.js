@@ -43,7 +43,7 @@
     var appearing = !highlight.classList.contains("is-active");
     // Appear in place the first time; slide between targets after that.
     highlight.classList.toggle("no-slide", appearing);
-    highlight.style.setProperty("--hover-x", target.offsetLeft + "px");
+    highlight.style.left = target.offsetLeft + "px";
     highlight.style.width = target.offsetWidth + "px";
     highlight.style.top = target.offsetTop + "px";
     highlight.style.height = target.offsetHeight + "px";

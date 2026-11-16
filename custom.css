@@ -963,9 +963,11 @@ html[data-theme="dark"] .glass-bar.is-scrolled {
   background-color: color-mix(in srgb, var(--content-primary) 8%, transparent);
   opacity: 0;
   pointer-events: none;
-  transform: translateX(var(--hover-x, 0px));
+  /* left + width (not a transform via a CSS variable): Safari doesn't animate
+     transforms driven by a changed custom property, so the pill jumped and
+     overshot. Both edges now travel together in every browser. */
   transition:
-    transform 200ms ease-out,
+    left 200ms ease-out,
     width 200ms ease-out,
     opacity 160ms ease-out;
 }
