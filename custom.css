@@ -814,37 +814,6 @@ html.modal-open {
   cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Ctext x='16' y='22' font-size='20' text-anchor='middle'%3E%F0%9F%9A%B2%3C/text%3E%3C/svg%3E") 16 16, auto;
 }
 
-/* Hero tagline typing: flows inline with the rest of the H1 (no forced break). */
-.scramble-text-inline {
-  color: transparent;
-  display: inline;
-}
-
-.scramble-text-inline.is-typed,
-.scramble-settled {
-  color: var(--content-primary);
-}
-
-.scramble-rest,
-.scramble-slot-real {
-  color: transparent;
-}
-
-.scramble-slot {
-  position: relative;
-}
-
-.scramble-slot-glyphs {
-  position: absolute;
-  left: 0;
-  top: 0;
-  white-space: pre;
-}
-
-.title-typed-scramble {
-  color: var(--content-tertiary);
-}
-
 html[data-theme="dark"] .scramble-text-live,
 html[data-theme="dark"] .name,
 html[data-theme="dark"] .name.in-menu,
