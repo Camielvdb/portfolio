@@ -309,8 +309,7 @@ html[data-theme="dark"] .icon-in-button {
 }
 
 .media-grid .item:hover .item-wrapper,
-.media-grid .item:focus-visible .item-wrapper,
-.media-grid .item[data-hover-active="true"] .item-wrapper {
+.media-grid .item:focus-visible .item-wrapper {
   box-shadow: 0 22px 44px var(--site-shadow-strong);
 }
 
@@ -388,8 +387,7 @@ html[data-theme="dark"] .item-year {
 }
 
 html[data-theme="dark"] .media-grid .item:hover .item-wrapper,
-html[data-theme="dark"] .media-grid .item:focus-visible .item-wrapper,
-html[data-theme="dark"] .media-grid .item[data-hover-active="true"] .item-wrapper {
+html[data-theme="dark"] .media-grid .item:focus-visible .item-wrapper {
   box-shadow: 0 24px 52px rgba(0, 0, 0, 0.58), 0 0 0 1px rgba(255, 255, 255, 0.04);
 }
 
@@ -469,7 +467,6 @@ html[data-theme="dark"] .iconbutton:hover {
   transition:
     clip-path 500ms cubic-bezier(0.22, 1, 0.36, 1),
     transform 500ms cubic-bezier(0.22, 1, 0.36, 1);
-  will-change: clip-path, transform;
 }
 
 .kanban-card-layer--ui {
@@ -578,23 +575,19 @@ html.modal-open {
 
 .media-grid .item {
   outline: none;
-  opacity: 0;
-  transform: translateY(18px);
-  transition: opacity 920ms cubic-bezier(0.16, 1, 0.3, 1), transform 920ms cubic-bezier(0.16, 1, 0.3, 1);
-  transition-delay: var(--card-reveal-delay, 0ms);
-  will-change: opacity, transform;
+  /* All cards fade in together on page load; nothing depends on scrolling. */
+  animation: card-fade-in 900ms ease-out backwards;
 }
 
-.media-grid .item.is-visible {
-  opacity: 1;
-  transform: translateY(0);
+@keyframes card-fade-in {
+  from {
+    opacity: 0;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .media-grid .item {
-    opacity: 1;
-    transform: none;
-    transition: none;
+    animation: none;
   }
 }
 
@@ -617,25 +610,22 @@ html.modal-open {
   box-shadow: 0 1px 6px 1px #0000001a;
 }
 
+.media-grid .item {
+  perspective: none;
+}
+
+/* Hover is a plain 2D scale on the whole card. No 3D, no will-change layers:
+   Safari drops rounded clipping and blend modes for 3D/composited children. */
 .item-wrapper {
-  /* Flat, not preserve-3d: Safari ignores the wrapper's rounded overflow clip for
-     children living in a 3D context, which squared off the corners on hover.
-     The whole card still tilts; its contents just tilt with it as one plane. */
-  transform-style: flat;
-  will-change: transform, box-shadow;
+  perspective: none;
+  transform: scale(1);
   transition: transform 320ms cubic-bezier(0.16, 0.84, 0.24, 1), box-shadow 320ms cubic-bezier(0.16, 0.84, 0.24, 1);
-  transform: translate3d(0, 0, var(--card-z, 0px)) rotateX(var(--card-rotate-x, 0deg)) rotateY(var(--card-rotate-y, 0deg));
 }
 
 .item-front {
-  /* Keep rounded corners while the card is transformed in 3D on hover:
-     the wrapper's overflow clip loses its radius once children are composited. */
   border-radius: 10px;
   overflow: hidden;
   clip-path: inset(0 round 10px);
-  transform: translateZ(0);
-  will-change: transform;
-  transition: transform 320ms cubic-bezier(0.16, 0.84, 0.24, 1);
 }
 
 /* Contrast labels: blend the containers, not the text. Safari won't blend text that
@@ -663,13 +653,8 @@ html.modal-open {
 
 .media-grid .item:hover .item-wrapper,
 .media-grid .item:focus-visible .item-wrapper {
-  --card-z: 10px;
+  transform: scale(1.02);
   box-shadow: 0 22px 44px rgba(0, 0, 0, 0.14);
-}
-
-.media-grid .item:hover .item-front,
-.media-grid .item:focus-visible .item-front {
-  transform: translateZ(6px) scale(1.008);
 }
 
 .media-grid .item:hover .item-title,
@@ -683,30 +668,6 @@ html.modal-open {
 .media-grid .item:focus-visible .item-client,
 .media-grid .item:focus-visible .item-year {
   opacity: 1;
-  transform: translateY(0);
-}
-
-.media-grid .item[data-hover-active="true"] .item-wrapper {
-  --card-z: 10px;
-  box-shadow: 0 22px 44px rgba(0, 0, 0, 0.14);
-}
-
-.media-grid .item[data-hover-active="true"] .item-front {
-  transform: translateZ(6px) scale(1.008);
-}
-
-.media-grid .item[data-hover-active="true"] .item-title,
-.media-grid .item[data-hover-active="true"] .item-client,
-.media-grid .item[data-hover-active="true"] .item-year {
-  opacity: 1;
-}
-
-.media-grid .item[data-hover-active="true"] .item-title {
-  transform: translateY(0);
-}
-
-.media-grid .item[data-hover-active="true"] .item-client,
-.media-grid .item[data-hover-active="true"] .item-year {
   transform: translateY(0);
 }
 

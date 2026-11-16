@@ -134,12 +134,6 @@
                       e.clientY < rect.top  || e.clientY > rect.bottom;
         if (outside) {
           card.removeAttribute("data-hover-active");
-          var wrapper = card.querySelector(".item-wrapper");
-          if (wrapper) {
-            wrapper.style.setProperty("--card-rotate-x", "0deg");
-            wrapper.style.setProperty("--card-rotate-y", "0deg");
-            wrapper.style.setProperty("--card-z", "0px");
-          }
         }
       }
     }
