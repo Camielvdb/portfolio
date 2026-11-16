@@ -965,9 +965,9 @@ html[data-theme="dark"] .glass-bar.is-scrolled {
   pointer-events: none;
   transform: translateX(var(--hover-x, 0px));
   transition:
-    transform 380ms cubic-bezier(0.32, 0.72, 0, 1),
-    width 380ms cubic-bezier(0.32, 0.72, 0, 1),
-    opacity 200ms ease;
+    transform 240ms ease-in-out,
+    width 240ms ease-in-out,
+    opacity 180ms ease;
 }
 
 .glass-bar-hover.is-active {
@@ -975,7 +975,7 @@ html[data-theme="dark"] .glass-bar.is-scrolled {
 }
 
 .glass-bar-hover.no-slide {
-  transition: opacity 200ms ease;
+  transition: opacity 180ms ease;
 }
 
 .glass-bar .theme-toggle {
