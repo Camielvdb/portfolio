@@ -442,9 +442,11 @@ html[data-theme="dark"] .iconbutton:hover {
   overflow: hidden;
 }
 
+/* Touch / smaller screens: no draggable split. Show only the UI layer. */
 @media (pointer: coarse), (max-width: 991px) {
-  .item-front.kanban .kanban-card-layer--ui,
-  .item-front.kanban .kanban-divider-svg {
+  .item-front.kanban .kanban-card-layer--abstract,
+  .item-front.kanban .kanban-divider-svg,
+  .item-front.kanban .kanban-card-blend {
     display: none !important;
   }
 
@@ -453,10 +455,10 @@ html[data-theme="dark"] .iconbutton:hover {
     overflow: hidden;
   }
 
-  .item-front.kanban .kanban-card-layer--abstract-light,
-  .item-front.kanban .kanban-card-layer--abstract-dark {
-    border-radius: 10px;
-    clip-path: none;
+  .item-front.kanban .kanban-card-layer--ui {
+    clip-path: none !important;
+    -webkit-mask-image: none !important;
+    mask-image: none !important;
   }
 }
 
@@ -1174,11 +1176,6 @@ body {
   opacity: 0;
 }
 
-@media (pointer: coarse), (max-width: 991px) {
-  .kanban-card-blend {
-    display: none;
-  }
-}
 
 
 /* Name in the H1: medium (500) instead of semibold. */
