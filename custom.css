@@ -1185,14 +1185,3 @@ body {
 .title .title-bold {
   font-weight: 500;
 }
-
-/* Card labels: soft halo for legibility on busy images. Under the labels'
-   difference blend a light halo renders as a dark shadow on light images and
-   a light glow on dark ones, so it adapts to every card. */
-.item-title,
-.item-client,
-.item-year {
-  text-shadow:
-    0 0 4px rgba(255, 255, 255, 0.45),
-    0 0 10px rgba(255, 255, 255, 0.25);
-}
