@@ -965,9 +965,9 @@ html[data-theme="dark"] .glass-bar.is-scrolled {
   pointer-events: none;
   transform: translateX(var(--hover-x, 0px));
   transition:
-    transform 240ms ease-in-out,
-    width 240ms ease-in-out,
-    opacity 180ms ease;
+    transform 200ms ease-out,
+    width 200ms ease-out,
+    opacity 160ms ease-out;
 }
 
 .glass-bar-hover.is-active {
