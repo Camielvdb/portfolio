@@ -615,11 +615,13 @@ html.modal-open {
   perspective: none;
 }
 
-/* Hover is a plain 2D scale on the whole card. No 3D, no will-change layers:
-   Safari drops rounded clipping and blend modes for 3D/composited children. */
+/* Hover: slight scale plus a subtle pointer-following tilt (card-hover.js).
+   Only the wrapper is transformed, with perspective() inside its own transform.
+   Children stay flat with no translateZ / will-change layers, because Safari
+   drops rounded clipping and blend modes for children rendered in 3D. */
 .item-wrapper {
   perspective: none;
-  transform: scale(1);
+  transform: perspective(900px) rotateX(var(--card-rotate-x, 0deg)) rotateY(var(--card-rotate-y, 0deg)) scale(var(--card-scale, 1));
   transition: transform 320ms cubic-bezier(0.16, 0.84, 0.24, 1), box-shadow 320ms cubic-bezier(0.16, 0.84, 0.24, 1);
 }
 
@@ -654,7 +656,7 @@ html.modal-open {
 
 .media-grid .item:hover .item-wrapper,
 .media-grid .item:focus-visible .item-wrapper {
-  transform: scale(1.02);
+  --card-scale: 1.02;
   box-shadow: 0 22px 44px rgba(0, 0, 0, 0.14);
 }
 
