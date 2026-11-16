@@ -1116,3 +1116,56 @@ body {
   }
 }
 
+/* ------------------------------------------------------------------
+   Kanban card: the UI and abstract layers blend through a soft diagonal
+   gradient at rest. On hover the blend tightens to a crisp split and the
+   draggable divider line appears.
+   ------------------------------------------------------------------ */
+@property --kanban-feather {
+  syntax: "<percentage>";
+  inherits: true;
+  initial-value: 12%;
+}
+
+.item-front.kanban {
+  --kanban-feather: 12%;
+  transition: --kanban-feather 420ms ease;
+}
+
+/* The UI screenshot is light, so in dark mode a wide fade turns into a grey
+   smear; keep the blend narrow there. */
+html[data-theme="dark"] .item-front.kanban {
+  --kanban-feather: 5%;
+}
+
+.media-grid .item:hover .item-front.kanban,
+.media-grid .item[data-kanban-dragging="true"] .item-front.kanban,
+html[data-theme="dark"] .media-grid .item:hover .item-front.kanban,
+html[data-theme="dark"] .media-grid .item[data-kanban-dragging="true"] .item-front.kanban {
+  --kanban-feather: 0%;
+}
+
+.item-front.kanban .kanban-card-layer--ui {
+  clip-path: none;
+  -webkit-mask-image: linear-gradient(
+    135deg,
+    #000 calc(var(--kanban-mask, 30%) - var(--kanban-feather)),
+    transparent calc(var(--kanban-mask, 30%) + var(--kanban-feather))
+  );
+  mask-image: linear-gradient(
+    135deg,
+    #000 calc(var(--kanban-mask, 30%) - var(--kanban-feather)),
+    transparent calc(var(--kanban-mask, 30%) + var(--kanban-feather))
+  );
+}
+
+.kanban-divider-line {
+  opacity: 0;
+  transition: opacity 240ms ease, stroke 200ms ease, stroke-width 200ms ease;
+}
+
+.media-grid .item:hover .kanban-divider-line,
+.media-grid .item[data-kanban-dragging="true"] .kanban-divider-line {
+  opacity: 1;
+}
+

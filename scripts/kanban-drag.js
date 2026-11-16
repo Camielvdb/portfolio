@@ -45,6 +45,8 @@
 
       front.style.setProperty("--kanban-divider-top", topX.toFixed(2) + "%");
       front.style.setProperty("--kanban-divider-bottom", bottomX.toFixed(2) + "%");
+      // Same split expressed as a stop on a 135deg gradient (for the soft mask).
+      front.style.setProperty("--kanban-mask", (50 + (pos - 50) / 2).toFixed(2) + "%");
 
       var w = front.offsetWidth;
       var h = front.offsetHeight;
