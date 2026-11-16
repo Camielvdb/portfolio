@@ -1018,3 +1018,11 @@ body {
 .title .title-subtle {
   white-space: nowrap;
 }
+
+/* H1 at 768px and up: 24px (was 32px), same 1.75 ratio as the 24px tablet size. */
+@media screen and (min-width: 768px) {
+  .title {
+    font-size: 24px;
+    line-height: 42px;
+  }
+}
