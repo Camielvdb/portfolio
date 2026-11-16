@@ -258,48 +258,6 @@ html[data-theme="dark"] .time {
   background-color: color-mix(in srgb, var(--content-primary) 8%, transparent);
 }
 
-.theme-tooltip {
-  background-color: #24292f;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 6px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.22);
-  color: #f6f8fa;
-  display: block;
-  min-width: max-content;
-  opacity: 0;
-  padding: 6px 10px;
-  pointer-events: none;
-  position: absolute;
-  right: 50%;
-  top: calc(100% + 12px);
-  transform: translate(50%, -4px);
-  transition: opacity 120ms ease, transform 120ms ease;
-  white-space: nowrap;
-  z-index: 20;
-}
-
-.theme-tooltip::before,
-.theme-tooltip::after {
-  content: none !important;
-  display: none !important;
-}
-
-.theme-toggle[data-tooltip-visible="true"] .theme-tooltip {
-  opacity: 1;
-  transform: translate(50%, 0);
-}
-
-.theme-toggle:not([data-tooltip-enabled]) .theme-tooltip {
-  display: none;
-}
-
-.theme-tooltip-title {
-  font-size: 11px;
-  font-weight: 600;
-  line-height: 1.15;
-  display: block;
-}
-
 .divider {
   background-color: var(--content-primary);
   transition-property: background-color, opacity;
@@ -698,13 +656,13 @@ html.modal-open {
 
 .media-grid .item:hover .item-wrapper,
 .media-grid .item:focus-visible .item-wrapper {
-  --card-z: 18px;
+  --card-z: 10px;
   box-shadow: 0 22px 44px rgba(0, 0, 0, 0.14);
 }
 
 .media-grid .item:hover .item-front,
 .media-grid .item:focus-visible .item-front {
-  transform: translateZ(10px) scale(1.015);
+  transform: translateZ(6px) scale(1.008);
 }
 
 .media-grid .item:hover .item-title,
@@ -722,12 +680,12 @@ html.modal-open {
 }
 
 .media-grid .item[data-hover-active="true"] .item-wrapper {
-  --card-z: 18px;
+  --card-z: 10px;
   box-shadow: 0 22px 44px rgba(0, 0, 0, 0.14);
 }
 
 .media-grid .item[data-hover-active="true"] .item-front {
-  transform: translateZ(10px) scale(1.015);
+  transform: translateZ(6px) scale(1.008);
 }
 
 .media-grid .item[data-hover-active="true"] .item-title,

@@ -1,31 +1,12 @@
 (function () {
   var button = document.querySelector("[data-theme-toggle]");
-  var tooltip = button ? button.querySelector(".theme-tooltip") : null;
-  var tooltipTitle = tooltip ? tooltip.querySelector(".theme-tooltip-title") : null;
   var storageKey = "camiel-theme";
   var mediaQuery =
     typeof window.matchMedia === "function" ? window.matchMedia("(prefers-color-scheme: dark)") : null;
-  var tooltipTimer = null;
   var themeTransitionTimer = null;
 
   if (!button) {
     return;
-  }
-
-  function showTooltipWithDelay() {
-    if (getTheme() !== "dark") {
-      return;
-    }
-
-    window.clearTimeout(tooltipTimer);
-    tooltipTimer = window.setTimeout(function () {
-      button.setAttribute("data-tooltip-visible", "true");
-    }, 2000);
-  }
-
-  function hideTooltip() {
-    window.clearTimeout(tooltipTimer);
-    button.removeAttribute("data-tooltip-visible");
   }
 
   function getSavedMode() {
@@ -83,22 +64,6 @@
     return Math.round(getMoonPhaseFraction(new Date()) * 8) % 8;
   }
 
-  function getMoonPhaseName() {
-    var phaseIndex = getMoonPhaseIndex();
-    var phaseNames = [
-      "new moon",
-      "waxing crescent",
-      "first quarter",
-      "waxing gibbous",
-      "full moon",
-      "waning gibbous",
-      "last quarter",
-      "waning crescent",
-    ];
-
-    return phaseNames[phaseIndex];
-  }
-
   function moonIcon() {
     var phaseIndex = getMoonPhaseIndex();
     var sharedDefs =
@@ -131,12 +96,6 @@
 
     button.setAttribute("aria-label", "Theme: " + theme + ". Switch to " + nextTheme + " theme");
     icon.innerHTML = iconMarkup;
-
-    if (tooltipTitle) {
-      tooltipTitle.textContent = theme === "dark" ? "Moon: " + getMoonPhaseName() : "";
-    }
-
-    button.toggleAttribute("data-tooltip-enabled", theme === "dark");
   }
 
   function applyTheme(theme) {
@@ -178,22 +137,6 @@
     } catch (error) {}
 
     applyTheme(nextTheme);
-  });
-
-  button.addEventListener("pointerenter", function () {
-    showTooltipWithDelay();
-  });
-
-  button.addEventListener("pointerleave", function () {
-    hideTooltip();
-  });
-
-  button.addEventListener("focus", function () {
-    showTooltipWithDelay();
-  });
-
-  button.addEventListener("blur", function () {
-    hideTooltip();
   });
 
   if (mediaQuery) {

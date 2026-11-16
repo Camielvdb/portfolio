@@ -21,13 +21,13 @@
     var rect = card.getBoundingClientRect();
     var relativeX = (event.clientX - rect.left) / rect.width;
     var relativeY = (event.clientY - rect.top) / rect.height;
-    var rotateY = clamp((relativeX - 0.5) * 14, -7, 7);
-    var rotateX = clamp((0.5 - relativeY) * 14, -7, 7);
+    var rotateY = clamp((relativeX - 0.5) * 8, -4, 4);
+    var rotateX = clamp((0.5 - relativeY) * 8, -4, 4);
 
     card.setAttribute("data-hover-active", "true");
     wrapper.style.setProperty("--card-rotate-x", rotateX.toFixed(2) + "deg");
     wrapper.style.setProperty("--card-rotate-y", rotateY.toFixed(2) + "deg");
-    wrapper.style.setProperty("--card-z", "18px");
+    wrapper.style.setProperty("--card-z", "10px");
   }
 
   function resetCard(card) {
