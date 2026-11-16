@@ -905,8 +905,12 @@ html[data-theme="dark"] .local-time {
   box-shadow: none;
 }
 
+/* Dark: same tone as the close button over black, but nearly opaque so light
+   cards scrolling underneath don't bleed through the text. */
 html[data-theme="dark"] .glass-bar.is-scrolled {
-  background-color: rgba(255, 255, 255, 0.08);
+  background-color: rgba(24, 24, 27, 0.9);
+  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(16px);
   border-color: rgba(255, 255, 255, 0.1);
 }
 
