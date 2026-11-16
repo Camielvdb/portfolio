@@ -844,3 +844,161 @@ html[data-theme="dark"] .footer-main-link {
 html[data-theme="dark"] .local-time {
   color: var(--site-time-green);
 }
+
+/* ------------------------------------------------------------------
+   Floating glass bar (replaces the full-width top menu)
+   Liquid-Glass-ish: translucent fill, strong backdrop blur + saturation,
+   a bright inner rim on top and a soft shadow underneath.
+   ------------------------------------------------------------------ */
+.glass-bar {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 4px 4px 16px;
+  border-radius: 999px;
+  background-color: color-mix(in srgb, var(--site-surface-strong) 50%, transparent);
+  -webkit-backdrop-filter: blur(18px) saturate(180%);
+  backdrop-filter: blur(18px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.75),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.04),
+    0 1px 2px rgba(0, 0, 0, 0.05),
+    0 10px 30px rgba(0, 0, 0, 0.08);
+  animation: appear-blur 1100ms cubic-bezier(0.2, 0.8, 0.2, 1) 150ms backwards;
+  transition:
+    background-color var(--theme-transition-duration) var(--theme-transition-ease),
+    border-color var(--theme-transition-duration) var(--theme-transition-ease),
+    box-shadow var(--theme-transition-duration) var(--theme-transition-ease);
+}
+
+html[data-theme="dark"] .glass-bar {
+  background-color: rgba(28, 28, 32, 0.55);
+  border-color: rgba(255, 255, 255, 0.1);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.14),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.3),
+    0 10px 30px rgba(0, 0, 0, 0.45);
+}
+
+.glass-bar .time {
+  display: flex;
+  margin-right: 6px;
+}
+
+.glass-bar .local-time {
+  font-size: 14px;
+}
+
+.glass-bar-link {
+  display: inline-flex;
+  align-items: center;
+  height: 36px;
+  padding: 0 14px;
+  border-radius: 999px;
+  color: var(--content-primary);
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: background-color 160ms ease;
+}
+
+.glass-bar-link:hover,
+.glass-bar-link:focus-visible {
+  background-color: color-mix(in srgb, var(--content-primary) 7%, transparent);
+  outline: none;
+}
+
+.glass-bar .theme-toggle {
+  width: 36px;
+  height: 36px;
+  border-radius: 999px;
+}
+
+/* The full-width fixed menu used to push everything down 100px. */
+body {
+  padding-top: 0 !important;
+}
+
+.titlesection {
+  padding-top: 120px;
+  padding-bottom: 24px;
+}
+
+@media screen and (max-width: 767px) {
+  .glass-bar {
+    top: 12px;
+    left: 12px;
+  }
+
+  .titlesection {
+    padding-top: 80px;
+    padding-bottom: 8px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .glass-bar {
+    animation: none;
+  }
+}
+
+/* ------------------------------------------------------------------
+   Card -> project morph (View Transitions API, see modal.js)
+   The clicked card and the open project share one transition name, so the
+   browser morphs size, position and corners between them, crossfading the
+   contents through a blur. Unsupported browsers keep the plain fade.
+   ------------------------------------------------------------------ */
+html.is-morphing .modal,
+html.is-morphing .modal-container,
+html.is-morphing .overlay {
+  transition: none !important;
+}
+
+::view-transition-group(project-morph) {
+  animation-duration: 560ms;
+  animation-timing-function: cubic-bezier(0.32, 0.72, 0, 1);
+  border-radius: 24px;
+  overflow: hidden;
+}
+
+::view-transition-old(project-morph),
+::view-transition-new(project-morph) {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+  animation-duration: 560ms;
+  animation-timing-function: cubic-bezier(0.32, 0.72, 0, 1);
+}
+
+::view-transition-old(project-morph) {
+  animation-name: morph-out;
+}
+
+::view-transition-new(project-morph) {
+  animation-name: morph-in;
+}
+
+@keyframes morph-out {
+  to {
+    opacity: 0;
+    filter: blur(14px);
+  }
+}
+
+@keyframes morph-in {
+  from {
+    opacity: 0;
+    filter: blur(14px);
+  }
+}
+
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 320ms;
+}

@@ -12,6 +12,34 @@
   var activeTrigger = null;
   var lastFocusedElement = null;
   var lockedScrollY = 0;
+  var isClosing = false;
+  var MORPH_NAME = "project-morph";
+
+  // Card <-> project morph via the View Transitions API (Chrome 111+, Safari 18+,
+  // Firefox 144+). Falls back to the plain fade everywhere else.
+  function canMorph() {
+    return (
+      typeof document.startViewTransition === "function" &&
+      !(typeof window.matchMedia === "function" && window.matchMedia("(prefers-reduced-motion: reduce)").matches)
+    );
+  }
+
+  function morphSurface(card) {
+    return card ? card.querySelector(".item-wrapper") || card : null;
+  }
+
+  function runMorph(update, done) {
+    var root = document.documentElement;
+    root.classList.add("is-morphing");
+    var transition = document.startViewTransition(update);
+    var finish = function () {
+      root.classList.remove("is-morphing");
+      if (done) {
+        done();
+      }
+    };
+    transition.finished.then(finish, finish);
+  }
 
   function getCards() {
     return Array.from(mediaGrid.querySelectorAll(".item"));
@@ -81,28 +109,84 @@
     activeTrigger = trigger || null;
     lastFocusedElement = document.activeElement;
 
-    lockPageScroll();
-    modalContainer.classList.add("is-active");
-    modalContainer.setAttribute("aria-hidden", "false");
+    function show(instant) {
+      lockPageScroll();
+      modalContainer.classList.add("is-active");
+      modalContainer.setAttribute("aria-hidden", "false");
 
-    dialog.hidden = false;
-    dialog.style.display = "flex";
-    dialog.classList.remove("is-closing");
-    dialog.setAttribute("aria-hidden", "false");
+      dialog.hidden = false;
+      dialog.style.display = "flex";
+      dialog.classList.remove("is-closing");
+      dialog.setAttribute("aria-hidden", "false");
 
-    requestAnimationFrame(function () {
-      dialog.classList.add("is-visible");
-    });
+      if (instant) {
+        dialog.classList.add("is-visible");
+      } else {
+        requestAnimationFrame(function () {
+          dialog.classList.add("is-visible");
+        });
+      }
+    }
+
+    var surface = morphSurface(activeTrigger);
+
+    if (surface && canMorph()) {
+      surface.style.viewTransitionName = MORPH_NAME;
+      runMorph(
+        function () {
+          surface.style.viewTransitionName = "";
+          activeTrigger.style.visibility = "hidden";
+          dialog.style.viewTransitionName = MORPH_NAME;
+          show(true);
+        },
+        function () {
+          dialog.style.viewTransitionName = "";
+        }
+      );
+    } else {
+      show(false);
+    }
 
     focusDialog(dialog);
   }
 
   function closeActiveDialog() {
-    if (!activeDialog) {
+    if (!activeDialog || isClosing) {
       return;
     }
 
     var dialogToClose = activeDialog;
+    var trigger = activeTrigger;
+    var surface = morphSurface(trigger);
+
+    if (surface && canMorph()) {
+      isClosing = true;
+      dialogToClose.style.viewTransitionName = MORPH_NAME;
+      runMorph(
+        function () {
+          dialogToClose.style.viewTransitionName = "";
+          hideDialog(dialogToClose);
+          modalContainer.classList.remove("is-active");
+          modalContainer.setAttribute("aria-hidden", "true");
+          unlockPageScroll();
+          trigger.style.visibility = "";
+          surface.style.viewTransitionName = MORPH_NAME;
+        },
+        function () {
+          surface.style.viewTransitionName = "";
+          trigger.focus({ preventScroll: true });
+          activeDialog = null;
+          activeTrigger = null;
+          isClosing = false;
+        }
+      );
+      return;
+    }
+
+    if (trigger) {
+      trigger.style.visibility = "";
+    }
+
     dialogToClose.classList.remove("is-visible");
     dialogToClose.classList.add("is-closing");
 
