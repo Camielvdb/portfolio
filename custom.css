@@ -853,7 +853,7 @@ html[data-theme="dark"] .local-time {
 .glass-bar {
   position: fixed;
   top: 20px;
-  left: 20px;
+  right: 20px;
   z-index: 5;
   display: flex;
   align-items: center;
@@ -932,7 +932,7 @@ body {
 @media screen and (max-width: 767px) {
   .glass-bar {
     top: 12px;
-    left: 12px;
+    right: 12px;
   }
 
   .titlesection {
