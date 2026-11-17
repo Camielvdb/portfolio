@@ -254,7 +254,7 @@ html[data-theme="dark"] .time {
   display: block;
   stroke: currentColor;
   fill: none;
-  stroke-width: 1.8;
+  stroke-width: 1.5;
   stroke-linecap: round;
   stroke-linejoin: round;
   transition: none;
@@ -301,12 +301,13 @@ html[data-theme="dark"] .time {
   background-color: color-mix(in srgb, var(--site-surface-strong) 88%, transparent);
 }
 
+/* Close icon: Hugeicons "Cancel01" (Stroke Rounded, MIT), inline so it follows
+   the text colour in both themes. */
 .icon-in-button {
-  filter: none;
-}
-
-html[data-theme="dark"] .icon-in-button {
-  filter: invert(1);
+  display: block;
+  width: 20px;
+  height: 20px;
+  color: var(--content-primary);
 }
 
 .item-wrapper {
