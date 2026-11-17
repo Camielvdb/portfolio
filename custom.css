@@ -1262,7 +1262,7 @@ body {
   }
 }
 
-/* Case visual as a full-bleed header: top of the image, max 240px tall.
+/* Case visual as a full-bleed header: top of the image, max 400px tall.
    The close button floats over it; text starts below. */
 .modal-scrolling-container {
   --modal-pad-x: 64px;
@@ -1274,7 +1274,7 @@ body {
   align-self: stretch;
   width: calc(100% + 2 * var(--modal-pad-x));
   max-width: none;
-  height: 240px;
+  height: 400px;
   margin: 0 calc(-1 * var(--modal-pad-x)) 48px;
   object-fit: cover;
   object-position: top center;
@@ -1296,7 +1296,7 @@ html:not([data-theme="dark"]) .modal-hero.theme-dark-only {
   }
 
   .modal-hero {
-    height: 200px;
+    height: 260px;
     margin-bottom: 32px;
   }
 }
