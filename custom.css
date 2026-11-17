@@ -254,7 +254,7 @@ html[data-theme="dark"] .time {
   display: block;
   stroke: currentColor;
   fill: none;
-  stroke-width: 1.5;
+  stroke-width: 2;
   stroke-linecap: round;
   stroke-linejoin: round;
   transition: none;
