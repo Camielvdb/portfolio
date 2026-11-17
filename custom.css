@@ -436,10 +436,10 @@ html[data-theme="dark"] .iconbutton:hover {
 }
 
 .item-front.component-roles {
-  background-image: url("./images/honeybook-llm-prep.webp");
+  background-image: url("./images/honeybook-clear-roles.webp");
   background-position: center;
   background-repeat: no-repeat;
-  background-size: contain;
+  background-size: cover;
 }
 
 .item-front.kanban {
