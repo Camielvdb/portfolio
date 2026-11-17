@@ -107,7 +107,37 @@
 
     button.setAttribute("aria-label", "Theme: " + theme + ". Switch to " + nextTheme + " theme");
     icon.innerHTML = iconMarkup;
+    if (theme === "light") {
+      setSunRotation(false);
+    }
   }
+
+  // Sun only: every hover turns it one ray (45deg) clockwise, and it keeps
+  // that angle until the next hover.
+  var sunRotation = 0;
+
+  function setSunRotation(animate) {
+    var svg = button.querySelector(".theme-toggle-icon svg");
+    if (!svg) {
+      return;
+    }
+    svg.style.transition = animate ? "transform 450ms cubic-bezier(0.2, 0.8, 0.2, 1)" : "none";
+    svg.style.transform = "rotate(" + sunRotation + "deg)";
+  }
+
+  button.addEventListener("pointerenter", function (event) {
+    if (event.pointerType && event.pointerType !== "mouse") {
+      return;
+    }
+    if (document.documentElement.dataset.theme !== "light") {
+      return;
+    }
+    if (typeof window.matchMedia === "function" && window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      return;
+    }
+    sunRotation += 45;
+    setSunRotation(true);
+  });
 
   function commitTheme(theme, previousTheme) {
     document.documentElement.dataset.theme = theme;
