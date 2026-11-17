@@ -1182,3 +1182,8 @@ body {
 .title .title-bold {
   font-weight: 500;
 }
+
+/* H1: a touch more line height than the Display step (34 -> 36, phone 28 -> 30). */
+.title {
+  line-height: calc(var(--type-display-lh) + 2px);
+}
