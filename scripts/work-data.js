@@ -29,10 +29,10 @@ window.PORTFOLIO_ITEMS = [
   },
   {
     wrapperClass: "a",
-    frontClass: "navigation",
-    title: "Navigation for an ever-evolving structure",
+    frontClass: "value-gap",
+    title: "Bridging the value gap",
     client: "NEXT",
-    year: "2024",
+    year: "2023",
   },
   {
     wrapperClass: "b",
