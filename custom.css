@@ -428,6 +428,13 @@ html[data-theme="dark"] .iconbutton:hover {
   background-size: contain;
 }
 
+.item-front.value-gap {
+  background-image: url("./images/next-value-gap.webp");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
 .item-front.component-roles {
   background-image: url("./images/honeybook-llm-prep.webp");
   background-position: center;
