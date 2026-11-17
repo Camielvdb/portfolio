@@ -626,7 +626,8 @@ html.modal-open {
   }
 
   .media-grid .item {
-    max-width: calc(33.333% - 27px);
+    flex: 0 0 calc(50% - 20px);
+    max-width: calc(50% - 20px);
   }
 }
 
@@ -1258,5 +1259,50 @@ body {
 @media screen and (max-width: 767px) {
   .sketches {
     min-height: 240px;
+  }
+}
+
+/* Case visual as a full-bleed header: top of the image, max 240px tall.
+   The close button floats over it; text starts below. */
+.modal-scrolling-container {
+  --modal-pad-x: 64px;
+  padding-top: 0 !important;
+}
+
+.modal-hero {
+  display: block;
+  align-self: stretch;
+  width: calc(100% + 2 * var(--modal-pad-x));
+  max-width: none;
+  height: 240px;
+  margin: 0 calc(-1 * var(--modal-pad-x)) 48px;
+  object-fit: cover;
+  object-position: top center;
+  flex: none;
+}
+
+.modal .iconbutton {
+  z-index: 3;
+}
+
+html[data-theme="dark"] .modal-hero.theme-light-only,
+html:not([data-theme="dark"]) .modal-hero.theme-dark-only {
+  display: none;
+}
+
+@media screen and (max-width: 767px) {
+  .modal-scrolling-container {
+    --modal-pad-x: 32px;
+  }
+
+  .modal-hero {
+    height: 200px;
+    margin-bottom: 32px;
+  }
+}
+
+@media screen and (max-width: 479px) {
+  .modal-scrolling-container {
+    --modal-pad-x: 20px;
   }
 }
