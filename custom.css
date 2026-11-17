@@ -1195,3 +1195,22 @@ body {
 .title {
   line-height: calc(var(--type-display-lh) + 2px);
 }
+
+/* Keep the whole panel (and its close button) inside the visible viewport.
+   vh ignores mobile browser toolbars, so use dvh where supported. */
+.modal {
+  max-height: 90vh;
+  max-height: calc(100dvh - 48px);
+}
+
+@media screen and (max-width: 767px) {
+  .modal {
+    top: auto;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    max-height: calc(100vh - 96px);
+    max-height: calc(100dvh - 40px);
+  }
+}
