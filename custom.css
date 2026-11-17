@@ -435,6 +435,13 @@ html[data-theme="dark"] .iconbutton:hover {
   background-size: cover;
 }
 
+.item-front.cluster-creation {
+  background-image: url("./images/next-research-patterns.webp");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
 .item-front.component-roles {
   background-image: url("./images/honeybook-clear-roles.webp");
   background-position: center;
