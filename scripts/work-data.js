@@ -9,7 +9,7 @@ window.PORTFOLIO_ITEMS = [
   {
     wrapperClass: "a",
     frontClass: "component-roles",
-    title: "Clear roles for people and AI",
+    title: "Resolving ambiguity for people and AI",
     client: "HoneyBook",
     year: "2026",
   },
