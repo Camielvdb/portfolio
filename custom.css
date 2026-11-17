@@ -1214,3 +1214,42 @@ body {
     max-height: calc(100dvh - 40px);
   }
 }
+
+/* Hand-drawn sketches: traced to SVG and used as masks, so the lines take the
+   text colour in both themes. The circled letters keep their orange. */
+.sketches {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 6000 / 1209;
+  min-height: 320px;
+  opacity: 0.4;
+}
+
+.sketches-layer {
+  position: absolute;
+  inset: 0;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+  -webkit-mask-size: cover;
+  mask-size: cover;
+}
+
+.sketches-ink {
+  background-color: var(--content-primary);
+  -webkit-mask-image: url("./images/ideation-sketches.svg");
+  mask-image: url("./images/ideation-sketches.svg");
+}
+
+.sketches-accent {
+  background-color: #f29a2e;
+  -webkit-mask-image: url("./images/ideation-sketches-accent.svg");
+  mask-image: url("./images/ideation-sketches-accent.svg");
+}
+
+@media screen and (max-width: 767px) {
+  .sketches {
+    min-height: 240px;
+  }
+}
