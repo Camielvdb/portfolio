@@ -26,11 +26,12 @@
     return theme === "light" || theme === "dark" ? theme : getSystemTheme();
   }
 
+  // Hugeicons "Sun03" (Stroke Rounded, MIT).
   function sunIcon() {
     return (
       '<svg viewBox="0 0 24 24" aria-hidden="true">' +
-      '<circle cx="12" cy="12" r="4.25"></circle>' +
-      '<path d="M12 2.75v2.5M12 18.75v2.5M21.25 12h-2.5M5.25 12H2.75M18.54 5.46l-1.77 1.77M7.23 16.77l-1.77 1.77M18.54 18.54l-1.77-1.77M7.23 7.23 5.46 5.46"></path>' +
+      '<path d="M17 12C17 14.7614 14.7614 17 12 17C9.23858 17 7 14.7614 7 12C7 9.23858 9.23858 7 12 7C14.7614 7 17 9.23858 17 12Z"></path>' +
+      '<path d="M12 2V3.5M12 20.5V22M19.0708 19.0713L18.0101 18.0106M5.98926 5.98926L4.9286 4.9286M22 12H20.5M3.5 12H2M19.0713 4.92871L18.0106 5.98937M5.98975 18.0107L4.92909 19.0714"></path>' +
       "</svg>"
     );
   }
@@ -64,29 +65,39 @@
     return Math.round(getMoonPhaseFraction(new Date()) * 8) % 8;
   }
 
+  // Live moon phase, drawn to match Hugeicons: 1.5px outline on every phase,
+  // with the lit part filled.
   function moonIcon() {
     var phaseIndex = getMoonPhaseIndex();
-    var sharedDefs =
-      '<defs>' +
-      '<mask id="moon-crescent-right"><rect width="24" height="24" fill="black"></rect><circle cx="12" cy="12" r="7.5" fill="white"></circle><circle cx="16.4" cy="12" r="7.5" fill="black"></circle></mask>' +
-      '<mask id="moon-crescent-left"><rect width="24" height="24" fill="black"></rect><circle cx="12" cy="12" r="7.5" fill="white"></circle><circle cx="7.6" cy="12" r="7.5" fill="black"></circle></mask>' +
-      '<mask id="moon-gibbous-right"><rect width="24" height="24" fill="black"></rect><circle cx="12" cy="12" r="7.5" fill="white"></circle><circle cx="18.4" cy="12" r="7.5" fill="black"></circle></mask>' +
-      '<mask id="moon-gibbous-left"><rect width="24" height="24" fill="black"></rect><circle cx="12" cy="12" r="7.5" fill="white"></circle><circle cx="5.6" cy="12" r="7.5" fill="black"></circle></mask>' +
-      '<mask id="moon-half-right"><rect width="24" height="24" fill="black"></rect><circle cx="12" cy="12" r="7.5" fill="white"></circle><rect x="12" y="0" width="12" height="24" fill="black"></rect></mask>' +
-      '<mask id="moon-half-left"><rect width="24" height="24" fill="black"></rect><circle cx="12" cy="12" r="7.5" fill="white"></circle><rect x="0" y="0" width="12" height="24" fill="black"></rect></mask>' +
+    var R = 8.5;
+    function mask(id, shape) {
+      return '<mask id="' + id + '"><rect width="24" height="24" fill="black"></rect><circle cx="12" cy="12" r="' + R + '" fill="white"></circle>' + shape + "</mask>";
+    }
+    var defs =
+      "<defs>" +
+      mask("moon-crescent-right", '<circle cx="17" cy="12" r="' + R + '" fill="black"></circle>') +
+      mask("moon-crescent-left", '<circle cx="7" cy="12" r="' + R + '" fill="black"></circle>') +
+      mask("moon-gibbous-right", '<circle cx="19.25" cy="12" r="' + R + '" fill="black"></circle>') +
+      mask("moon-gibbous-left", '<circle cx="4.75" cy="12" r="' + R + '" fill="black"></circle>') +
+      mask("moon-half-right", '<rect x="12" y="0" width="12" height="24" fill="black"></rect>') +
+      mask("moon-half-left", '<rect x="0" y="0" width="12" height="24" fill="black"></rect>') +
       "</defs>";
-    var icons = [
-      '<circle cx="12" cy="12" r="7.5" fill="none" stroke="currentColor"></circle>',
-      '<circle cx="12" cy="12" r="7.5" fill="currentColor" mask="url(#moon-crescent-right)" stroke="none"></circle>',
-      '<circle cx="12" cy="12" r="7.5" fill="currentColor" mask="url(#moon-half-right)" stroke="none"></circle>',
-      '<circle cx="12" cy="12" r="7.5" fill="currentColor" mask="url(#moon-gibbous-right)" stroke="none"></circle>',
-      '<circle cx="12" cy="12" r="7.5" fill="currentColor" stroke="none"></circle>',
-      '<circle cx="12" cy="12" r="7.5" fill="currentColor" mask="url(#moon-gibbous-left)" stroke="none"></circle>',
-      '<circle cx="12" cy="12" r="7.5" fill="currentColor" mask="url(#moon-half-left)" stroke="none"></circle>',
-      '<circle cx="12" cy="12" r="7.5" fill="currentColor" mask="url(#moon-crescent-left)" stroke="none"></circle>',
+    var lit = function (id) {
+      return '<circle cx="12" cy="12" r="' + R + '" fill="currentColor" stroke="none"' + (id ? ' mask="url(#' + id + ')"' : "") + "></circle>";
+    };
+    var fills = [
+      "",
+      lit("moon-crescent-right"),
+      lit("moon-half-right"),
+      lit("moon-gibbous-right"),
+      lit(null),
+      lit("moon-gibbous-left"),
+      lit("moon-half-left"),
+      lit("moon-crescent-left"),
     ];
+    var outline = '<circle cx="12" cy="12" r="' + R + '" fill="none"></circle>';
 
-    return '<svg viewBox="0 0 24 24" aria-hidden="true">' + sharedDefs + icons[phaseIndex] + "</svg>";
+    return '<svg viewBox="0 0 24 24" aria-hidden="true">' + defs + fills[phaseIndex] + outline + "</svg>";
   }
 
   function setButtonState(theme) {
