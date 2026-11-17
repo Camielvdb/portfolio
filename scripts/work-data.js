@@ -8,17 +8,10 @@ window.PORTFOLIO_ITEMS = [
   },
   {
     wrapperClass: "a",
-    frontClass: "llm-prep",
-    title: "Systemized vibe coding",
+    frontClass: "component-roles",
+    title: "Clear roles for people and AI",
     client: "HoneyBook",
     year: "2026",
-  },
-  {
-    wrapperClass: "a",
-    frontClass: "component-roles",
-    title: "Resolving component ambiguity",
-    client: "HoneyBook",
-    year: "2025",
   },
   {
     wrapperClass: "a",
@@ -37,21 +30,7 @@ window.PORTFOLIO_ITEMS = [
   {
     wrapperClass: "b",
     frontClass: "cluster-creation",
-    title: "Visualized pattern finding",
-    client: "NEXT",
-    year: "2023",
-  },
-  {
-    wrapperClass: "",
-    frontClass: "cluster-load",
-    title: "Dynamic data preview",
-    client: "NEXT",
-    year: "2024",
-  },
-  {
-    wrapperClass: "b",
-    frontClass: "piechart",
-    title: "Quantifiable customer insights",
+    title: "From raw research to patterns",
     client: "NEXT",
     year: "2024",
   },
@@ -61,12 +40,5 @@ window.PORTFOLIO_ITEMS = [
     title: "Advanced dataset search",
     client: "NEXT",
     year: "2023",
-  },
-  {
-    wrapperClass: "",
-    frontClass: "riskoverview",
-    title: "Security risk prioritization",
-    client: "Hadrian",
-    year: "2021",
   },
 ];
