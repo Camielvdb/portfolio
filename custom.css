@@ -1351,3 +1351,20 @@ button,
 input {
   font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", Inter, "Segoe UI", Roboto, sans-serif;
 }
+
+/* Narrower main column: title, grid, In short and footer share one max width. */
+.titlesection,
+.work,
+.skills,
+.footer {
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media screen and (min-width: 992px) {
+  .footer {
+    padding-left: 64px;
+    padding-right: 64px;
+  }
+}
