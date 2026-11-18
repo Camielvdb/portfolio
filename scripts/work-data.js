@@ -45,6 +45,6 @@ window.PORTFOLIO_ITEMS = [
     title: "Advanced dataset search",
     client: "NEXT",
     year: "2023",
-    alt: "NEXT\u2019s advanced dataset search, combining typed syntax with filter chips for categories and values.",
+    alt: "NEXT\u2019s search with the query creator:@steven, suggesting combined filters such as Steven and Emma or Steven and Bugs, plus more filters like date, media type, language and duration.",
   },
 ];
