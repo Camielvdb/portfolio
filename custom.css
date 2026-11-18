@@ -1339,3 +1339,15 @@ html[data-theme="dark"] .modal .iconbutton:hover {
 html[data-theme="dark"] .modal .iconbutton .icon-in-button {
   color: #f2f2f5;
 }
+
+/* SF Pro via the system font: Apple devices render SF Pro (Text/Display picked
+   automatically by size). Everyone else falls back to self-hosted Inter. */
+body,
+.body,
+.menu,
+.base,
+.core,
+button,
+input {
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", Inter, "Segoe UI", Roboto, sans-serif;
+}
