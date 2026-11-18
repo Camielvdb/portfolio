@@ -5,6 +5,7 @@ window.PORTFOLIO_ITEMS = [
     title: "Resolving ambiguity for people and AI",
     client: "HoneyBook",
     year: "2026",
+    alt: "An invoice card built from HBUI components (status, tags, chip, badge and button), each annotated with its code and its role, such as \u201cstep in a lifecycle\u201d.",
   },
   {
     wrapperClass: "a",
@@ -12,6 +13,7 @@ window.PORTFOLIO_ITEMS = [
     title: "Building a flexible Kanban system",
     client: "HoneyBook",
     year: "2025",
+    alt: "A HoneyBook pipeline board with Active and Review columns and a project card being dragged between them, drawn half as UI and half as a wireframe.",
   },
   {
     wrapperClass: "a",
@@ -19,6 +21,7 @@ window.PORTFOLIO_ITEMS = [
     title: "Tokenization and system foundations",
     client: "HoneyBook",
     year: "2026",
+    alt: "A sign-up form with each color labeled by its semantic design token, such as text-primary, surface-accent and stroke-focus.",
   },
   {
     wrapperClass: "a",
@@ -26,6 +29,7 @@ window.PORTFOLIO_ITEMS = [
     title: "Bridging the value gap",
     client: "NEXT",
     year: "2023",
+    alt: "The NEXT app with its side navigation and a usage meter reading 127 of 180 minutes used, next to an Upgrade button.",
   },
   {
     wrapperClass: "b",
@@ -33,6 +37,7 @@ window.PORTFOLIO_ITEMS = [
     title: "From raw research to patterns",
     client: "NEXT",
     year: "2024",
+    alt: "Customer interview highlight cards, two of them selected and linked into a cluster, with a \u201c2 highlights\u201d action bar.",
   },
   {
     wrapperClass: "b",
@@ -40,5 +45,6 @@ window.PORTFOLIO_ITEMS = [
     title: "Advanced dataset search",
     client: "NEXT",
     year: "2023",
+    alt: "NEXT\u2019s advanced dataset search, combining typed syntax with filter chips for categories and values.",
   },
 ];

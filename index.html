@@ -27,14 +27,13 @@
 <link href="styles.css" rel="stylesheet" type="text/css"/>
 <link href="custom.css" rel="stylesheet" type="text/css"/>
 <link rel="icon" href="data:,"/>
-<link href="https://cdn.prod.website-files.com/63e667dd6e5ece274bb667ff/66a316a0819a4c09e9b5446f_webclip.png" rel="apple-touch-icon"/>
 </head>
 <body class="core">
 <nav class="glass-bar" aria-label="Site">
 <div class="time">
 <div class="dot">
 </div>
-<div class="local-time">[local time]</div>
+<div class="local-time">New York</div>
 </div>
 <a href="mailto:camielbeek@gmail.com" class="glass-bar-link">Email</a>
 <button type="button" class="theme-toggle" data-theme-toggle aria-label="Theme: auto">
@@ -47,7 +46,16 @@
 </h1>
 </section>
 <section id="work" class="work">
-<div class="media-grid" data-portfolio-grid></div>
+<div class="media-grid" data-portfolio-grid>
+<ul class="work-fallback">
+<li><strong>Resolving ambiguity for people and AI</strong> — HoneyBook, 2026</li>
+<li><strong>Building a flexible Kanban system</strong> — HoneyBook, 2025</li>
+<li><strong>Tokenization and system foundations</strong> — HoneyBook, 2026</li>
+<li><strong>Bridging the value gap</strong> — NEXT, 2023</li>
+<li><strong>From raw research to patterns</strong> — NEXT, 2024</li>
+<li><strong>Advanced dataset search</strong> — NEXT, 2023</li>
+</ul>
+</div>
 </section>
 <section class="skills">
 <h2 class="section-title">In short</h2>
@@ -59,19 +67,14 @@
 <div class="sketches" role="img" aria-label="Hand-drawn app and digital concept designs and ideas"><span class="sketches-layer sketches-ink"></span><span class="sketches-layer sketches-accent"></span></div>
 </div>
 <section class="footer">
-<div class="my-name">© <span data-current-year></span> Camiel van der Beek<br/>
+<div class="my-name">© <span data-current-year>2026</span> Camiel van der Beek<br/>
 </div>
 <a href="https://www.linkedin.com/in/camielvanderbeek/" target="_blank" class="footer-main-link">LinkedIn</a>
-<div class="footer-links hidden">
-<a href="#" target="_blank" class="footer-main-link secondary">About</a>
-<a href="#" target="_blank" class="footer-main-link secondary">Work</a>
-<a href="#" target="_blank" class="footer-main-link secondary">Contact</a>
-</div>
 </section>
 <figure class="modal-container">
-<div style="display:none;-webkit-transform:translate3d(0, 40px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 40px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 40px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 40px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);opacity:0" class="modal modal-p">
+<div class="modal modal-p">
 <div class="modal-scrolling-container">
-<img src="./images/honeybook-clear-roles.webp" alt="" class="modal-hero" loading="lazy"/>
+<img src="./images/honeybook-clear-roles.webp" alt="An invoice card built from HBUI components (status, tags, chip, badge and button), each annotated with its code and its role, such as “step in a lifecycle”." class="modal-hero" loading="lazy"/>
 <h1 class="modal-header">Resolving ambiguity for people and AI</h1>
 <p class="modal-paragraph">Vibe coding changed who builds product. PMs prototype, designers open PRs, and LLMs generate UI. System work has to adapt to this new way of building: the library now serves people and AI alike, so every part of it has to be unambiguous.</p>
 <h2 class="modal-subheader">Challenge</h2>
@@ -88,9 +91,9 @@
 <svg class="icon-in-button" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18.9991 19L5 5.00098"/><path d="M19 5L5.00092 18.999"/></svg>
 </div>
 </div>
-<div style="display:none;-webkit-transform:translate3d(0, 40px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 40px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 40px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 40px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);opacity:0" class="modal modal-o">
+<div class="modal modal-o">
 <div class="modal-scrolling-container">
-<img src="./images/honeybook-kanban-ui.webp" alt="" class="modal-hero" loading="lazy"/>
+<img src="./images/honeybook-kanban-ui.webp" alt="A HoneyBook pipeline board with Active and Review columns and a project card being dragged between them, drawn half as UI and half as a wireframe." class="modal-hero" loading="lazy"/>
 <h1 class="modal-header">Building a flexible Kanban system</h1>
 <p class="modal-paragraph">The Pipeline is home for HoneyBook members, but it was an outdated table posing as a pipeline. Projects, contacts and tasks all needed a board, each with its own team and opinions.</p>
 <h2 class="modal-subheader">Challenge</h2>
@@ -108,9 +111,9 @@
 <svg class="icon-in-button" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18.9991 19L5 5.00098"/><path d="M19 5L5.00092 18.999"/></svg>
 </div>
 </div>
-<div style="display:none;-webkit-transform:translate3d(0, 40px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 40px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 40px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 40px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);opacity:0" class="modal modal-q">
+<div class="modal modal-q">
 <div class="modal-scrolling-container">
-<img src="./images/honeybook-tokenization-light.webp" alt="" class="modal-hero theme-light-only" loading="lazy"/><img src="./images/honeybook-tokenization-dark.webp" alt="" class="modal-hero theme-dark-only" loading="lazy"/>
+<img src="./images/honeybook-tokenization-light.webp" alt="A sign-up form with each color labeled by its semantic design token, such as text-primary, surface-accent and stroke-focus." class="modal-hero theme-light-only" loading="lazy"/><img src="./images/honeybook-tokenization-dark.webp" alt="A sign-up form with each color labeled by its semantic design token, such as text-primary, surface-accent and stroke-focus." class="modal-hero theme-dark-only" loading="lazy"/>
 <h1 class="modal-header">Tokenization and system foundations</h1>
 <p class="modal-paragraph">The foundations under a design system decide how far it can scale. Tokens move visual decisions into one layer, so teams can update and extend the product with confidence.</p>
 <h2 class="modal-subheader">Challenge</h2>
@@ -128,9 +131,9 @@
 <svg class="icon-in-button" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18.9991 19L5 5.00098"/><path d="M19 5L5.00092 18.999"/></svg>
 </div>
 </div>
-<div style="display:none;-webkit-transform:translate3d(0, 40px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 40px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 40px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 40px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);opacity:0" class="modal modal-a">
+<div class="modal modal-a">
 <div class="modal-scrolling-container">
-<img src="./images/next-value-gap.webp" alt="" class="modal-hero" loading="lazy"/>
+<img src="./images/next-value-gap.webp" alt="The NEXT app with its side navigation and a usage meter reading 127 of 180 minutes used, next to an Upgrade button." class="modal-hero" loading="lazy"/>
 <h1 class="modal-header">Bridging the value gap</h1>
 <p class="modal-paragraph">NEXT helps product teams turn customer research into what to build next. New users landed in the app, but many never got to that moment of value.</p>
 <h2 class="modal-subheader">Challenge</h2>
@@ -149,9 +152,9 @@
 <svg class="icon-in-button" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18.9991 19L5 5.00098"/><path d="M19 5L5.00092 18.999"/></svg>
 </div>
 </div>
-<div style="-webkit-transform:translate3d(0, 40px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 40px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 40px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 40px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);opacity:0" class="modal modal-e">
+<div class="modal modal-e">
 <div class="modal-scrolling-container">
-<img src="./images/next-research-patterns.webp" alt="" class="modal-hero" loading="lazy"/>
+<img src="./images/next-research-patterns.webp" alt="Customer interview highlight cards, two of them selected and linked into a cluster, with a “2 highlights” action bar." class="modal-hero" loading="lazy"/>
 <h1 class="modal-header">From raw research to patterns</h1>
 <p class="modal-paragraph">NEXT turns large research datasets into patterns teams can act on: collect data, highlight what matters, cluster it into insights.</p>
 <h2 class="modal-subheader">Challenge</h2>
@@ -169,9 +172,9 @@
 <svg class="icon-in-button" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18.9991 19L5 5.00098"/><path d="M19 5L5.00092 18.999"/></svg>
 </div>
 </div>
-<div style="-webkit-transform:translate3d(0, 40px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 40px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 40px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 40px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);opacity:0" class="modal modal-c">
+<div class="modal modal-c">
 <div class="modal-scrolling-container">
-<img src="https://cdn.prod.website-files.com/63e667dd6e5ece274bb667ff/66a3114200088e126a6817b4_search%20UI.png" alt="" class="modal-hero" loading="lazy"/>
+<img src="https://cdn.prod.website-files.com/63e667dd6e5ece274bb667ff/66a3114200088e126a6817b4_search%20UI.png" alt="NEXT’s advanced dataset search, combining typed syntax with filter chips for categories and values." class="modal-hero" loading="lazy"/>
 <h1 class="modal-header">Advanced dataset search</h1>
 <p class="modal-paragraph">Research bases hold huge amounts of data with countless properties. Search is a simple idea, but a difficult reality.</p>
 <h2 class="modal-subheader">Challenge</h2>
