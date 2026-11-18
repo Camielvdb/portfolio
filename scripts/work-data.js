@@ -1,17 +1,17 @@
 window.PORTFOLIO_ITEMS = [
   {
     wrapperClass: "a",
-    frontClass: "kanban",
-    title: "Building a flexible Kanban system",
-    client: "HoneyBook",
-    year: "2025",
-  },
-  {
-    wrapperClass: "a",
     frontClass: "component-roles",
     title: "Resolving ambiguity for people and AI",
     client: "HoneyBook",
     year: "2026",
+  },
+  {
+    wrapperClass: "a",
+    frontClass: "kanban",
+    title: "Building a flexible Kanban system",
+    client: "HoneyBook",
+    year: "2025",
   },
   {
     wrapperClass: "a",
