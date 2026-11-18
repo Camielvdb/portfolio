@@ -742,7 +742,6 @@ body {
 }
 
 .item-front {
-  background-image: url("https://cdn.prod.website-files.com/63e667dd6e5ece274bb667ff/66a311697237fa6db997efb1_Overview.png");
   background-position: 0 0;
   background-size: contain;
   border-radius: 10px;
@@ -751,36 +750,15 @@ body {
 }
 
 .item-front.search {
-  background-image: url("https://cdn.prod.website-files.com/63e667dd6e5ece274bb667ff/66a3114200088e126a6817b4_search%20UI.png");
+  background-image: url("./images/next-dataset-search.webp");
 }
 
-.item-front.card {
-  background-image: url("https://cdn.prod.website-files.com/63e667dd6e5ece274bb667ff/66a165fa813c05622d9accc0_ScreenRecording2024-07-24at16.35.09-ezgif.com-video-to-gif-converter.gif");
-}
 
-.item-front.cluster-load {
-  background-image: url("https://cdn.prod.website-files.com/63e667dd6e5ece274bb667ff/66a1b77394d3863c5a153fe0_ScreenRecording2024-07-24at22.21.07-ezgif.com-video-to-gif-converter.gif");
-}
 
-.item-front.chips {
-  background-image: url("https://cdn.prod.website-files.com/63e667dd6e5ece274bb667ff/66a15e8e85f51dd247b53999_ScreenRecording2024-07-24at15.41.01-ezgif.com-video-to-gif-converter.gif");
-}
 
-.item-front.cluster-creation {
-  background-image: url("https://cdn.prod.website-files.com/63e667dd6e5ece274bb667ff/66a30c6c97efdfdf4b73a9ec_Highlights.png");
-}
 
-.item-front.piechart {
-  background-image: url("https://cdn.prod.website-files.com/63e667dd6e5ece274bb667ff/66a1c13491c280dfe9d3310f_ARR%20graph.png");
-}
 
-.item-front.riskoverview {
-  background-image: url("https://cdn.prod.website-files.com/63e667dd6e5ece274bb667ff/66a1ae1fb651268a5ea00b26_Hadrian.png");
-}
 
-.item-front.llm-prep {
-  background-image: url("./images/honeybook-llm-prep.webp");
-}
 
 .item-front.tokenization-prep {
   background-image: url("./images/honeybook-tokenization-prep.webp");

@@ -14,13 +14,17 @@
     card.setAttribute("role", "button");
     card.setAttribute("tabindex", "0");
     card.setAttribute("aria-haspopup", "dialog");
-    card.setAttribute("aria-label", item.title);
+    card.setAttribute("aria-label", item.title + " — " + item.client + ", " + item.year + ". Open case study");
 
     var wrapper = document.createElement("div");
     wrapper.className = item.wrapperClass ? "item-wrapper " + item.wrapperClass : "item-wrapper";
 
     var front = document.createElement("div");
     front.className = "item-front " + item.frontClass;
+    if (item.alt) {
+      front.setAttribute("role", "img");
+      front.setAttribute("aria-label", item.alt);
+    }
 
     if (item.frontClass === "tokenization-prep") {
       var tokenizationVisual = document.createElement("div");
@@ -106,5 +110,6 @@
     fragment.appendChild(createCard(item, index));
   });
 
+  grid.textContent = "";
   grid.appendChild(fragment);
 })();
