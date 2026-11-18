@@ -72,6 +72,25 @@
 </div>
 </section>
 <figure class="modal-container">
+<div style="display:none;-webkit-transform:translate3d(0, 40px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 40px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 40px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 40px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);opacity:0" class="modal modal-p">
+<div class="modal-scrolling-container">
+<img src="./images/honeybook-clear-roles.webp" alt="" class="modal-hero" loading="lazy"/>
+<h1 class="modal-header">Resolving ambiguity for people and AI</h1>
+<p class="modal-paragraph">Vibe coding changed who builds product. PMs prototype, designers open PRs, and LLMs generate UI. System work has to adapt to this new way of building: the library now serves people and AI alike, so every part of it has to be unambiguous.</p>
+<h2 class="modal-subheader">Challenge</h2>
+<p class="modal-paragraph">Across the library, components overlapped in look and purpose, with no written meaning behind them. Tags, chips, badges and statuses are the clearest example: people used them interchangeably, and an LLM couldn&#x27;t tell them apart either.</p>
+<h2 class="modal-subheader">Approach</h2>
+<ul class="modal-list">
+<li class="modal-paragraph"><strong>A distinct role for every component.</strong> Each component in the library got a clear purpose and contract, with visuals aligned to match. For example, Badge is a system-assigned descriptor, Status a step in a lifecycle, Tag a user-defined category, Chip a contextual action, Button a stable action.</li>
+<li class="modal-paragraph"><strong>One source of truth for both readers.</strong> Guidelines were restructured as data with a shared vocabulary, still written in plain language: a Storybook page for people, a rules file for agents.</li>
+</ul>
+<h2 class="modal-subheader">Outcome</h2>
+<p class="modal-paragraph">Features shipped without a designer, using the correct UI elements. Incorrect component use is now caught in review, and generated code builds on HBUI instead of public libraries. The system supports the new way of building instead of working against it.</p>
+</div>
+<div class="iconbutton">
+<svg class="icon-in-button" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18.9991 19L5 5.00098"/><path d="M19 5L5.00092 18.999"/></svg>
+</div>
+</div>
 <div style="display:none;-webkit-transform:translate3d(0, 40px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 40px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 40px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 40px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);opacity:0" class="modal modal-o">
 <div class="modal-scrolling-container">
 <img src="./images/honeybook-kanban-ui.webp" alt="" class="modal-hero" loading="lazy"/>
@@ -87,25 +106,6 @@
 </ul>
 <h2 class="modal-subheader">Outcome</h2>
 <p class="modal-paragraph">The Pipeline was rebuilt on the Kanban system and shipped without custom one-offs in the code. Members responded warmly, and the same component now serves other domains.</p>
-</div>
-<div class="iconbutton">
-<svg class="icon-in-button" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18.9991 19L5 5.00098"/><path d="M19 5L5.00092 18.999"/></svg>
-</div>
-</div>
-<div style="display:none;-webkit-transform:translate3d(0, 40px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 40px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 40px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 40px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);opacity:0" class="modal modal-p">
-<div class="modal-scrolling-container">
-<img src="./images/honeybook-clear-roles.webp" alt="" class="modal-hero" loading="lazy"/>
-<h1 class="modal-header">Resolving ambiguity for people and AI</h1>
-<p class="modal-paragraph">Vibe coding changed who builds product. PMs prototype, designers open PRs, and LLMs reach for public libraries that produce unrefined UI. To keep everyone on-system, the system had to be unambiguous to people and AI alike.</p>
-<h2 class="modal-subheader">Challenge</h2>
-<p class="modal-paragraph">Tags, chips, badges and statuses looked alike but had no clear meaning. People used them interchangeably, and an LLM couldn&#x27;t tell them apart either.</p>
-<h2 class="modal-subheader">Approach</h2>
-<ul class="modal-list">
-<li class="modal-paragraph"><strong>A distinct contract per component.</strong> Badge is a system-assigned descriptor, Status a step in a lifecycle, Tag a user-defined category, Chip a contextual action, Button a stable action. Visuals were aligned to match.</li>
-<li class="modal-paragraph"><strong>One source of truth for both readers.</strong> Guidelines were restructured as data with a shared vocabulary, still written in plain language: a Storybook page for people, a rules file for agents.</li>
-</ul>
-<h2 class="modal-subheader">Outcome</h2>
-<p class="modal-paragraph">Features shipped without a designer, using the correct UI elements. Incorrect component use is now caught in review, and generated code builds on HBUI instead of public libraries.</p>
 </div>
 <div class="iconbutton">
 <svg class="icon-in-button" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18.9991 19L5 5.00098"/><path d="M19 5L5.00092 18.999"/></svg>
