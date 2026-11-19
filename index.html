@@ -75,16 +75,9 @@
 <div class="modal-scrolling-container">
 <img src="./images/honeybook-clear-roles.webp" alt="An invoice card built from HBUI components (status, tags, chip, badge and button), each annotated with its code and its role, such as “step in a lifecycle”." class="modal-hero" loading="lazy"/>
 <h1 class="modal-header">Resolving ambiguity for people and AI</h1>
-<p class="modal-paragraph">Vibe coding changed who builds product. PMs prototype, designers open PRs, and LLMs generate UI. System work has to adapt to this new way of building: the library now serves people and AI alike, so every part of it has to be unambiguous.</p>
-<h2 class="modal-subheader">Challenge</h2>
-<p class="modal-paragraph">Across the library, components overlapped in look and purpose, with no written meaning behind them. Tags, chips, badges and statuses are the clearest example: people used them interchangeably, and an LLM couldn&#x27;t tell them apart either.</p>
-<h2 class="modal-subheader">Approach</h2>
-<ul class="modal-list">
-<li class="modal-paragraph"><strong>A distinct role for every component.</strong> Each component in the library got a clear purpose and contract, with visuals aligned to match. For example, Badge is a system-assigned descriptor, Status a step in a lifecycle, Tag a user-defined category, Chip a contextual action, Button a stable action.</li>
-<li class="modal-paragraph"><strong>One source of truth for both readers.</strong> Guidelines were restructured as data with a shared vocabulary, still written in plain language: a Storybook page for people, a rules file for agents.</li>
-</ul>
-<h2 class="modal-subheader">Outcome</h2>
-<p class="modal-paragraph">Features shipped without a designer, using the correct UI elements. Incorrect component use is now caught in review, and generated code builds on HBUI instead of public libraries. The system supports the new way of building instead of working against it.</p>
+<p class="modal-paragraph">Vibe coding changed who builds at HoneyBook. PMs prototype, designers open PRs, and LLMs generate UI. That changes what a design system is for: HBUI now serves people and AI alike, and both need it to be unambiguous.</p>
+<p class="modal-paragraph">Across the library, components overlapped in look and purpose, with no written meaning behind them. Tags, chips, badges and statuses were the clearest example: people used them interchangeably, and an LLM couldn&#x27;t tell them apart. I gave every component a distinct role and contract and aligned the visuals to match. A Badge is a system-assigned descriptor, a Status a step in a lifecycle, a Tag a user-defined category. Then I restructured the guidelines as data with a shared, plain-language vocabulary. That made one source of truth: a Storybook page for people and a rules file for agents.</p>
+<p class="modal-paragraph">Features now ship without a designer, using the right components. Misuse gets caught in review, and generated code builds on HBUI instead of public libraries.</p>
 </div>
 <div class="iconbutton">
 <svg class="icon-in-button" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18.9991 19L5 5.00098"/><path d="M19 5L5.00092 18.999"/></svg>
@@ -94,17 +87,9 @@
 <div class="modal-scrolling-container">
 <img src="./images/honeybook-kanban-ui.webp" alt="A HoneyBook pipeline board with Active and Review columns and a project card being dragged between them, drawn half as UI and half as a wireframe." class="modal-hero" loading="lazy"/>
 <h1 class="modal-header">Building a flexible Kanban system</h1>
-<p class="modal-paragraph">The Pipeline is home for HoneyBook members, but it was an outdated table posing as a pipeline. Projects, contacts and tasks all needed a board, each with its own team and opinions.</p>
-<h2 class="modal-subheader">Challenge</h2>
-<p class="modal-paragraph">Build one Kanban that works across every domain, without flattening real differences between them.</p>
-<h2 class="modal-subheader">Approach</h2>
-<ul class="modal-list">
-<li class="modal-paragraph"><strong>Columns are a property.</strong> A project&#x27;s stage, a task&#x27;s status or a lead&#x27;s source can define the columns; moving a card changes the value.</li>
-<li class="modal-paragraph"><strong>Properties mapped by behavior:</strong> static, dynamic, grouping, relations and actions, so interactive parts never clash with content.</li>
-<li class="modal-paragraph"><strong>Every interaction state designed:</strong> hover, drag, bulk select, sort constraints, and columns that can&#x27;t accept an item.</li>
-</ul>
-<h2 class="modal-subheader">Outcome</h2>
-<p class="modal-paragraph">The Pipeline was rebuilt on the Kanban system and shipped without custom one-offs in the code. Members responded warmly, and the same component now serves other domains.</p>
+<p class="modal-paragraph">The Pipeline is home base for HoneyBook members, but it was an outdated table posing as a pipeline. Projects, contacts and tasks all needed a board, each owned by a different team with its own opinions.</p>
+<p class="modal-paragraph">Instead of designing three boards, I designed one system. The key insight was that columns are just a property, like a project&#x27;s stage, a task&#x27;s status or a lead&#x27;s source, so moving a card changes that value. I mapped card properties by behavior so interactive parts never clash with content. I also designed every interaction state, from drag and bulk select to sort constraints and columns that can&#x27;t accept an item.</p>
+<p class="modal-paragraph">The Pipeline was rebuilt on it and shipped with no custom one-offs in the code. Members responded warmly, and the same component now serves other domains.</p>
 </div>
 <div class="iconbutton">
 <svg class="icon-in-button" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18.9991 19L5 5.00098"/><path d="M19 5L5.00092 18.999"/></svg>
@@ -114,17 +99,9 @@
 <div class="modal-scrolling-container">
 <img src="./images/honeybook-tokenization-light.webp" alt="A sign-up form with each color labeled by its semantic design token, such as text-primary, surface-accent and stroke-focus." class="modal-hero theme-light-only" loading="lazy"/><img src="./images/honeybook-tokenization-dark.webp" alt="A sign-up form with each color labeled by its semantic design token, such as text-primary, surface-accent and stroke-focus." class="modal-hero theme-dark-only" loading="lazy"/>
 <h1 class="modal-header">Tokenization and system foundations</h1>
-<p class="modal-paragraph">The foundations under a design system decide how far it can scale. Tokens move visual decisions into one layer, so teams can update and extend the product with confidence.</p>
-<h2 class="modal-subheader">Challenge</h2>
-<p class="modal-paragraph">Make the system easier to scale and maintain without making it harder to understand or adopt.</p>
-<h2 class="modal-subheader">Approach</h2>
-<ul class="modal-list">
-<li class="modal-paragraph"><strong>Three layers:</strong> primitives (raw values), semantic tokens named by purpose like <code>text-secondary</code> and <code>surface-accent</code>, and components built only on semantic tokens.</li>
-<li class="modal-paragraph"><strong>Accessibility in the foundation,</strong> not patched per component.</li>
-<li class="modal-paragraph"><strong>Themes as a token swap:</strong> light and dark use the same components, only the values change.</li>
-</ul>
-<h2 class="modal-subheader">Outcome</h2>
-<p class="modal-paragraph">A token structure that makes design decisions easier to scale, change and keep aligned across teams, and the groundwork for a system that evolves with less friction.</p>
+<p class="modal-paragraph">The foundations under a design system decide how far it can scale. I set up a token structure that moves visual decisions into one layer the whole product draws from.</p>
+<p class="modal-paragraph">It has three layers. Primitives hold raw values. Semantic tokens name those values by purpose, such as secondary text or an accent surface. Components only ever use semantic tokens. Accessibility lives in the foundation instead of being patched per component, and light and dark mode is a token swap: same components, different values.</p>
+<p class="modal-paragraph">The result makes design decisions easier to change, scale and keep aligned across teams. It&#x27;s the groundwork for a system that evolves with less friction.</p>
 </div>
 <div class="iconbutton">
 <svg class="icon-in-button" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18.9991 19L5 5.00098"/><path d="M19 5L5.00092 18.999"/></svg>
@@ -134,17 +111,13 @@
 <div class="modal-scrolling-container">
 <img src="./images/next-value-gap.webp" alt="The NEXT app with its side navigation and a usage meter reading 127 of 180 minutes used, next to an Upgrade button." class="modal-hero" loading="lazy"/>
 <h1 class="modal-header">Bridging the value gap</h1>
-<p class="modal-paragraph">NEXT helps product teams turn customer research into what to build next. New users landed in the app, but many never got to that moment of value.</p>
-<h2 class="modal-subheader">Challenge</h2>
-<p class="modal-paragraph">Leads struggled to extract insights from their own data, so they rarely reached the point where upgrading made sense.</p>
-<h2 class="modal-subheader">Approach</h2>
-<p class="modal-paragraph">Three hypotheses, tested in fast iterations:</p>
+<p class="modal-paragraph">NEXT helps product teams turn customer research into what to build next. New users signed up, but many never reached the moment where the product proved its value, so upgrading rarely made sense to them.</p>
+<p class="modal-paragraph">I tested three ideas in fast iterations:</p>
 <ul class="modal-list">
-<li class="modal-paragraph"><strong>A vertical view of the process</strong> that mirrors how teams work. It became the side navigation, with results brought forward for impact-driven PMs.</li>
-<li class="modal-paragraph"><strong>A clear starting point</strong> that always invites new users to add their own data.</li>
-<li class="modal-paragraph"><strong>A visible incentive to upgrade,</strong> placed right where users see the value.</li>
+<li class="modal-paragraph">A vertical view of the process that mirrors how teams work. This became the side navigation, with results brought forward for impact-driven PMs.</li>
+<li class="modal-paragraph">A clear starting point that always invites new users to add their own data.</li>
+<li class="modal-paragraph">A visible incentive to upgrade, placed right where users see the value.</li>
 </ul>
-<h2 class="modal-subheader">Outcome</h2>
 <p class="modal-paragraph">More new users uploaded their own data early on, and the upgrade prompt became a steady source of sales conversations.</p>
 </div>
 <div class="iconbutton">
@@ -155,16 +128,8 @@
 <div class="modal-scrolling-container">
 <img src="./images/next-research-patterns.webp" alt="Customer interview highlight cards, two of them selected and linked into a cluster, with a “2 highlights” action bar." class="modal-hero" loading="lazy"/>
 <h1 class="modal-header">From raw research to patterns</h1>
-<p class="modal-paragraph">NEXT turns large research datasets into patterns teams can act on: collect data, highlight what matters, cluster it into insights.</p>
-<h2 class="modal-subheader">Challenge</h2>
-<p class="modal-paragraph">Let people focus on what their data says, not on organizing it, and show which patterns matter most to the business.</p>
-<h2 class="modal-subheader">Approach</h2>
-<ul class="modal-list">
-<li class="modal-paragraph"><strong>Actions appear only when useful.</strong> Selecting items reveals grouping actions right where people expect them.</li>
-<li class="modal-paragraph"><strong>A live cluster preview,</strong> so new insights can be added without memorizing every pattern. Faces and images make text-heavy research easier to take in.</li>
-<li class="modal-paragraph"><strong>Insights tied to business metrics</strong> in interactive charts, built around how customers already report.</li>
-</ul>
-<h2 class="modal-subheader">Outcome</h2>
+<p class="modal-paragraph">NEXT turns large research datasets into patterns teams can act on: collect data, highlight what matters, and cluster it into insights. My goal was to let people focus on what their data says, not on organizing it.</p>
+<p class="modal-paragraph">Actions appear only when they&#x27;re useful: selecting highlights reveals grouping actions right where people expect them. A live cluster preview lets people add insights without memorizing every pattern, and faces and images make text-heavy research easier to scan. Insights connect to business metrics in interactive charts, built around how customers already report.</p>
 <p class="modal-paragraph">Pattern finding became something people discover naturally, and teams could prioritize their biggest opportunities first.</p>
 </div>
 <div class="iconbutton">
@@ -175,17 +140,9 @@
 <div class="modal-scrolling-container">
 <img src="./images/next-dataset-search.webp" alt="NEXT’s search with the query creator:@steven, suggesting combined filters such as Steven and Emma or Steven and Bugs, plus more filters like date, media type, language and duration." class="modal-hero" loading="lazy"/>
 <h1 class="modal-header">Advanced dataset search</h1>
-<p class="modal-paragraph">Research bases hold huge amounts of data with countless properties. Search is a simple idea, but a difficult reality.</p>
-<h2 class="modal-subheader">Challenge</h2>
-<p class="modal-paragraph">Support advanced search while keeping the UI approachable, with a small learning curve.</p>
-<h2 class="modal-subheader">Approach</h2>
-<ul class="modal-list">
-<li class="modal-paragraph"><strong>Learned from familiar patterns</strong> like Spotlight and ⌘K menus, then defined NEXT&#x27;s own use cases with engineering.</li>
-<li class="modal-paragraph"><strong>Syntax for power users,</strong> like <code>creator:</code> and <code>date:</code>.</li>
-<li class="modal-paragraph"><strong>Chips for everyone else,</strong> so categories and values show up visually and nobody has to learn the syntax.</li>
-</ul>
-<h2 class="modal-subheader">Outcome</h2>
-<p class="modal-paragraph">One search that serves both quick lookups and complex queries, built on a solid UX rationale for every technically costly decision.</p>
+<p class="modal-paragraph">Research bases hold huge amounts of data with countless properties. Search is a simple idea but a difficult reality: it had to handle complex queries while staying approachable.</p>
+<p class="modal-paragraph">I studied familiar patterns like Spotlight and ⌘K menus, then defined NEXT&#x27;s own use cases with engineering. The search supports syntax for power users, like &quot;creator:&quot; and &quot;date:&quot;, while chips show categories and values visually, so nobody has to learn the syntax.</p>
+<p class="modal-paragraph">One search now handles both quick lookups and complex queries. Nearly every decision had a real technical cost, so each one is backed by a clear UX rationale.</p>
 </div>
 <div class="iconbutton">
 <svg class="icon-in-button" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18.9991 19L5 5.00098"/><path d="M19 5L5.00092 18.999"/></svg>
