@@ -75,31 +75,23 @@
       front.appendChild(kanbanSvg);
     }
 
-    var titleContainer = document.createElement("div");
-    titleContainer.className = "item-title-container";
+    // Caption below the image: title, then client and year.
+    var caption = document.createElement("div");
+    caption.className = "item-caption";
 
     var title = document.createElement("div");
-    title.className = "item-title";
+    title.className = "item-caption-title";
     title.textContent = item.title;
 
-    var bottom = document.createElement("div");
-    bottom.className = "item-bottom-container";
+    var meta = document.createElement("div");
+    meta.className = "item-caption-meta";
+    meta.textContent = item.client + ", " + item.year;
 
-    var client = document.createElement("div");
-    client.className = "item-client";
-    client.textContent = item.client;
-
-    var year = document.createElement("div");
-    year.className = "item-year";
-    year.textContent = item.year;
-
-    titleContainer.appendChild(title);
-    bottom.appendChild(client);
-    bottom.appendChild(year);
+    caption.appendChild(title);
+    caption.appendChild(meta);
     wrapper.appendChild(front);
-    wrapper.appendChild(titleContainer);
-    wrapper.appendChild(bottom);
     card.appendChild(wrapper);
+    card.appendChild(caption);
 
     return card;
   }
