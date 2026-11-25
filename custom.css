@@ -1283,7 +1283,7 @@ body {
      cells whose density falls off. Holes read as pixels breaking out of the
      image; the surviving cells below read as pixels drifting into the dialog.
      The mask only reveals or hides, so it works on light and dark dialogs. */
-  --fade-h: 112px;
+  --fade-h: 111px;
   -webkit-mask-image: linear-gradient(#000, #000), url("./images/pixel-fade.svg");
   mask-image: linear-gradient(#000, #000), url("./images/pixel-fade.svg");
   -webkit-mask-size: 100% calc(100% - var(--fade-h)), auto var(--fade-h);
