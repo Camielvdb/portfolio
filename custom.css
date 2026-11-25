@@ -1262,7 +1262,7 @@ body {
   }
 }
 
-/* Case visual as a full-bleed header: top of the image, the top 75% of the image (4 / 3).
+/* Case visual as a full-bleed header: top of the image, the middle 75% of the image (4 / 3).
    The close button floats over it; text starts below. */
 .modal-scrolling-container {
   --modal-pad-x: 64px;
@@ -1275,11 +1275,11 @@ body {
   width: calc(100% + 2 * var(--modal-pad-x));
   max-width: none;
   height: auto;
-  /* The images are square: 4 / 3 shows the top 75% of each one. */
+  /* The images are square: 4 / 3 shows the middle 75% of each one. */
   aspect-ratio: 4 / 3;
   margin: 0 calc(-1 * var(--modal-pad-x)) 48px;
   object-fit: cover;
-  object-position: top center;
+  object-position: center;
   flex: none;
 }
 
