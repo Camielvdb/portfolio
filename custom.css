@@ -1262,7 +1262,7 @@ body {
   }
 }
 
-/* Case visual as a full-bleed header: top of the image, max 300px tall (195px on phones).
+/* Case visual as a full-bleed header: top of the image, the top 75% of the image (4 / 3).
    The close button floats over it; text starts below. */
 .modal-scrolling-container {
   --modal-pad-x: 64px;
@@ -1274,7 +1274,9 @@ body {
   align-self: stretch;
   width: calc(100% + 2 * var(--modal-pad-x));
   max-width: none;
-  height: 300px;
+  height: auto;
+  /* The images are square: 4 / 3 shows the top 75% of each one. */
+  aspect-ratio: 4 / 3;
   margin: 0 calc(-1 * var(--modal-pad-x)) 48px;
   object-fit: cover;
   object-position: top center;
@@ -1296,7 +1298,6 @@ html:not([data-theme="dark"]) .modal-hero.theme-dark-only {
   }
 
   .modal-hero {
-    height: 195px;
     margin-bottom: 32px;
   }
 }
