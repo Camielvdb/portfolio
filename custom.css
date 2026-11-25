@@ -1427,7 +1427,9 @@ html[data-theme="dark"] .media-grid .item:focus-visible .item-wrapper {
   z-index: 1;
   aspect-ratio: auto;
   min-height: 0;
-  align-self: flex-start;
+  /* Same height per row, so neighbouring highlights have matching edges
+     even when one title wraps to two lines. */
+  align-self: stretch;
 }
 
 .media-grid .item::before {
@@ -1450,14 +1452,25 @@ html[data-theme="dark"] .media-grid .item::before {
   background-color: rgba(255, 255, 255, 0.12);
 }
 
-/* Entering: grows to full size with a soft overshoot. */
-.media-grid .item:hover::before,
+/* Entering: grows to full size with a soft overshoot. Pointer hover only:
+   on touch screens :hover sticks after a tap, which left a card highlighted
+   after closing its dialog. Keyboard focus always shows it. */
 .media-grid .item:focus-visible::before {
   opacity: 1;
   transform: scale(1);
   transition:
     opacity 200ms ease-out,
-    transform 380ms cubic-bezier(0.22, 1.18, 0.36, 1);
+    transform 360ms cubic-bezier(0.22, 1.1, 0.36, 1);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .media-grid .item:hover::before {
+    opacity: 1;
+    transform: scale(1);
+    transition:
+      opacity 200ms ease-out,
+      transform 360ms cubic-bezier(0.22, 1.1, 0.36, 1);
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
