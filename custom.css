@@ -1418,39 +1418,72 @@ html[data-theme="dark"] .media-grid .item:focus-visible .item-wrapper {
 }
 
 /* Cards: image with a caption below (title, then client and year).
-   Hover is a very light background behind image and caption, drawn as a
-   pseudo-element that bleeds past the card, so image and caption stay flush
-   with the page title's edges. No tilt or scale, and
-   no extra hover shadow: the card keeps its resting shadow. */
+   Hover is one shared highlight (.card-highlight, positioned by
+   card-highlight.js) that grows out of the card under the pointer and flows
+   to the next card when the pointer moves on, like the pill in the top bar
+   but in two dimensions. It bleeds past the card so image and caption stay
+   flush with the page title's edges. No tilt or scale, and no extra hover
+   shadow: the card keeps its resting shadow. */
+.media-grid {
+  position: relative;
+}
+
 .media-grid .item {
   position: relative;
-  isolation: isolate;
+  z-index: 1;
   aspect-ratio: auto;
   min-height: 0;
   align-self: flex-start;
 }
 
-.media-grid .item::before {
-  content: "";
+.card-highlight {
   position: absolute;
-  inset: -10px -10px -14px;
-  z-index: -1;
-  /* Outer radius = card radius (16px) + the 10px bleed. */
+  z-index: 0;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+  /* Card radius (16px) + the 10px bleed. */
   border-radius: 26px;
-  background-color: transparent;
-  /* Instant: no fade. */
-  transition: none;
-  /* The background is part of the hit area, so hover doesn't flicker at its edges. */
-}
-
-.media-grid .item:hover::before,
-.media-grid .item:focus-visible::before {
   background-color: color-mix(in srgb, var(--content-primary) 5%, transparent);
+  opacity: 0;
+  transform: scale(0.94);
+  pointer-events: none;
+  /* left/top/width/height (not transforms driven by custom properties): Safari
+     doesn't animate those. Position leads and size trails with a soft
+     overshoot, which is what makes the shape feel like it stretches and
+     settles into the next card. */
+  transition:
+    left 460ms cubic-bezier(0.22, 1.18, 0.36, 1),
+    top 460ms cubic-bezier(0.22, 1.18, 0.36, 1),
+    width 560ms cubic-bezier(0.22, 1.1, 0.36, 1),
+    height 560ms cubic-bezier(0.22, 1.1, 0.36, 1),
+    opacity 200ms ease-out,
+    transform 320ms cubic-bezier(0.22, 1.18, 0.36, 1);
 }
 
-html[data-theme="dark"] .media-grid .item:hover::before,
-html[data-theme="dark"] .media-grid .item:focus-visible::before {
+html[data-theme="dark"] .card-highlight {
   background-color: rgba(255, 255, 255, 0.12);
+}
+
+.card-highlight.is-active {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* First hover: grow in place instead of sliding in from the last position. */
+.card-highlight.no-slide {
+  transition:
+    opacity 200ms ease-out,
+    transform 320ms cubic-bezier(0.22, 1.18, 0.36, 1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card-highlight,
+  .card-highlight.no-slide {
+    transition: opacity 120ms linear;
+    transform: none;
+  }
 }
 
 .media-grid .item .item-wrapper {
@@ -1492,12 +1525,6 @@ html[data-theme="dark"] .media-grid .item:focus-visible .item-wrapper {
   color: var(--content-secondary);
   font-size: var(--type-small, 14px);
   line-height: var(--type-small-lh, 20px);
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .media-grid .item::before {
-    transition: none;
-  }
 }
 
 /* Dialog: no hairline edge around it; the shadow alone separates it. */
