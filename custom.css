@@ -1262,7 +1262,7 @@ body {
   }
 }
 
-/* Case visual as a full-bleed header: top of the image, the middle 75% of the image (4 / 3).
+/* Case visual as a full-bleed header: the middle 75% of the image (4 / 3).
    The close button floats over it; text starts below. */
 .modal-scrolling-container {
   --modal-pad-x: 64px;
