@@ -60,9 +60,7 @@
     var focusables = getFocusableElements(dialog);
     var closeButton = dialog.querySelector(".iconbutton");
     var target = closeButton || focusables[0] || dialog;
-    window.setTimeout(function () {
-      target.focus();
-    }, 10);
+    target.focus({ preventScroll: true });
   }
 
   function openDialog(index, trigger) {
@@ -90,9 +88,7 @@
     dialog.classList.remove("is-closing");
     dialog.setAttribute("aria-hidden", "false");
 
-    requestAnimationFrame(function () {
-      dialog.classList.add("is-visible");
-    });
+    dialog.classList.add("is-visible");
 
     focusDialog(dialog);
   }
@@ -103,24 +99,19 @@
     }
 
     var dialogToClose = activeDialog;
-    dialogToClose.classList.remove("is-visible");
-    dialogToClose.classList.add("is-closing");
+    hideDialog(dialogToClose);
+    modalContainer.classList.remove("is-active");
+    modalContainer.setAttribute("aria-hidden", "true");
+    unlockPageScroll();
 
-    window.setTimeout(function () {
-      hideDialog(dialogToClose);
-      modalContainer.classList.remove("is-active");
-      modalContainer.setAttribute("aria-hidden", "true");
-      unlockPageScroll();
+    if (activeTrigger) {
+      activeTrigger.focus();
+    } else if (lastFocusedElement && typeof lastFocusedElement.focus === "function") {
+      lastFocusedElement.focus();
+    }
 
-      if (activeTrigger) {
-        activeTrigger.focus();
-      } else if (lastFocusedElement && typeof lastFocusedElement.focus === "function") {
-        lastFocusedElement.focus();
-      }
-
-      activeDialog = null;
-      activeTrigger = null;
-    }, 110);
+    activeDialog = null;
+    activeTrigger = null;
   }
 
   function handleCardActivation(card) {
