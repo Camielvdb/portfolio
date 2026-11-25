@@ -2,7 +2,7 @@ window.PORTFOLIO_ITEMS = [
   {
     wrapperClass: "a",
     frontClass: "component-roles",
-    title: "Resolving ambiguity for people and AI",
+    title: "Component rules that people and AI follow, in 50+ shipped features",
     client: "HoneyBook",
     year: "2026",
     alt: "An invoice card built from HBUI components (status, tags, chip, badge and button), each annotated with its code and its role, such as \u201cstep in a lifecycle\u201d.",
@@ -10,7 +10,7 @@ window.PORTFOLIO_ITEMS = [
   {
     wrapperClass: "a",
     frontClass: "kanban",
-    title: "Building a flexible Kanban system",
+    title: "Three boards, one kanban system",
     client: "HoneyBook",
     year: "2025",
     alt: "A HoneyBook pipeline board with Active and Review columns and a project card being dragged between them, drawn half as UI and half as a wireframe.",
@@ -18,7 +18,7 @@ window.PORTFOLIO_ITEMS = [
   {
     wrapperClass: "a",
     frontClass: "tokenization-prep",
-    title: "Tokenization and system foundations",
+    title: "Three token layers that made dark mode a token swap",
     client: "HoneyBook",
     year: "2026",
     alt: "A sign-up form with each color labeled by its semantic design token, such as text-primary, surface-accent and stroke-focus.",
@@ -26,7 +26,7 @@ window.PORTFOLIO_ITEMS = [
   {
     wrapperClass: "a",
     frontClass: "value-gap",
-    title: "Bridging the value gap",
+    title: "Onboarding that gets users to value sooner, part of 50%+ ARR growth",
     client: "NEXT",
     year: "2023",
     alt: "The NEXT app with its side navigation and a usage meter reading 127 of 180 minutes used, next to an Upgrade button.",
@@ -34,7 +34,7 @@ window.PORTFOLIO_ITEMS = [
   {
     wrapperClass: "b",
     frontClass: "cluster-creation",
-    title: "From raw research to patterns",
+    title: "Research synthesis in minutes instead of hours",
     client: "NEXT",
     year: "2024",
     alt: "Customer interview highlight cards, two of them selected and linked into a cluster, with a \u201c2 highlights\u201d action bar.",
@@ -42,7 +42,7 @@ window.PORTFOLIO_ITEMS = [
   {
     wrapperClass: "b",
     frontClass: "search",
-    title: "Advanced dataset search",
+    title: "One search for quick lookups and complex queries",
     client: "NEXT",
     year: "2023",
     alt: "NEXT\u2019s search with the query creator:@steven, suggesting combined filters such as Steven and Emma or Steven and Bugs, plus more filters like date, media type, language and duration.",

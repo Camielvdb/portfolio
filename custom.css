@@ -1416,3 +1416,109 @@ html[data-theme="dark"] .media-grid .item:focus-visible .item-wrapper {
   line-height: 1.7;
   color: var(--content-primary);
 }
+
+/* Cards: image with a caption below (title, then client and year).
+   Hover is a very light background behind image and caption that grows out of
+   the card (scale and fade, per card; it doesn't travel between cards). It
+   bleeds past the card so image and caption stay flush with the page title's
+   edges. No tilt, and no extra hover shadow: the card keeps its resting shadow. */
+.media-grid .item {
+  position: relative;
+  z-index: 1;
+  aspect-ratio: auto;
+  min-height: 0;
+  align-self: flex-start;
+}
+
+.media-grid .item::before {
+  content: "";
+  position: absolute;
+  inset: -10px -10px -14px;
+  z-index: -1;
+  /* Card radius (16px) + the 10px bleed. */
+  border-radius: 26px;
+  background-color: color-mix(in srgb, var(--content-primary) 5%, transparent);
+  opacity: 0;
+  transform: scale(0.94);
+  /* Leaving: quick fade. */
+  transition:
+    opacity 160ms ease-out,
+    transform 160ms ease-out;
+}
+
+html[data-theme="dark"] .media-grid .item::before {
+  background-color: rgba(255, 255, 255, 0.12);
+}
+
+/* Entering: grows to full size with a soft overshoot. */
+.media-grid .item:hover::before,
+.media-grid .item:focus-visible::before {
+  opacity: 1;
+  transform: scale(1);
+  transition:
+    opacity 200ms ease-out,
+    transform 380ms cubic-bezier(0.22, 1.18, 0.36, 1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .media-grid .item::before,
+  .media-grid .item:hover::before,
+  .media-grid .item:focus-visible::before {
+    transform: none;
+    transition: opacity 120ms linear;
+  }
+}
+
+.media-grid .item .item-wrapper {
+  aspect-ratio: 1;
+  height: auto;
+  min-height: 360px;
+  /* No tilt: drop the 3D transform layer entirely so hover can't jitter it. */
+  transform: none;
+}
+
+.media-grid .item:hover .item-wrapper,
+.media-grid .item:focus-visible .item-wrapper {
+  --card-scale: 1;
+  box-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.04),
+    0 6px 16px -4px rgba(0, 0, 0, 0.06);
+}
+
+html[data-theme="dark"] .media-grid .item:hover .item-wrapper,
+html[data-theme="dark"] .media-grid .item:focus-visible .item-wrapper {
+  box-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.5),
+    0 8px 24px -6px rgba(0, 0, 0, 0.5);
+}
+
+.item-caption {
+  padding: 16px 4px 0;
+}
+
+.item-caption-title {
+  color: var(--content-primary);
+  font-size: var(--type-body, 17px);
+  line-height: 24px;
+  font-weight: 500;
+}
+
+.item-caption-meta {
+  margin-top: 6px;
+  color: var(--content-secondary);
+  font-size: var(--type-small, 14px);
+  line-height: var(--type-small-lh, 20px);
+}
+
+/* Dialog: no hairline edge around it; the shadow alone separates it. */
+.modal,
+html[data-theme="dark"] .modal {
+  border: 0;
+}
+
+/* Mobile: same vertical rhythm between cards as on desktop. */
+@media screen and (max-width: 767px) {
+  .media-grid {
+    row-gap: 40px;
+  }
+}
