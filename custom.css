@@ -1418,16 +1418,10 @@ html[data-theme="dark"] .media-grid .item:focus-visible .item-wrapper {
 }
 
 /* Cards: image with a caption below (title, then client and year).
-   Hover is one shared highlight (.card-highlight, positioned by
-   card-highlight.js) that grows out of the card under the pointer and flows
-   to the next card when the pointer moves on, like the pill in the top bar
-   but in two dimensions. It bleeds past the card so image and caption stay
-   flush with the page title's edges. No tilt or scale, and no extra hover
-   shadow: the card keeps its resting shadow. */
-.media-grid {
-  position: relative;
-}
-
+   Hover is a very light background behind image and caption that grows out of
+   the card (scale and fade, per card; it doesn't travel between cards). It
+   bleeds past the card so image and caption stay flush with the page title's
+   edges. No tilt, and no extra hover shadow: the card keeps its resting shadow. */
 .media-grid .item {
   position: relative;
   z-index: 1;
@@ -1436,53 +1430,42 @@ html[data-theme="dark"] .media-grid .item:focus-visible .item-wrapper {
   align-self: flex-start;
 }
 
-.card-highlight {
+.media-grid .item::before {
+  content: "";
   position: absolute;
-  z-index: 0;
-  top: 0;
-  left: 0;
-  width: 0;
-  height: 0;
+  inset: -10px -10px -14px;
+  z-index: -1;
   /* Card radius (16px) + the 10px bleed. */
   border-radius: 26px;
   background-color: color-mix(in srgb, var(--content-primary) 5%, transparent);
   opacity: 0;
   transform: scale(0.94);
-  pointer-events: none;
-  /* left/top/width/height (not transforms driven by custom properties): Safari
-     doesn't animate those. Position leads and size trails with a soft
-     overshoot, which is what makes the shape feel like it stretches and
-     settles into the next card. */
+  /* Leaving: quick fade. */
   transition:
-    left 460ms cubic-bezier(0.22, 1.18, 0.36, 1),
-    top 460ms cubic-bezier(0.22, 1.18, 0.36, 1),
-    width 560ms cubic-bezier(0.22, 1.1, 0.36, 1),
-    height 560ms cubic-bezier(0.22, 1.1, 0.36, 1),
-    opacity 200ms ease-out,
-    transform 320ms cubic-bezier(0.22, 1.18, 0.36, 1);
+    opacity 160ms ease-out,
+    transform 160ms ease-out;
 }
 
-html[data-theme="dark"] .card-highlight {
+html[data-theme="dark"] .media-grid .item::before {
   background-color: rgba(255, 255, 255, 0.12);
 }
 
-.card-highlight.is-active {
+/* Entering: grows to full size with a soft overshoot. */
+.media-grid .item:hover::before,
+.media-grid .item:focus-visible::before {
   opacity: 1;
   transform: scale(1);
-}
-
-/* First hover: grow in place instead of sliding in from the last position. */
-.card-highlight.no-slide {
   transition:
     opacity 200ms ease-out,
-    transform 320ms cubic-bezier(0.22, 1.18, 0.36, 1);
+    transform 380ms cubic-bezier(0.22, 1.18, 0.36, 1);
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .card-highlight,
-  .card-highlight.no-slide {
-    transition: opacity 120ms linear;
+  .media-grid .item::before,
+  .media-grid .item:hover::before,
+  .media-grid .item:focus-visible::before {
     transform: none;
+    transition: opacity 120ms linear;
   }
 }
 
