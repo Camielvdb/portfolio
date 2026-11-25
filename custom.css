@@ -1262,7 +1262,7 @@ body {
   }
 }
 
-/* Case visual as a full-bleed header: top of the image, max 400px tall.
+/* Case visual as a full-bleed header: top of the image, 300px tall (195px on phones), dissolving into the dialog with a pixel fade.
    The close button floats over it; text starts below. */
 .modal-scrolling-container {
   --modal-pad-x: 64px;
@@ -1274,11 +1274,24 @@ body {
   align-self: stretch;
   width: calc(100% + 2 * var(--modal-pad-x));
   max-width: none;
-  height: 400px;
-  margin: 0 calc(-1 * var(--modal-pad-x)) 48px;
+  height: 300px;
+  margin: 0 calc(-1 * var(--modal-pad-x)) 40px;
   object-fit: cover;
   object-position: top center;
   flex: none;
+  /* Pixel dissolve along the bottom edge: solid above, then a band of square
+     cells whose density falls off. Holes read as pixels breaking out of the
+     image; the surviving cells below read as pixels drifting into the dialog.
+     The mask only reveals or hides, so it works on light and dark dialogs. */
+  --fade-h: 112px;
+  -webkit-mask-image: linear-gradient(#000, #000), url("./images/pixel-fade.svg");
+  mask-image: linear-gradient(#000, #000), url("./images/pixel-fade.svg");
+  -webkit-mask-size: 100% calc(100% - var(--fade-h)), auto var(--fade-h);
+  mask-size: 100% calc(100% - var(--fade-h)), auto var(--fade-h);
+  -webkit-mask-position: top left, bottom left;
+  mask-position: top left, bottom left;
+  -webkit-mask-repeat: no-repeat, repeat-x;
+  mask-repeat: no-repeat, repeat-x;
 }
 
 .modal .iconbutton {
@@ -1296,8 +1309,11 @@ html:not([data-theme="dark"]) .modal-hero.theme-dark-only {
   }
 
   .modal-hero {
-    height: 260px;
+    height: 195px;
     margin-bottom: 32px;
+    --fade-h: 60px;
+    -webkit-mask-image: linear-gradient(#000, #000), url("./images/pixel-fade-sm.svg");
+    mask-image: linear-gradient(#000, #000), url("./images/pixel-fade-sm.svg");
   }
 }
 
