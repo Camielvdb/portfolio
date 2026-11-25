@@ -29,7 +29,7 @@
 }
 
 :root {
-  --theme-transition-duration: 360ms;
+  --theme-transition-duration: 120ms;
   --theme-transition-ease: ease;
   --site-time-green: #2f9262;
   --site-bg: var(--white);
@@ -98,7 +98,7 @@ html.is-theme-switching *::after {
 
 ::view-transition-old(root),
 ::view-transition-new(root) {
-  animation-duration: 360ms;
+  animation-duration: 120ms;
   animation-timing-function: ease;
 }
 
@@ -600,13 +600,10 @@ html.modal-open {
 }
 
 .title {
-  animation: appear-blur 700ms cubic-bezier(0.2, 0.8, 0.2, 1) backwards;
 }
 
 .media-grid .item {
   outline: none;
-  animation: appear-blur 700ms cubic-bezier(0.2, 0.8, 0.2, 1) backwards;
-  animation-delay: min(calc(80ms + var(--i, 0) * 35ms), 400ms);
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -754,12 +751,6 @@ html.modal-open {
    slightly smaller, matching the page's appear-blur. Closing is quick. */
 .modal {
   opacity: 0;
-  transform: translateY(10px) scale(0.97);
-  filter: blur(8px);
-  transition:
-    opacity 260ms ease,
-    transform 420ms cubic-bezier(0.2, 0.8, 0.2, 1),
-    filter 320ms ease;
 }
 
 .modal[hidden] {
@@ -778,9 +769,6 @@ html.modal-open {
 
 .modal.is-closing {
   opacity: 0;
-  transform: scale(0.98);
-  filter: blur(4px);
-  transition: opacity 110ms ease, transform 110ms ease, filter 110ms ease;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -796,21 +784,18 @@ html.modal-open {
   pointer-events: none;
   background: transparent !important;
   opacity: 0;
-  transition: opacity 100ms ease, visibility 0s linear 100ms;
 }
 
 .modal-container.is-active {
   visibility: visible;
   pointer-events: auto;
   opacity: 1;
-  transition: opacity 100ms ease;
 }
 
 .overlay {
   position: absolute;
   inset: 0;
   opacity: 0;
-  transition: opacity 100ms ease;
 }
 
 .modal-container.is-active .overlay {
@@ -871,13 +856,6 @@ html[data-theme="dark"] .local-time {
   box-shadow: none;
   -webkit-backdrop-filter: blur(0px);
   backdrop-filter: blur(0px);
-  animation: appear-blur 700ms cubic-bezier(0.2, 0.8, 0.2, 1) 80ms backwards;
-  transition:
-    background-color 360ms cubic-bezier(0.2, 0.8, 0.2, 1),
-    border-color 360ms cubic-bezier(0.2, 0.8, 0.2, 1),
-    box-shadow 360ms cubic-bezier(0.2, 0.8, 0.2, 1),
-    -webkit-backdrop-filter 360ms cubic-bezier(0.2, 0.8, 0.2, 1),
-    backdrop-filter 360ms cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
 /* Scrolled: same surface as the project panel's close button (.iconbutton). */
@@ -1419,10 +1397,11 @@ html[data-theme="dark"] .media-grid .item:focus-visible .item-wrapper {
 }
 
 /* Cards: image with a caption below (title, then client and year).
-   Hover is a very light background behind image and caption that grows out of
-   the card (scale and fade, per card; it doesn't travel between cards). It
-   bleeds past the card so image and caption stay flush with the page title's
-   edges. No tilt, and no extra hover shadow: the card keeps its resting shadow. */
+   Hover is a very light background behind image and caption: instant, no
+   grow or fade. It bleeds past the card so image and caption stay flush with
+   the page title's edges. No tilt, and no extra hover shadow: the card keeps
+   its resting shadow. Pointer hover only (on touch :hover sticks after a
+   tap); keyboard focus always shows it. */
 .media-grid .item {
   position: relative;
   z-index: 1;
@@ -1442,45 +1421,30 @@ html[data-theme="dark"] .media-grid .item:focus-visible .item-wrapper {
   border-radius: 26px;
   background-color: color-mix(in srgb, var(--content-primary) 5%, transparent);
   opacity: 0;
-  transform: scale(0.94);
-  /* Leaving: quick fade. */
-  transition:
-    opacity 160ms ease-out,
-    transform 160ms ease-out;
 }
 
 html[data-theme="dark"] .media-grid .item::before {
   background-color: rgba(255, 255, 255, 0.12);
 }
 
-/* Entering: grows to full size with a soft overshoot. Pointer hover only:
-   on touch screens :hover sticks after a tap, which left a card highlighted
-   after closing its dialog. Keyboard focus always shows it. */
 .media-grid .item:focus-visible::before {
   opacity: 1;
-  transform: scale(1);
-  transition:
-    opacity 200ms ease-out,
-    transform 360ms cubic-bezier(0.22, 1.1, 0.36, 1);
 }
 
 @media (hover: hover) and (pointer: fine) {
   .media-grid .item:hover::before {
     opacity: 1;
-    transform: scale(1);
-    transition:
-      opacity 200ms ease-out,
-      transform 360ms cubic-bezier(0.22, 1.1, 0.36, 1);
   }
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .media-grid .item::before,
-  .media-grid .item:hover::before,
-  .media-grid .item:focus-visible::before {
-    transform: none;
-    transition: opacity 120ms linear;
-  }
+/* Nothing on a card animates: hover states (highlight, border, shadow,
+   thumbnail changes) switch the moment the pointer arrives. */
+.media-grid .item,
+.media-grid .item *,
+.media-grid .item *::before,
+.media-grid .item *::after,
+.media-grid .item::before {
+  transition: none !important;
 }
 
 .media-grid .item .item-wrapper {
