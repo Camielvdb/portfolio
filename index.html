@@ -75,10 +75,10 @@
 <div class="modal-scrolling-container">
 <img src="./images/honeybook-clear-roles.webp" alt="An invoice card built from HBUI components (status, tags, chip, badge and button), each annotated with its code and its role, such as “step in a lifecycle”." class="modal-hero" decoding="async" fetchpriority="low"/>
 <h1 class="modal-header">Component rules that people and AI follow, in 50+ shipped features</h1>
-<div class="modal-meta"><p class="modal-paragraph"><strong>HoneyBook · 2026 · Senior Product Designer, Design Systems</strong></p><p class="modal-paragraph"><strong>Team:</strong> <mark class="todo">[me + N engineers, N designers]</mark> · <strong>Timeline:</strong> <mark class="todo">[months]</mark> · <strong>Outcome:</strong> 50+ features shipped on the right components, and generated code builds on HBUI instead of public libraries.</p></div>
+<div class="modal-meta"><p class="modal-paragraph"><strong>HoneyBook · 2026 · Senior Product Designer, Design Systems</strong></p><p class="modal-paragraph"><strong>Team:</strong> me, another designer and 2 engineers · <strong>Timeline:</strong> 2026, ongoing · <strong>Outcome:</strong> the new way code ships at HoneyBook, with 50+ features built on the right components and counting.</p></div>
 <h2 class="modal-subheader">The problem</h2>
 <p class="modal-paragraph">Vibe coding changed who builds at HoneyBook. PMs prototype, designers open PRs, and LLMs generate UI. That changes what a design system is for: HBUI now serves people and AI alike, and both need it to be unambiguous.</p>
-<p class="modal-paragraph">It wasn't. Across the library, components overlapped in look and purpose, with no written meaning behind them. Tags, chips, badges and statuses were the clearest example. People used them interchangeably, and an LLM had no way to tell them apart, so it guessed, or reached for a public library instead. <mark class="todo">[Optional: one concrete example of misuse you saw, e.g. a status rendered as a tag on an invoice.]</mark></p>
+<p class="modal-paragraph">It wasn't. Across the library, components overlapped in look and purpose, with no written meaning behind them. Tags were the clearest example: they were used for categories, for filters and for statuses, and each of those behaves differently. The same-looking element did three jobs with three interactions. People used components interchangeably, and an LLM had no way to tell them apart, so it guessed, or reached for a public library instead.</p>
 <h2 class="modal-subheader">Key decisions</h2>
 <img src="./images/honeybook-component-examples.png" loading="lazy" alt="Badge, status, tag, chip and button components shown side by side, each with its own role." class="modal-image"/>
 <h3 class="modal-decision">1. Define components by meaning, not by look.</h3>
@@ -91,7 +91,7 @@
 <li class="modal-paragraph">A <strong>Button</strong> is a stable action.</li>
 </ul>
 <p class="modal-paragraph">Then we aligned the visuals to match, so each one still feels related but now signals its purpose.</p>
-<p class="modal-paragraph"><em>Tradeoff:</em> <mark class="todo">[check]</mark> existing screens had to change to follow the new contracts. <mark class="todo">[How many / how you handled migration.]</mark></p>
+<p class="modal-paragraph"><em>Tradeoff:</em> many existing screens had to change to follow the new contracts. Tags became chips, badges or statuses, some badges became tags, and old "pills" became statuses or badges. Status got the most care, because in a CRM it carries the most weight.</p>
 <h3 class="modal-decision">2. One source of truth, not two.</h3>
 <p class="modal-paragraph">People rely on visuals and AI needs structured text. Writing every guideline twice would double the upkeep and let the two versions drift apart. Instead we restructured the guidelines as data, with one shared format that produces a Storybook page for people and a rules file for agents.</p>
 <p class="modal-paragraph"><em>Tradeoff:</em> writing guidelines as structured data is slower than free-form docs. It pays off on every update after.</p>
@@ -101,10 +101,11 @@
 <p class="modal-paragraph">Components have properties, and patterns have scenarios. They overlap enough to share a common format, but patterns differ heavily from each other. Forcing them into one template would have made the system brittle, so the format flexes where it has to.</p>
 <h2 class="modal-subheader">Impact</h2>
 <ul class="modal-list">
-<li class="modal-paragraph"><strong>50+ features</strong> have shipped on the right components.</li>
-<li class="modal-paragraph">Misuse now gets caught in review. <mark class="todo">[Number, e.g. review comments about component misuse dropped from X to Y per month.]</mark></li>
-<li class="modal-paragraph">Generated code builds on HBUI instead of public libraries. <mark class="todo">[Number, e.g. share of AI-generated PRs that pass system review on the first try.]</mark></li>
-<li class="modal-paragraph"><mark class="todo">[Optional: adoption by PMs and designers who open PRs, or a quote from an engineer.]</mark></li>
+<li class="modal-paragraph"><strong>50+ features and counting</strong> have shipped on the right components. It's now the way code ships at HoneyBook.</li>
+<li class="modal-paragraph"><strong>Every designer opens PRs now</strong>, building on the same rules as engineers and agents.</li>
+<li class="modal-paragraph">Every ship includes checks against the rules. They rarely need to step in, because the design is already right.</li>
+<li class="modal-paragraph">Fewer fixes are needed, and reviews are easier because the rules are clear.</li>
+<li class="modal-paragraph">Generated code builds on HBUI instead of public libraries.</li>
 </ul>
 <h2 class="modal-subheader">What I learned</h2>
 <p class="modal-paragraph">AI is here to stay, and so are systems. The work that made HBUI legible to agents (clear roles, plain language, one source of truth) is the same work that made it clearer for people. Systems are built around people, and human language outlasts any tool.</p>

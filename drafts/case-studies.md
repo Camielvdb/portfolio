@@ -14,12 +14,12 @@ Each case follows the same shape: a summary line, the problem, 3–4 key decisio
 ## 1. Component rules that people and AI follow, in 50+ shipped features
 
 **HoneyBook · 2026 · Senior Product Designer, Design Systems**
-**Team:** [me + N engineers, N designers] · **Timeline:** [months] · **Outcome:** 50+ features shipped on the right components, and generated code builds on HBUI instead of public libraries.
+**Team:** me, another designer and 2 engineers · **Timeline:** 2026, ongoing · **Outcome:** the new way code ships at HoneyBook, with 50+ features built on the right components and counting.
 
 ### The problem
 Vibe coding changed who builds at HoneyBook. PMs prototype, designers open PRs, and LLMs generate UI. That changes what a design system is for: HBUI now serves people and AI alike, and both need it to be unambiguous.
 
-It wasn't. Across the library, components overlapped in look and purpose, with no written meaning behind them. Tags, chips, badges and statuses were the clearest example. People used them interchangeably, and an LLM had no way to tell them apart, so it guessed, or reached for a public library instead. [Optional: one concrete example of misuse you saw, e.g. a status rendered as a tag on an invoice.]
+It wasn't. Across the library, components overlapped in look and purpose, with no written meaning behind them. Tags were the clearest example: they were used for categories, for filters and for statuses, and each of those behaves differently. The same-looking element did three jobs with three interactions. People used components interchangeably, and an LLM had no way to tell them apart, so it guessed, or reached for a public library instead.
 
 ### Key decisions
 
@@ -32,7 +32,7 @@ I mapped every overlapping component by purpose, usage and level of interaction,
 - A **Button** is a stable action.
 
 Then we aligned the visuals to match, so each one still feels related but now signals its purpose.
-*Tradeoff:* [check] existing screens had to change to follow the new contracts. [How many / how you handled migration.]
+*Tradeoff:* many existing screens had to change to follow the new contracts. Tags became chips, badges or statuses, some badges became tags, and old "pills" became statuses or badges. Status got the most care, because in a CRM it carries the most weight.
 
 **2. One source of truth, not two.**
 People rely on visuals and AI needs structured text. Writing every guideline twice would double the upkeep and let the two versions drift apart. Instead we restructured the guidelines as data, with one shared format that produces a Storybook page for people and a rules file for agents.
@@ -45,10 +45,11 @@ Rule writing is a human, messy process, even when the output has to be structure
 Components have properties, and patterns have scenarios. They overlap enough to share a common format, but patterns differ heavily from each other. Forcing them into one template would have made the system brittle, so the format flexes where it has to.
 
 ### Impact
-- **50+ features** have shipped on the right components.
-- Misuse now gets caught in review. [Number, e.g. review comments about component misuse dropped from X to Y per month.]
-- Generated code builds on HBUI instead of public libraries. [Number, e.g. share of AI-generated PRs that pass system review on the first try.]
-- [Optional: adoption by PMs and designers who open PRs, or a quote from an engineer.]
+- **50+ features and counting** have shipped on the right components. It's now the way code ships at HoneyBook.
+- **Every designer opens PRs now**, building on the same rules as engineers and agents.
+- Every ship includes checks against the rules. They rarely need to step in, because the design is already right.
+- Fewer fixes are needed, and reviews are easier because the rules are clear.
+- Generated code builds on HBUI instead of public libraries.
 
 ### What I learned
 AI is here to stay, and so are systems. The work that made HBUI legible to agents (clear roles, plain language, one source of truth) is the same work that made it clearer for people. Systems are built around people, and human language outlasts any tool.
