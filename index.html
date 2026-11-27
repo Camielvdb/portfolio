@@ -118,28 +118,27 @@
 <div class="modal-scrolling-container">
 <img src="./images/honeybook-kanban-ui.webp" alt="A HoneyBook pipeline board with Active and Review columns and a project card being dragged between them, drawn half as UI and half as a wireframe." class="modal-hero" decoding="async" fetchpriority="low"/>
 <h1 class="modal-header">Three boards, one kanban system</h1>
-<div class="modal-meta"><p class="modal-paragraph"><strong>HoneyBook · 2025 · Senior Product Designer</strong></p><p class="modal-paragraph"><strong>Team:</strong> <mark class="todo">[me + N engineers across N domain teams]</mark> · <strong>Timeline:</strong> <mark class="todo">[months]</mark> · <strong>Outcome:</strong> the Pipeline was rebuilt with no custom one-offs, and the same component now serves other domains.</p></div>
+<div class="modal-meta"><p class="modal-paragraph"><strong>HoneyBook · 2025 · Senior Product Designer</strong></p><p class="modal-paragraph"><strong>Team:</strong> me as the only designer, a PM, 1 engineer on the component and 2 on the product side · <strong>Timeline:</strong> 2025 · <strong>Outcome:</strong> the Pipeline was rebuilt with no custom one-offs, and any new board imports the same component from the library.</p></div>
 <h2 class="modal-subheader">The problem</h2>
 <p class="modal-paragraph">The Pipeline is home base for HoneyBook members, but it was an outdated table posing as a pipeline. Projects, contacts and tasks all needed a board, and each was owned by a different team with its own timeline and opinions on how a kanban should work.</p>
 <p class="modal-paragraph">Without a shared model, every board would be built from scratch, and inconsistently. The challenge was finding enough common ground to build once, without flattening real differences between domains.</p>
 <h2 class="modal-subheader">Key decisions</h2>
 <h3 class="modal-decision">1. Columns are just a property.</h3>
 <p class="modal-paragraph">Every domain was really visualizing a property value: a project's stage, a task's status, a lead's source. So I designed one system instead of three boards. Nearly any property can define the columns, and moving a card changes that value. Visual continuity keeps that clear while things move.</p>
-<p class="modal-paragraph"><em>Tradeoff:</em> a generic model needs more upfront design than one bespoke board. It's what let the other boards reuse the same component.</p>
+<p class="modal-paragraph"><em>Tradeoff:</em> a generic model needs more upfront design than one bespoke board. It's why any new board can now import it straight from the library.</p>
 <h3 class="modal-decision">2. Map card properties by behavior.</h3>
 <p class="modal-paragraph">Cards hold both content and interactive parts. I mapped every card property by how it behaves, so interactive elements never clash with content, whichever domain fills the card.</p>
 <h3 class="modal-decision">3. Design every interaction state up front.</h3>
-<p class="modal-paragraph">Drag, bulk select, sort constraints and columns that can't accept an item were all designed before build, not discovered during QA. <mark class="todo">[Optional: one state that was especially tricky and how you solved it.]</mark></p>
+<p class="modal-paragraph">Drag, bulk select, sort constraints and columns that can't accept an item were all designed before build, not discovered during QA. Sorting was the hardest. Without a sort, a card can drop anywhere. With a sort on, the card lands in a column and the column places it for you. To keep that smooth and continuous, the drag had to account for the sort, so the card settles where it belongs instead of jumping.</p>
 <img src="./images/honeybook-kanban-visual.webp" loading="lazy" alt="Kanban interaction states: dragging a column, dragging an item, and dragging an item into a column with a sort constraint." class="modal-image"/>
 <h3 class="modal-decision">4. Defaults first, customization second.</h3>
 <p class="modal-paragraph">Flexibility meant three things: sensible defaults for fast shipping, defined pillars for cross-domain coherence, and room for domain-specific content without breaking the system. Any card can be customized, but the design works best with system presets.</p>
-<p class="modal-paragraph"><em>Tradeoff:</em> <mark class="todo">[Did a team push for more freedom than the presets allow? If so, how you handled it. Otherwise cut this line.]</mark></p>
+<p class="modal-paragraph"><em>Tradeoff:</em> every team wanted its own actions in a more prominent spot, but that often clashed with behaviors every board shares, like selecting. We worked together on good in-betweens instead of one-off exceptions.</p>
 <h2 class="modal-subheader">Impact</h2>
 <ul class="modal-list">
 <li class="modal-paragraph">The Pipeline was rebuilt on the system and shipped with <strong>no custom one-offs</strong> in the code.</li>
-<li class="modal-paragraph">Members responded warmly. <mark class="todo">[Number or quote, e.g. a satisfaction score, usage, or a member quote.]</mark></li>
-<li class="modal-paragraph">The same component now serves other domains: <mark class="todo">[which ones]</mark>.</li>
-<li class="modal-paragraph"><mark class="todo">[Optional: build time for the next board vs the first.]</mark></li>
+<li class="modal-paragraph">Members noticed. Replies to HoneyBook's Instagram update included "Kanban is amazing."</li>
+<li class="modal-paragraph">Any new board imports the same component from the library, so contacts, tasks and other domains can follow without new design or code.</li>
 </ul>
 <h2 class="modal-subheader">What I learned</h2>
 <p class="modal-paragraph">The best systems work often starts as product work. Finding the one idea that the domains shared (columns as a property) did more than any amount of visual alignment could have.</p>

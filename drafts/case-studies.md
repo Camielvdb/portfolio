@@ -98,7 +98,7 @@ Foundations work is invisible, but it shapes everything that comes after. A stro
 ## 3. Three boards, one kanban system
 
 **HoneyBook · 2025 · Senior Product Designer**
-**Team:** [me + N engineers across N domain teams] · **Timeline:** [months] · **Outcome:** the Pipeline was rebuilt with no custom one-offs, and the same component now serves other domains.
+**Team:** me as the only designer, a PM, 1 engineer on the component and 2 on the product side · **Timeline:** 2025 · **Outcome:** the Pipeline was rebuilt with no custom one-offs, and any new board imports the same component from the library.
 
 ### The problem
 The Pipeline is home base for HoneyBook members, but it was an outdated table posing as a pipeline. Projects, contacts and tasks all needed a board, and each was owned by a different team with its own timeline and opinions on how a kanban should work.
@@ -109,23 +109,22 @@ Without a shared model, every board would be built from scratch, and inconsisten
 
 **1. Columns are just a property.**
 Every domain was really visualizing a property value: a project's stage, a task's status, a lead's source. So I designed one system instead of three boards. Nearly any property can define the columns, and moving a card changes that value. Visual continuity keeps that clear while things move.
-*Tradeoff:* a generic model needs more upfront design than one bespoke board. It's what let the other boards reuse the same component.
+*Tradeoff:* a generic model needs more upfront design than one bespoke board. It's why any new board can now import it straight from the library.
 
 **2. Map card properties by behavior.**
 Cards hold both content and interactive parts. I mapped every card property by how it behaves, so interactive elements never clash with content, whichever domain fills the card.
 
 **3. Design every interaction state up front.**
-Drag, bulk select, sort constraints and columns that can't accept an item were all designed before build, not discovered during QA. [Optional: one state that was especially tricky and how you solved it.]
+Drag, bulk select, sort constraints and columns that can't accept an item were all designed before build, not discovered during QA. Sorting was the hardest. Without a sort, a card can drop anywhere. With a sort on, the card lands in a column and the column places it for you. To keep that smooth and continuous, the drag had to account for the sort, so the card settles where it belongs instead of jumping.
 
 **4. Defaults first, customization second.**
 Flexibility meant three things: sensible defaults for fast shipping, defined pillars for cross-domain coherence, and room for domain-specific content without breaking the system. Any card can be customized, but the design works best with system presets.
-*Tradeoff:* [Did a team push for more freedom than the presets allow? If so, how you handled it. Otherwise cut this line.]
+*Tradeoff:* every team wanted its own actions in a more prominent spot, but that often clashed with behaviors every board shares, like selecting. We worked together on good in-betweens instead of one-off exceptions.
 
 ### Impact
 - The Pipeline was rebuilt on the system and shipped with **no custom one-offs** in the code.
-- Members responded warmly. [Number or quote, e.g. a satisfaction score, usage, or a member quote.]
-- The same component now serves other domains: [which ones].
-- [Optional: build time for the next board vs the first.]
+- Members noticed. Replies to HoneyBook's Instagram update included "Kanban is amazing."
+- Any new board imports the same component from the library, so contacts, tasks and other domains can follow without new design or code.
 
 ### What I learned
 The best systems work often starts as product work. Finding the one idea that the domains shared (columns as a property) did more than any amount of visual alignment could have.
