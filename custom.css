@@ -1500,3 +1500,43 @@ html[data-theme="dark"] .modal {
     row-gap: 40px;
   }
 }
+
+/* Case study drafts: summary line, decision headings, placeholders */
+.modal-meta {
+  margin: 0 0 8px;
+  padding: 16px 0 4px;
+  border-top: 1px solid currentColor;
+  border-color: color-mix(in srgb, currentColor 15%, transparent);
+}
+
+.modal-meta .modal-paragraph {
+  opacity: 0.72;
+  margin-bottom: 4px;
+}
+
+.modal-decision {
+  font-size: var(--type-body);
+  line-height: var(--type-body-lh);
+  font-weight: 600;
+  margin: 20px 0 6px;
+}
+
+.modal-scrolling-container code {
+  font-size: 0.9em;
+  padding: 1px 5px;
+  border-radius: 4px;
+  background: color-mix(in srgb, currentColor 8%, transparent);
+}
+
+/* Remove before merging: highlights draft placeholders */
+mark.todo {
+  background: #fff1a8;
+  color: #4a3b00;
+  border-radius: 3px;
+  padding: 0 3px;
+}
+
+html[data-theme="dark"] mark.todo {
+  background: #5c4b00;
+  color: #fff1a8;
+}
