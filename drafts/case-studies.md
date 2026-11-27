@@ -28,7 +28,8 @@ I mapped every overlapping component by purpose, usage and level of interaction,
 - A **Badge** is a system-assigned descriptor.
 - A **Status** is a step in a lifecycle.
 - A **Tag** is a user-defined category.
-- A **Chip** is [role — e.g. an interactive filter or selection].
+- A **Chip** is a contextual action.
+- A **Button** is a stable action.
 
 Then we aligned the visuals to match, so each one still feels related but now signals its purpose.
 *Tradeoff:* [check] existing screens had to change to follow the new contracts. [How many / how you handled migration.]
