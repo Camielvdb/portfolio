@@ -1527,16 +1527,3 @@ html[data-theme="dark"] .modal {
   border-radius: 4px;
   background: color-mix(in srgb, currentColor 8%, transparent);
 }
-
-/* Remove before merging: highlights draft placeholders */
-mark.todo {
-  background: #fff1a8;
-  color: #4a3b00;
-  border-radius: 3px;
-  padding: 0 3px;
-}
-
-html[data-theme="dark"] mark.todo {
-  background: #5c4b00;
-  color: #fff1a8;
-}

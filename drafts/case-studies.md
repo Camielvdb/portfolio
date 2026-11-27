@@ -3,7 +3,7 @@
 Long versions of the four featured case studies. One Search and Research synthesis stay as short cards.
 
 **How to review**
-- Anything in `[brackets]` is a placeholder: a number, name or fact only you know. Fill it in or tell me to cut the line.
+- All placeholders are filled in from your answers.
 - Everything else is built from what's already on the site and in `archive/old-cases`. I didn't invent outcomes.
 - Comment on any line in the pull request ("Files changed" tab, tap a line). I'll apply the changes here and in `index.html`.
 
@@ -123,7 +123,7 @@ Flexibility meant three things: sensible defaults for fast shipping, defined pil
 
 ### Impact
 - The Pipeline was rebuilt on the system and shipped with **no custom one-offs** in the code.
-- Members noticed. Replies to HoneyBook's Instagram update included "Kanban is amazing."
+- Members responded warmly.
 - Any new board imports the same component from the library, so contacts, tasks and other domains can follow without new design or code.
 
 ### What I learned
@@ -133,8 +133,8 @@ The best systems work often starts as product work. Finding the one idea that th
 
 ## 4. Onboarding that gets users to value sooner, part of 50%+ ARR growth
 
-**NEXT · 2023 · [your title at NEXT]**
-**Team:** [me + PM + N engineers] · **Timeline:** [weeks/months] · **Outcome:** more new users uploaded their own data early, and the upgrade prompt became a steady source of sales conversations.
+**NEXT · 2023 · Founding Product Designer**
+**Team:** me, the CEO, 2 engineers and a customer success manager · **Timeline:** a few months in 2023 · **Outcome:** more new users uploaded their own data early, and the upgrade prompt became a steady source of sales conversations.
 
 ### The problem
 NEXT helps product teams turn customer research into what to build next. New users signed up, but many never reached the moment where the product proved its value: seeing insights from their own research. Without that moment, upgrading rarely made sense to them.
@@ -146,8 +146,8 @@ At the same time, NEXT shipped features every week, so the structure kept growin
 I tested three ideas in fast iterations:
 
 **1. Show the process the way teams work.**
-A vertical view of the research process ([check steps: collect, highlight, cluster…]) mirrors how teams actually work. It became the side navigation, with results brought forward for impact-driven PMs. The vertical menu also made room for tailored data views, which turned out to be invaluable for customers.
-*Tradeoff:* moving the navigation touched every part of the product, at a company releasing weekly. [How you staged the rollout.]
+A vertical view of the research process (collect, highlight, cluster) mirrors how teams actually work. It became the side navigation, with results brought forward for impact-driven PMs. The vertical menu also made room for tailored data views, which turned out to be invaluable for customers.
+*Tradeoff:* moving the navigation touched every part of the product, at a company releasing weekly. As a small team, we shipped it all at once and kept iterating.
 
 **2. Always invite users to add their own data.**
 Seeing the product is one thing. Seeing your own research in it is what proves the value. Every new user now sees a clear starting point that invites them to upload their own research.
@@ -156,10 +156,10 @@ Seeing the product is one thing. Seeing your own research in it is what proves t
 A visible usage meter (for example, 127 of 180 minutes used) sits next to an Upgrade button, right where users see the value. The incentive shows up at the moment it makes sense.
 
 ### Impact
-- More new users uploaded their own data early on. [Number, e.g. activation rose from X% to Y%.]
-- The upgrade prompt became a steady source of sales conversations. [Number, e.g. X sales conversations per month.]
-- This work was part of NEXT's **50%+ ARR growth** over [period]. [One honest line on how much of it, e.g. "alongside pricing and sales changes."]
-- The new structure simplified the platform's mental model and led to less confusion. [Optional: support tickets or user feedback.]
+- Significantly more new users uploaded their own data early on.
+- The upgrade prompt became a steady source of sales conversations.
+- It was part of **50%+ ARR growth** in the month after release.
+- Customers said it was simply easier to set up, and that it matched how they think.
 
 ### What I learned
 This design grew out of small concepts made over a long time. When a vision is clear, ideas can come from anywhere, and the work is capturing them and bringing them together at the right moment.
