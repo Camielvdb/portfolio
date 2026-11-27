@@ -18,7 +18,7 @@ window.PORTFOLIO_ITEMS = [
   {
     wrapperClass: "a",
     frontClass: "tokenization-prep",
-    title: "Three token layers that made dark mode a token swap",
+    title: "Three token layers that make dark mode a token swap",
     client: "HoneyBook",
     year: "2026",
     alt: "A sign-up form with each color labeled by its semantic design token, such as text-primary, surface-accent and stroke-focus.",
@@ -29,7 +29,7 @@ window.PORTFOLIO_ITEMS = [
     title: "Onboarding that gets users to value sooner, part of 50%+ ARR growth",
     client: "NEXT",
     year: "2023",
-    alt: "The NEXT app with its side navigation and a usage meter reading 127 of 180 minutes used, next to an Upgrade button.",
+    alt: "The NEXT app with its side navigation grouped into Discovery (Overview, Clusters) and Database (Highlights), and a usage meter reading 127 of 180 minutes used next to an Upgrade button.",
   },
   {
     wrapperClass: "b",
@@ -37,7 +37,7 @@ window.PORTFOLIO_ITEMS = [
     title: "Research synthesis in minutes instead of hours",
     client: "NEXT",
     year: "2024",
-    alt: "Customer interview highlight cards, two of them selected and linked into a cluster, with a \u201c2 highlights\u201d action bar.",
+    alt: "Customer interview highlight cards with video thumbnails. Two are selected and linked into a cluster, with an action bar reading \u201c2 highlights\u201d and options to select all, tag or delete.",
   },
   {
     wrapperClass: "b",
