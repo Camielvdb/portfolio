@@ -50,7 +50,7 @@
 <ul class="work-fallback">
 <li><strong>Component rules that people and AI follow, in 50+ shipped features</strong> — HoneyBook, 2026</li>
 <li><strong>Three boards, one kanban system</strong> — HoneyBook, 2025</li>
-<li><strong>Three token layers that made dark mode a token swap</strong> — HoneyBook, 2026</li>
+<li><strong>Three token layers that make dark mode a token swap</strong> — HoneyBook, 2026</li>
 <li><strong>Onboarding that gets users to value sooner, part of 50%+ ARR growth</strong> — NEXT, 2023</li>
 <li><strong>Research synthesis in minutes instead of hours</strong> — NEXT, 2024</li>
 <li><strong>One search for quick lookups and complex queries</strong> — NEXT, 2023</li>
@@ -151,35 +151,34 @@
 <div class="modal modal-q">
 <div class="modal-scrolling-container">
 <img src="./images/honeybook-tokenization-light.webp" alt="Light mode: a sign-up form with each color labeled by its semantic token, such as text-primary, surface-accent and stroke-focus." class="modal-hero theme-light-only" decoding="async" fetchpriority="low"/><img src="./images/honeybook-tokenization-dark.webp" alt="Dark mode: the same sign-up form and semantic tokens, with dark values swapped in." class="modal-hero theme-dark-only" decoding="async" fetchpriority="low"/>
-<h1 class="modal-header">Three token layers that made dark mode a token swap</h1>
-<div class="modal-meta"><p class="modal-paragraph"><strong>HoneyBook · 2026 · Senior Product Designer, Design Systems</strong></p><p class="modal-paragraph"><strong>Team:</strong> <mark class="todo">[me + N engineers]</mark> · <strong>Timeline:</strong> <mark class="todo">[months]</mark> · <strong>Outcome:</strong> light and dark mode run on the same components, with accessibility built into the foundation.</p></div>
+<h1 class="modal-header">Three token layers that make dark mode a token swap</h1>
+<div class="modal-meta"><p class="modal-paragraph"><strong>HoneyBook · 2026 · Senior Product Designer, Design Systems</strong></p><p class="modal-paragraph"><strong>Team:</strong> me, 2 other designers and 2 engineers · <strong>Timeline:</strong> 2026 · <strong>Outcome:</strong> every component now runs on semantic tokens, with accessibility built in and dark mode about to launch as a pure token swap.</p></div>
 <h2 class="modal-subheader">The problem</h2>
-<p class="modal-paragraph">The foundations under a design system decide how far it can scale. At HoneyBook, visual decisions lived in too many places: <mark class="todo">[hardcoded values / one-off colors / per-component overrides — pick what's true]</mark>. Every theme change or contrast fix meant hunting through components, and dark mode would have meant designing much of the product twice.</p>
+<p class="modal-paragraph">The foundations under a design system decide how far it can scale. At HoneyBook, they were outdated: some tokens, a lot of raw hex values, and many inconsistencies. Every theme change or contrast fix meant hunting through components, and dark mode would have meant designing much of the product twice.</p>
 <p class="modal-paragraph">The question was how to set up tokens that improve scale without making the system harder to understand or adopt.</p>
 <h2 class="modal-subheader">Key decisions</h2>
 <h3 class="modal-decision">1. Three layers, with strict rules about who uses what.</h3>
 <ul class="modal-list">
-<li class="modal-paragraph"><strong>Primitives</strong> hold raw values, such as <mark class="todo">[e.g. blue-600]</mark>.</li>
+<li class="modal-paragraph"><strong>Primitives</strong> hold raw values.</li>
 <li class="modal-paragraph"><strong>Semantic tokens</strong> name those values by purpose, such as secondary text or an accent surface.</li>
 <li class="modal-paragraph"><strong>Components</strong> only ever use semantic tokens. Never primitives, never raw values.</li>
 </ul>
 <p class="modal-paragraph"><em>Tradeoff:</em> the strict rule adds a step when someone needs a new color. That step is the point: it forces a conversation about purpose before a new value enters the system.</p>
 <h3 class="modal-decision">2. Name tokens by purpose, not appearance.</h3>
-<p class="modal-paragraph"><code>text-primary</code>, <code>surface-accent</code>, <code>stroke-focus</code> say what a color is for, not what it looks like. That's what makes theming possible: the purpose stays the same in dark mode, and only the value changes. <mark class="todo">[Optional: your naming pattern, e.g. category-role-state.]</mark></p>
+<p class="modal-paragraph"><code>text-primary</code>, <code>surface-accent</code>, <code>stroke-focus</code> say what a color is for, not what it looks like. That's what makes theming possible: the purpose stays the same in dark mode, and only the value changes. Every name follows one pattern: category (text, surface, stroke), then role or attribute (primary, accent, item), then state (hover, focus).</p>
 <h3 class="modal-decision">3. Put accessibility in the foundation.</h3>
-<p class="modal-paragraph">Contrast is checked at the token level, not patched per component. If every text and surface pairing passes <mark class="todo">[WCAG AA]</mark>, every component built on them inherits it. <mark class="todo">[How you checked: tooling, manual audit, contrast matrix.]</mark></p>
+<p class="modal-paragraph">Contrast is checked at the token level, not patched per component. Every text and surface pairing is checked, so every component built on them inherits accessible color.</p>
 <h3 class="modal-decision">4. Map before migrating.</h3>
-<p class="modal-paragraph">I started by mapping the layers beneath the UI: where consistency matters most, where change is most likely, and where values were already drifting. <mark class="todo">[What the audit found, e.g. X unique colors reduced to Y primitives and Z semantic tokens.]</mark></p>
+<p class="modal-paragraph">I started by mapping the layers beneath the UI: where consistency matters most, where change is most likely, and where values were already drifting. Grays were the clearest case: about 20 different grays came down to a handful of semantic values.</p>
 <h2 class="modal-subheader">Impact</h2>
 <ul class="modal-list">
-<li class="modal-paragraph">Light and dark mode are a token swap: same components, different values.</li>
-<li class="modal-paragraph"><mark class="todo">[Number, e.g. X hardcoded values replaced, or Y unique colors consolidated into Z tokens.]</mark></li>
-<li class="modal-paragraph"><mark class="todo">[Time or effort saved, e.g. a theme change that used to take days now takes one file change.]</mark></li>
-<li class="modal-paragraph">The same structure is what lets the system scale to <mark class="todo">[new surfaces / brands / AI-generated code]</mark>, because there's one place to change a decision.</li>
+<li class="modal-paragraph"><strong>Every component is rewired to semantic tokens.</strong> Dark mode is now a token swap, same components with different values, and it's about to launch.</li>
+<li class="modal-paragraph"><strong>About 20 grays</strong> now map to a handful of semantic values.</li>
+<li class="modal-paragraph"><strong>Every color pairing is contrast-checked</strong> at the foundation.</li>
+<li class="modal-paragraph">The same structure lets the system scale to new themes and to AI-generated code, because there's one place to change a decision.</li>
 </ul>
 <h2 class="modal-subheader">What I learned</h2>
 <p class="modal-paragraph">Foundations work is invisible, but it shapes everything that comes after. A strong token structure makes design decisions easier to change, scale and keep aligned across teams.</p>
-<p class="modal-paragraph"><em>Live demo idea:</em> this site's own theme toggle could run on the same three-layer structure, and the case study could link to it.</p>
 </div>
 <div class="iconbutton">
 <svg class="icon-in-button" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18.9991 19L5 5.00098"/><path d="M19 5L5.00092 18.999"/></svg>

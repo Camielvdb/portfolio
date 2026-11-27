@@ -56,44 +56,42 @@ AI is here to stay, and so are systems. The work that made HBUI legible to agent
 
 ---
 
-## 2. Three token layers that made dark mode a token swap
+## 2. Three token layers that make dark mode a token swap
 
 **HoneyBook · 2026 · Senior Product Designer, Design Systems**
-**Team:** [me + N engineers] · **Timeline:** [months] · **Outcome:** light and dark mode run on the same components, with accessibility built into the foundation.
+**Team:** me, 2 other designers and 2 engineers · **Timeline:** 2026 · **Outcome:** every component now runs on semantic tokens, with accessibility built in and dark mode about to launch as a pure token swap.
 
 ### The problem
-The foundations under a design system decide how far it can scale. At HoneyBook, visual decisions lived in too many places: [hardcoded values / one-off colors / per-component overrides — pick what's true]. Every theme change or contrast fix meant hunting through components, and dark mode would have meant designing much of the product twice.
+The foundations under a design system decide how far it can scale. At HoneyBook, they were outdated: some tokens, a lot of raw hex values, and many inconsistencies. Every theme change or contrast fix meant hunting through components, and dark mode would have meant designing much of the product twice.
 
 The question was how to set up tokens that improve scale without making the system harder to understand or adopt.
 
 ### Key decisions
 
 **1. Three layers, with strict rules about who uses what.**
-- **Primitives** hold raw values, such as [e.g. blue-600].
+- **Primitives** hold raw values.
 - **Semantic tokens** name those values by purpose, such as secondary text or an accent surface.
 - **Components** only ever use semantic tokens. Never primitives, never raw values.
 
 *Tradeoff:* the strict rule adds a step when someone needs a new color. That step is the point: it forces a conversation about purpose before a new value enters the system.
 
 **2. Name tokens by purpose, not appearance.**
-`text-primary`, `surface-accent`, `stroke-focus` say what a color is for, not what it looks like. That's what makes theming possible: the purpose stays the same in dark mode, and only the value changes. [Optional: your naming pattern, e.g. category-role-state.]
+`text-primary`, `surface-accent`, `stroke-focus` say what a color is for, not what it looks like. That's what makes theming possible: the purpose stays the same in dark mode, and only the value changes. Every name follows one pattern: category (text, surface, stroke), then role or attribute (primary, accent, item), then state (hover, focus).
 
 **3. Put accessibility in the foundation.**
-Contrast is checked at the token level, not patched per component. If every text and surface pairing passes [WCAG AA], every component built on them inherits it. [How you checked: tooling, manual audit, contrast matrix.]
+Contrast is checked at the token level, not patched per component. Every text and surface pairing is checked, so every component built on them inherits accessible color.
 
 **4. Map before migrating.**
-I started by mapping the layers beneath the UI: where consistency matters most, where change is most likely, and where values were already drifting. [What the audit found, e.g. X unique colors reduced to Y primitives and Z semantic tokens.]
+I started by mapping the layers beneath the UI: where consistency matters most, where change is most likely, and where values were already drifting. Grays were the clearest case: about 20 different grays came down to a handful of semantic values.
 
 ### Impact
-- Light and dark mode are a token swap: same components, different values.
-- [Number, e.g. X hardcoded values replaced, or Y unique colors consolidated into Z tokens.]
-- [Time or effort saved, e.g. a theme change that used to take days now takes one file change.]
-- The same structure is what lets the system scale to [new surfaces / brands / AI-generated code], because there's one place to change a decision.
+- **Every component is rewired to semantic tokens.** Dark mode is now a token swap, same components with different values, and it's about to launch.
+- **About 20 grays** now map to a handful of semantic values.
+- **Every color pairing is contrast-checked** at the foundation.
+- The same structure lets the system scale to new themes and to AI-generated code, because there's one place to change a decision.
 
 ### What I learned
 Foundations work is invisible, but it shapes everything that comes after. A strong token structure makes design decisions easier to change, scale and keep aligned across teams.
-
-*Live demo idea:* this site's own theme toggle could run on the same three-layer structure, and the case study could link to it.
 
 ---
 

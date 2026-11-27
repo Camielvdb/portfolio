@@ -18,7 +18,7 @@ window.PORTFOLIO_ITEMS = [
   {
     wrapperClass: "a",
     frontClass: "tokenization-prep",
-    title: "Three token layers that made dark mode a token swap",
+    title: "Three token layers that make dark mode a token swap",
     client: "HoneyBook",
     year: "2026",
     alt: "A sign-up form with each color labeled by its semantic design token, such as text-primary, surface-accent and stroke-focus.",
