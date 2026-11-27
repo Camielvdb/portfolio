@@ -171,5 +171,4 @@ This design grew out of small concepts made over a long time. When a vision is c
 - **One search for quick lookups and complex queries** — NEXT, 2023
 
 ## Other small fixes worth doing (not in this branch)
-- Nav says "New York". Change to "Miami" or "US remote, ET" if you want.
 - Add a resume link next to Email.
