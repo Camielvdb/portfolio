@@ -150,7 +150,7 @@ A vertical view of the research process (collect, highlight, cluster) mirrors ho
 *Tradeoff:* moving the navigation touched every part of the product, at a company releasing weekly. As a small team, we shipped it all at once and kept iterating.
 
 **2. Always invite users to add their own data.**
-Seeing the product is one thing. Seeing your own research in it is what proves the value. Every new user now sees a clear starting point that invites them to upload their own research.
+Seeing the product is one thing. Seeing your own research in it is what proves the value. Every new user got a clear starting point that invited them to upload their own research.
 
 **3. Put the upgrade where the value is.**
 A visible usage meter (for example, 127 of 180 minutes used) sits next to an Upgrade button, right where users see the value. The incentive shows up at the moment it makes sense.
